@@ -1,6 +1,7 @@
 package ge;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -24,6 +25,10 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     }
 
+    public void paintComponent(Graphics g) {
+
+    }
+
     public int getOldX() {
         return oldX;
     }
@@ -42,36 +47,42 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     public void mouseClicked(MouseEvent e) {
 
-        System.out.println("Mouse is clicked");
+        //System.out.println("Mouse is clicked");
     }
 
     public void mouseEntered(MouseEvent e) {
 
-        System.out.println("Mouse is Entered");
+        //System.out.println("Mouse is Entered");
     }
 
     public void mouseExited(MouseEvent e) {
 
-        System.out.println("Mouse is Exited");
+        //System.out.println("Mouse is Exited");
     }
 
     public void mousePressed(MouseEvent e) {
 
-        System.out.println("Mouse is Pressed");
+        //System.out.println("Mouse is Pressed");
     }
 
     public void mouseReleased(MouseEvent e) {
 
-        System.out.println("Mouse is Released");
+        //System.out.println("Mouse is Released");
     }
 
     public void mouseDragged(MouseEvent e) {
 
-        System.out.println("Mouse is Dragged");
+        //System.out.println("Mouse is Dragged");
     }
 
     public void mouseMoved(MouseEvent e) {
 
-        System.out.println("Mouse is Moved");
+        //System.out.println("Mouse is Moved");
+        oldX = newX;
+        oldY = newY;
+
+        newX = e.getX();
+        newY = e.getY();
+
     }
 }

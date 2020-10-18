@@ -22,6 +22,16 @@ public class Scene extends JFrame {
 
     }
 
+    public void Pause() {
+
+
+    }
+
+    public void Unpause() {
+
+
+    }
+
     public void DrawScene() {
 
         //Create Scene
@@ -37,7 +47,6 @@ public class Scene extends JFrame {
 
         mouseX = sm.getNewX();
         mouseY = sm.getNewY();
-
 
     }
 
