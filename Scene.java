@@ -38,6 +38,7 @@ public class Scene extends JFrame {
         mouseX = sm.getNewX();
         mouseY = sm.getNewY();
 
+
     }
 
 }

@@ -47,26 +47,31 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     public void mouseEntered(MouseEvent e) {
 
+        System.out.println("Mouse is Entered");
     }
 
     public void mouseExited(MouseEvent e) {
 
+        System.out.println("Mouse is Exited");
     }
 
     public void mousePressed(MouseEvent e) {
 
+        System.out.println("Mouse is Pressed");
     }
 
     public void mouseReleased(MouseEvent e) {
 
+        System.out.println("Mouse is Released");
     }
 
     public void mouseDragged(MouseEvent e) {
 
-        System.out.println("Jaina is a retard");
+        System.out.println("Mouse is Dragged");
     }
 
     public void mouseMoved(MouseEvent e) {
 
+        System.out.println("Mouse is Moved");
     }
 }
