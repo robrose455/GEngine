@@ -12,33 +12,62 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     int oldY;
     int newX;
     int newY;
-    int player_x;
-    int player_y;
+    int player_speed;
+
+    int player1_x;
+    int player1_y;
+
+    int player2_x;
+    int player2_y;
+
     boolean upPressed;
     boolean downPressed;
     boolean leftPressed;
     boolean rightPressed;
+
+    boolean wPressed;
+    boolean sPressed;
+    boolean aPressed;
+    boolean dPressed;
 
     Action upAction;
     Action downAction;
     Action leftAction;
     Action rightAction;
 
+    Action wAction;
+    Action sAction;
+    Action aAction;
+    Action dAction;
+
     Timer t = new Timer(10, this);
 
     public SceneManager() {
+
+        this.setBackground(Color.BLACK);
 
         oldX = 0;
         oldY = 0;
         newX = 0;
         newY = 0;
-        player_x = 0;
-        player_y = 0;
+
+        player1_x = 0;
+        player1_y = 0;
+
+        player2_x = 300;
+        player2_y = 0;
+
+        player_speed = 10;
 
         upPressed = false;
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
+
+        wPressed = false;
+        sPressed = false;
+        aPressed = false;
+        dPressed = false;
 
         addMouseListener(this);
         addMouseMotionListener(this);
@@ -47,6 +76,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
         downAction = new DownAction();
         leftAction = new LeftAction();
         rightAction = new RightAction();
+
+        wAction = new wAction();
+        sAction = new sAction();
+        aAction = new aAction();
+        dAction = new dAction();
 
         this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upA");
         this.getActionMap().put("upA", upAction);
@@ -60,6 +94,18 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
         this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightA");
         this.getActionMap().put("rightA", rightAction);
 
+        this.getInputMap().put(KeyStroke.getKeyStroke("W"), "wA");
+        this.getActionMap().put("wA", wAction);
+
+        this.getInputMap().put(KeyStroke.getKeyStroke("S"), "sA");
+        this.getActionMap().put("sA", sAction);
+
+        this.getInputMap().put(KeyStroke.getKeyStroke("A"), "aA");
+        this.getActionMap().put("aA", aAction);
+
+        this.getInputMap().put(KeyStroke.getKeyStroke("D"), "dA");
+        this.getActionMap().put("dA", dAction);
+
         t.start();
 
     }
@@ -70,7 +116,9 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
         System.out.println("Drawing Rectanlge");
         g.setColor(Color.RED);
-        g.fillRect(player_x, player_y, 10, 50);
+        g.fillRect(player1_x, player1_y, 10, 50);
+        g.setColor(Color.YELLOW);
+        g.fillRect(player2_x, player2_y, 10, 50);
 
     }
 
@@ -159,6 +207,37 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
             rightPressed = true;
         }
     }
+
+    public class wAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Bitch we going up");
+            wPressed = true;
+        }
+    }
+    public class sAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Bitch we going down");
+            sPressed = true;
+        }
+    }
+    public class aAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Bitch we going left");
+            aPressed = true;
+        }
+    }
+    public class dAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Bitch we going right");
+            dPressed = true;
+        }
+    }
+
+
     public void actionPerformed(ActionEvent e) {
 
         Update();
@@ -168,17 +247,31 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void Update() {
 
         if (upPressed) {
-            player_y -= 10;
+            player1_y -= player_speed;
         }
         if (downPressed) {
-            player_y += 10;
+            player1_y += player_speed;
         }
         if (rightPressed) {
-            player_x += 10;
+            player1_x += player_speed;
         }
         if (leftPressed) {
-            player_x -= 10;
+            player1_x -= player_speed;
         }
+
+        if (wPressed) {
+            player2_y -= player_speed;
+        }
+        if (sPressed) {
+            player2_y += player_speed;
+        }
+        if (aPressed) {
+            player2_x -= player_speed;
+        }
+        if (dPressed) {
+            player2_x += player_speed;
+        }
+
         this.repaint();
         ResetKeys();
 
@@ -190,6 +283,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
+
+        wPressed = false;
+        sPressed = false;
+        aPressed = false;
+        dPressed = false;
 
     }
 }
