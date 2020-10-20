@@ -20,38 +20,42 @@ public class SpriteArrowController extends Controller {
 
     }
 
-    public boolean isUpPressed() {
+    public boolean isMovingUp() {
         return upPressed;
     }
-    public boolean isDownPressed() {
+    public boolean isMovingDown() {
         return downPressed;
     }
-    public boolean isLeftPressed() {
+    public boolean isMovingLeft() {
         return leftPressed;
     }
-    public boolean isRightPressed() {
+    public boolean isMovingRight() {
         return rightPressed;
     }
 
-    public void upIsPressed() {
+    public void movingUp() {
         upPressed = true;
     }
-    public void downIsPressed() {
+    public void movingDown() {
         downPressed = true;
     }
-    public void leftIsPressed() {
+    public void movingLeft() {
         leftPressed = true;
     }
-    public void rightIsPressed() {
+    public void movingRight() {
         rightPressed = true;
     }
 
-    public void ResetArrowKeys() {
+    public void ResetKeys() {
 
         upPressed = false;
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
 
+    }
+
+    public void typeOfController() {
+        System.out.println("I am a Arrow Key Controller");
     }
 }

@@ -11,38 +11,44 @@ public class SpriteWASDController extends Controller {
 
     }
 
-    public boolean isWPressed() {
+    public boolean isMovingUp() {
         return wPressed;
     }
-    public boolean isSPressed() {
+    public boolean isMovingDown() {
         return sPressed;
     }
-    public boolean isAPressed() {
+    public boolean isMovingLeft() {
         return aPressed;
     }
-    public boolean isDPressed() {
+    public boolean isMovingRight() {
         return dPressed;
     }
 
-    public void WisPressed() {
+    public void movingUp() {
         wPressed = true;
     }
-    public void SisPressed() {
+    public void movingDown() {
         sPressed = true;
     }
-    public void AisPressed() {
+    public void movingLeft() {
         aPressed = true;
     }
-    public void DisPressed() {
+    public void movingRight() {
         dPressed = true;
     }
 
-    public void ResetWASDKeys() {
+    public void ResetKeys() {
 
         wPressed = false;
         sPressed = false;
         aPressed = false;
         dPressed = false;
+
+    }
+
+    public void typeOfController() {
+
+        System.out.println("I am a WASD Controller");
 
     }
 }

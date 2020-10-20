@@ -24,6 +24,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
+    Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,w);
     Timer t = new Timer(10, this);
 
     public SceneManager() {
@@ -79,10 +80,9 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,s);
-        //Sprite blueberry = new Sprite(player_x + 100, player_y + 100,100,100, 2);
+
         cranberry.paintComponent(g);
-        //blueberry.paintComponent(g);
+
 
     }
 
@@ -125,53 +125,55 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class UpAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            s.upIsPressed();
+            cranberry.playerControls.movingUp();
         }
     }
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            s.downIsPressed();
+            cranberry.playerControls.movingDown();
         }
     }
     public class LeftAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            s.leftIsPressed();
+            cranberry.playerControls.movingLeft();
         }
     }
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            s.rightIsPressed();
+
+            cranberry.playerControls.movingRight();
         }
     }
 
     public class wAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            w.WisPressed();
+            cranberry.playerControls.movingUp();
         }
     }
     public class sAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            w.SisPressed();
+            System.out.println("We moving down with s");
+            cranberry.playerControls.movingDown();
         }
     }
     public class aAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            w.AisPressed();
+            cranberry.playerControls.movingLeft();
         }
     }
     public class dAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            w.DisPressed();
+            cranberry.playerControls.movingRight();
         }
     }
 
@@ -181,21 +183,26 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     public void Update() {
 
-        if (s.isUpPressed()) {
+        if (cranberry.playerControls.isMovingUp()) {
             player_y -= player_speed;
+            cranberry.setPlayer_y(player_y);
         }
-        if (s.isDownPressed()) {
+        if (cranberry.playerControls.isMovingDown()) {
             player_y += player_speed;
+            cranberry.setPlayer_y(player_y);
         }
-        if (s.isLeftPressed()) {
+        if (cranberry.playerControls.isMovingLeft()) {
             player_x -= player_speed;
+            cranberry.setPlayer_x(player_x);
         }
-        if (s.isRightPressed()) {
+        if (cranberry.playerControls.isMovingRight()) {
             player_x += player_speed;
+            cranberry.setPlayer_x(player_x);
         }
 
         this.repaint();
-        s.ResetArrowKeys();
+        cranberry.playerControls.ResetKeys();
+
 
     }
 }

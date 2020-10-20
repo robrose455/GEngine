@@ -32,29 +32,27 @@ public class Sprite extends JPanel {
             ImageReader ir = new ImageReader();
             image = ir.readImage("C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png");
 
+            playerControls.typeOfController();
+
+
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        /*switch (playerColor) {
-
-            case 1 :
-                g.setColor(Color.RED);
-                break;
-            case 2 :
-                g.setColor(Color.BLUE);
-                break;
-            case 3 :
-                g.setColor(Color.YELLOW);
-                break;
-            case 4 :
-                g.setColor(Color.GREEN);
-                break;
-        }*/
-
         g.drawImage(image, player_x, player_y, null);
 
     }
-    
+
+    public void setPlayer_x(int x){
+        player_x = x;
+    }
+    public void setPlayer_y(int y){
+        player_y = y;
+    }
+    public void setPos(int x, int y) {
+        setPlayer_x(x);
+        setPlayer_y(y);
+    }
+
 }
