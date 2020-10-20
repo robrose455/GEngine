@@ -2,7 +2,7 @@ package ge;
 
 abstract class Controller {
 
-        public abstract void typeOfController();
+        public abstract String typeOfController();
         public abstract boolean isMovingUp();
         public abstract boolean isMovingDown();
         public abstract boolean isMovingLeft();

@@ -24,7 +24,8 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
-    Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,w);
+    Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,s);
+    String controllerType;
     Timer t = new Timer(10, this);
 
     public SceneManager() {
@@ -80,9 +81,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
         cranberry.paintComponent(g);
-
 
     }
 
@@ -125,55 +124,79 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class UpAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            cranberry.playerControls.movingUp();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "Arrows") {
+                cranberry.playerControls.movingUp();
+            }
         }
     }
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            cranberry.playerControls.movingDown();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "Arrows") {
+                cranberry.playerControls.movingDown();
+            }
         }
     }
     public class LeftAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            cranberry.playerControls.movingLeft();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "Arrows") {
+                cranberry.playerControls.movingLeft();
+            }
         }
     }
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
+            controllerType = cranberry.playerControls.typeOfController();
 
-            cranberry.playerControls.movingRight();
+            if(controllerType == "Arrows") {
+                cranberry.playerControls.movingRight();
+            }
         }
     }
 
     public class wAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            cranberry.playerControls.movingUp();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "WASD") {
+                cranberry.playerControls.movingUp();
+            }
         }
     }
     public class sAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            System.out.println("We moving down with s");
-            cranberry.playerControls.movingDown();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "WASD") {
+                cranberry.playerControls.movingDown();
+            }
         }
     }
     public class aAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            cranberry.playerControls.movingLeft();
+            controllerType = cranberry.playerControls.typeOfController();
+            if(controllerType == "WASD") {
+                cranberry.playerControls.movingLeft();
+            }
         }
     }
     public class dAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
 
-            cranberry.playerControls.movingRight();
+            controllerType = cranberry.playerControls.typeOfController();
+            System.out.println(controllerType);
+            if(controllerType == "WASD") {
+                cranberry.playerControls.movingRight();
+            }
         }
     }
 
