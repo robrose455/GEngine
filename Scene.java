@@ -48,9 +48,6 @@ public class Scene extends JFrame {
 
     public void getMousePos() {
 
-        mouseX = sm.getNewX();
-        mouseY = sm.getNewY();
-
     }
 
 }

@@ -1,34 +1,16 @@
 package ge;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 public class SceneManager extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
 
-    int oldX;
-    int oldY;
-    int newX;
-    int newY;
     int player_speed;
-
-    int player1_x;
-    int player1_y;
-
-    int player2_x;
-    int player2_y;
-
-    boolean upPressed;
-    boolean downPressed;
-    boolean leftPressed;
-    boolean rightPressed;
-
-    boolean wPressed;
-    boolean sPressed;
-    boolean aPressed;
-    boolean dPressed;
+    int player_x;
+    int player_y;
 
     Action upAction;
     Action downAction;
@@ -40,34 +22,18 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     Action aAction;
     Action dAction;
 
+    SpriteArrowController s = new SpriteArrowController();
+    SpriteWASDController w = new SpriteWASDController();
     Timer t = new Timer(10, this);
 
     public SceneManager() {
 
         this.setBackground(Color.BLACK);
 
-        oldX = 0;
-        oldY = 0;
-        newX = 0;
-        newY = 0;
+        player_x = 0;
+        player_y = 0;
 
-        player1_x = 0;
-        player1_y = 0;
-
-        player2_x = 300;
-        player2_y = 0;
-
-        player_speed = 10;
-
-        upPressed = false;
-        downPressed = false;
-        leftPressed = false;
-        rightPressed = false;
-
-        wPressed = false;
-        sPressed = false;
-        aPressed = false;
-        dPressed = false;
+        player_speed = 100;
 
         addMouseListener(this);
         addMouseMotionListener(this);
@@ -76,7 +42,6 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
         downAction = new DownAction();
         leftAction = new LeftAction();
         rightAction = new RightAction();
-
         wAction = new wAction();
         sAction = new sAction();
         aAction = new aAction();
@@ -114,180 +79,123 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        System.out.println("Drawing Rectanlge");
-        g.setColor(Color.RED);
-        g.fillRect(player1_x, player1_y, 10, 50);
-        g.setColor(Color.YELLOW);
-        g.fillRect(player2_x, player2_y, 10, 50);
+        Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,s);
+        //Sprite blueberry = new Sprite(player_x + 100, player_y + 100,100,100, 2);
+        cranberry.paintComponent(g);
+        //blueberry.paintComponent(g);
 
     }
 
-    public int getOldX() {
-        return oldX;
+    public int getPlayer_x() {
+        return player_x;
     }
-
-    public int getOldY() {
-        return oldY;
-    }
-
-    public int getNewX() {
-        return newX;
-    }
-
-    public int getNewY() {
-        return newY;
+    public int getPlayer_y() {
+        return player_y;
     }
 
     public void mouseClicked(MouseEvent e) {
 
         System.out.println("Mouse is clicked");
     }
-
     public void mouseEntered(MouseEvent e) {
 
         //System.out.println("Mouse is Entered");
     }
-
     public void mouseExited(MouseEvent e) {
 
         //System.out.println("Mouse is Exited");
     }
-
     public void mousePressed(MouseEvent e) {
 
         //System.out.println("Mouse is Pressed");
     }
-
     public void mouseReleased(MouseEvent e) {
 
         //System.out.println("Mouse is Released");
     }
-
     public void mouseDragged(MouseEvent e) {
 
         //System.out.println("Mouse is Dragged");
     }
-
     public void mouseMoved(MouseEvent e) {
 
         //System.out.println("Mouse is Moved");
-        oldX = newX;
-        oldY = newY;
-
-        newX = e.getX();
-        newY = e.getY();
-
     }
 
     public class UpAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going up");
-            upPressed = true;
+            s.upIsPressed();
         }
     }
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going down");
-            downPressed = true;
+            s.downIsPressed();
         }
     }
     public class LeftAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going left");
-            leftPressed = true;
+            s.leftIsPressed();
         }
     }
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going right");
-            rightPressed = true;
+            s.rightIsPressed();
         }
     }
 
     public class wAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going up");
-            wPressed = true;
+            w.WisPressed();
         }
     }
     public class sAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going down");
-            sPressed = true;
+
+            w.SisPressed();
         }
     }
     public class aAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going left");
-            aPressed = true;
+
+            w.AisPressed();
         }
     }
     public class dAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Bitch we going right");
-            dPressed = true;
+
+            w.DisPressed();
         }
     }
 
-
     public void actionPerformed(ActionEvent e) {
-
         Update();
-
     }
 
     public void Update() {
 
-        if (upPressed) {
-            player1_y -= player_speed;
+        if (s.isUpPressed()) {
+            player_y -= player_speed;
         }
-        if (downPressed) {
-            player1_y += player_speed;
+        if (s.isDownPressed()) {
+            player_y += player_speed;
         }
-        if (rightPressed) {
-            player1_x += player_speed;
+        if (s.isLeftPressed()) {
+            player_x -= player_speed;
         }
-        if (leftPressed) {
-            player1_x -= player_speed;
-        }
-
-        if (wPressed) {
-            player2_y -= player_speed;
-        }
-        if (sPressed) {
-            player2_y += player_speed;
-        }
-        if (aPressed) {
-            player2_x -= player_speed;
-        }
-        if (dPressed) {
-            player2_x += player_speed;
+        if (s.isRightPressed()) {
+            player_x += player_speed;
         }
 
         this.repaint();
-        ResetKeys();
-
-    }
-
-    public void ResetKeys() {
-
-        upPressed = false;
-        downPressed = false;
-        leftPressed = false;
-        rightPressed = false;
-
-        wPressed = false;
-        sPressed = false;
-        aPressed = false;
-        dPressed = false;
+        s.ResetArrowKeys();
 
     }
 }
