@@ -8,13 +8,13 @@ import javax.swing.*;
 public class Scene extends JFrame {
 
     SceneManager sm;
-
-
-    int mouseX;
-    int mouseY;
+    int height;
+    int width;
 
     public Scene() {
 
+        height = 1000;
+        width = 1000;
 
     }
 
@@ -25,29 +25,22 @@ public class Scene extends JFrame {
 
     }
 
-    public void Pause() {
-
-
-    }
-
-    public void Unpause() {
-
-
-    }
-
     public void DrawScene() {
 
         //Create Scene
-        sm = new SceneManager();
+        sm = new SceneManager(this);
         this.add(sm, BorderLayout.CENTER);
-        this.setSize(1000,1000);
+        this.setSize(width,height);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 
-    public void getMousePos() {
-
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
     }
 
 }

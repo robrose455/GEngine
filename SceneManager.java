@@ -8,9 +8,12 @@ import java.io.IOException;
 
 public class SceneManager extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
 
-    int player_speed;
-    int player_x;
-    int player_y;
+    int player_speed = 10;
+    int player_x = 10;
+    int player_y = 10;
+    String imagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png";
+
+    boolean isPaused = false;
 
     Action upAction;
     Action downAction;
@@ -24,16 +27,18 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
-    Sprite cranberry = new Sprite(player_x, player_y,100, 100, 1, player_speed,s);
+    Scene sc = new Scene();
+    Sprite cranberry = new Sprite(player_x, player_y,100, 100,  player_speed,s,sc,imagePath, "WRAP");
     String controllerType;
     Timer t = new Timer(10, this);
 
-    public SceneManager() {
+    public SceneManager(Scene s) {
 
         this.setBackground(Color.BLACK);
 
-        player_x = 0;
-        player_y = 0;
+        this.sc = s;
+        player_x = 10;
+        player_y = 10;
 
         player_speed = 100;
 
@@ -91,10 +96,18 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public int getPlayer_y() {
         return player_y;
     }
+    public void setPlayer_x(int x){
+        player_x = x;
+    }
+    public void setPlayer_y(int y){
+        player_y = y;
+    }
 
     public void mouseClicked(MouseEvent e) {
 
+        cranberry.changeVisibility();
         System.out.println("Mouse is clicked");
+
     }
     public void mouseEntered(MouseEvent e) {
 
@@ -206,26 +219,22 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     public void Update() {
 
-        if (cranberry.playerControls.isMovingUp()) {
-            player_y -= player_speed;
-            cranberry.setPlayer_y(player_y);
-        }
-        if (cranberry.playerControls.isMovingDown()) {
-            player_y += player_speed;
-            cranberry.setPlayer_y(player_y);
-        }
-        if (cranberry.playerControls.isMovingLeft()) {
-            player_x -= player_speed;
-            cranberry.setPlayer_x(player_x);
-        }
-        if (cranberry.playerControls.isMovingRight()) {
-            player_x += player_speed;
-            cranberry.setPlayer_x(player_x);
-        }
-
+        cranberry.CheckForMovement();
+        player_x = cranberry.getX();
+        player_y = cranberry.getY();
         this.repaint();
         cranberry.playerControls.ResetKeys();
 
+    }
 
+    public void Pause() {
+
+        isPaused = true;
+
+        /*while(isPaused) {
+
+            System.out.println("Paused");
+
+        }*/
     }
 }

@@ -8,29 +8,50 @@ import java.io.*;
 
 public class Sprite extends JPanel {
 
-    int player_x;
-    int player_y;
+    int x;
+    int y;
     int size_x;
     int size_y;
-    int playerSpeed;
-    int playerColor;
+    int dx;
+    int dy;
+    int player_speed;
+
+    String boundAction;
+
+    Scene sc;
+    int sHeight;
+    int sWidth;
+
+    String imagePath;
+
+    boolean isVisible;
+
     Controller playerControls;
 
 
     public static BufferedImage image;
 
-    public Sprite(int px, int py, int sx, int sy, int pc, int ps, Controller playerControls) {
+    public Sprite(int x, int y, int sx, int sy, int ps, Controller playerControls, Scene sc, String ip, String ba) {
 
-            this.player_x = px;
-            this.player_y = py;
+            this.x = x;
+            this.y = y;
+            this.dx = 0;
+            this.dy = 0;
             this.size_x = sx;
             this.size_y = sy;
-            this.playerColor = pc;
-            this.playerSpeed = ps;
+            this.player_speed = ps;
+            this.boundAction = ba;
             this.playerControls = playerControls;
+            this.sc = sc;
+            this.isVisible = true;
+
+            this.sHeight = sc.getHeight();
+            this.sWidth = sc.getWidth();
+
+            this.imagePath = ip;
 
             ImageReader ir = new ImageReader();
-            image = ir.readImage("C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png");
+            image = ir.readImage(imagePath);
 
             playerControls.typeOfController();
 
@@ -40,19 +61,125 @@ public class Sprite extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(image, player_x, player_y, null);
+        if(isVisible) {
+            g.drawImage(image, x, y, null);
+        }
 
     }
 
-    public void setPlayer_x(int x){
-        player_x = x;
+    public void CheckForMovement() {
+
+        if (playerControls.isMovingUp()) {
+
+            y -= player_speed;
+
+            if (y <= 0) {
+                switch (boundAction) {
+                    case "WRAP" -> y = y + sc.getHeight();
+                    case "STOP" -> player_speed = 0;
+                    case "DIE" -> {
+                        player_speed = 0;
+                        Hide();
+                    }
+                }
+            } else {
+                setY(y);
+            }
+        }
+
+        if (playerControls.isMovingDown()) {
+
+            y += player_speed;
+
+            if (y >= sc.getHeight()) {
+                switch (boundAction) {
+                    case "WRAP" -> y = y - sc.getHeight();
+                    case "STOP" -> player_speed = 0;
+                    case "DIE" -> {
+                        player_speed = 0;
+                        Hide();
+                    }
+                }
+            } else {
+                setY(y);
+            }
+        }
+
+        if (playerControls.isMovingLeft()) {
+
+            x -= player_speed;
+
+            System.out.println(x);
+            if (x <= 0) {
+
+                switch (boundAction) {
+                    case "WRAP" -> x = x + sc.getWidth();
+                    case "STOP" -> player_speed = 0;
+                    case "DIE" -> {
+                        player_speed = 0;
+                        Hide();
+                    }
+                }
+
+            } else {
+                setX(x);
+            }
+
+        }
+
+        if (playerControls.isMovingRight()) {
+
+            x += player_speed;
+
+            if (x >= sc.getWidth()) {
+                switch (boundAction) {
+                    case "WRAP" -> x = x - sc.getWidth();
+                    case "STOP" -> player_speed = 0;
+                    case "DIE" -> {
+                        player_speed = 0;
+                        Hide();
+                    }
+                }
+            } else {
+                setX(x);
+            }
+        }
+
     }
-    public void setPlayer_y(int y){
-        player_y = y;
+
+    public void setX(int x){
+        this.x = x;
     }
+    public void setY(int y){
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
     public void setPos(int x, int y) {
-        setPlayer_x(x);
-        setPlayer_y(y);
+        setX(x);
+        setY(y);
+    }
+
+    public void changeVisibility() {
+
+        if (isVisible) {
+            isVisible = false;
+        } else {
+            isVisible = true;
+        }
+    }
+
+    public void Hide() {
+        isVisible = false;
+    }
+    public void Show() {
+        isVisible = true;
     }
 
 }
