@@ -3,15 +3,14 @@ package ge;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
 
 public class SceneManager extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
 
     int player_speed = 10;
     int player_x = 10;
     int player_y = 10;
-    String imagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png";
+    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png";
+    String appleImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\apple.png";
 
     boolean isPaused = false;
 
@@ -28,7 +27,8 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
     Scene sc = new Scene();
-    Sprite cranberry = new Sprite(player_x, player_y,100, 100,  player_speed,s,sc,imagePath, "WRAP");
+    SceneObject apple = new SceneObject(300,300, 100, 100, 0,sc, appleImagePath);
+    Sprite cranberry = new Sprite(player_x, player_y,100, 100,  player_speed,s,sc, cranImagePath, "WRAP");
     String controllerType;
     Timer t = new Timer(10, this);
 
@@ -86,6 +86,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        apple.paintComponent(g);
         cranberry.paintComponent(g);
 
     }
@@ -218,6 +219,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     }
 
     public void Update() {
+
 
         cranberry.CheckForMovement();
         player_x = cranberry.getX();

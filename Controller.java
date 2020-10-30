@@ -15,7 +15,4 @@ abstract class Controller {
 
         public abstract void ResetKeys();
 
-
-
-
 }
