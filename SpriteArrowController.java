@@ -46,6 +46,7 @@ public class SpriteArrowController extends Controller {
         rightPressed = true;
     }
 
+    //Resets Keys for the next frame
     public void ResetKeys() {
 
         upPressed = false;

@@ -1,5 +1,6 @@
 package ge;
-
+//Abstract Class for Controllers -> Creates the ability to set custom control classes in the future once all keys are set up by listeners.
+//Currently only have functionality for WASD and Arrow Keys
 abstract class Controller {
 
         public abstract String typeOfController();

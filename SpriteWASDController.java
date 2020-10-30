@@ -37,6 +37,7 @@ public class SpriteWASDController extends Controller {
         dPressed = true;
     }
 
+    //Resets Keys for the next frame
     public void ResetKeys() {
 
         wPressed = false;
