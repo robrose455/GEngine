@@ -12,6 +12,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     int player_y = 10;
     int player2_x = 500;
     int player2_y = 500;
+    String controllerType;
 
     String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png";
     String appleImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\apple.png";
@@ -31,13 +32,9 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
     Scene sc = new Scene();
+    SpriteManager sprM = new SpriteManager(this);
 
-    Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, sc, cranImagePath, "WRAP", "Cranberry");
-    Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, sc, cranImagePath, "WRAP", "RedBerry");
-
-    String controllerType;
     Timer t = new Timer(10, this);
-    Sprite[] ActiveSprites = {cranberry, redberry};
 
     public SceneManager(Scene s) {
 
@@ -85,6 +82,7 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
         this.getInputMap().put(KeyStroke.getKeyStroke("D"), "dA");
         this.getActionMap().put("dA", dAction);
 
+        InitSprites();
         t.start();
 
     }
@@ -93,8 +91,8 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Sprite activeSprite : ActiveSprites) {
-            activeSprite.paintComponent(g);
+        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+            sprM.getActiveSprites().get(i).paintComponent(g);
         }
 
     }
@@ -117,8 +115,6 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     public void mouseClicked(MouseEvent e) {
 
-        cranberry.Report();
-        redberry.Report();
 
     }
 
@@ -155,9 +151,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class UpAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "Arrows") {
-                cranberry.playerControls.movingUp();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+               controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "Arrows") {
+                    sprM.getActiveSprites().get(i).playerControls.movingUp();
+                }
             }
         }
     }
@@ -165,9 +163,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "Arrows") {
-                cranberry.playerControls.movingDown();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "Arrows") {
+                    sprM.getActiveSprites().get(i).playerControls.movingDown();
+                }
             }
         }
     }
@@ -175,9 +175,14 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class LeftAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "Arrows") {
-                cranberry.playerControls.movingLeft();
+
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "Arrows") {
+                    sprM.getActiveSprites().get(i).playerControls.movingLeft();
+
+                }
             }
         }
     }
@@ -185,10 +190,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            controllerType = cranberry.playerControls.typeOfController();
-
-            if (controllerType == "Arrows") {
-                cranberry.playerControls.movingRight();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "Arrows") {
+                    sprM.getActiveSprites().get(i).playerControls.movingRight();
+                }
             }
         }
     }
@@ -196,9 +202,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public class wAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "WASD") {
-                cranberry.playerControls.movingUp();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "WASD") {
+                    sprM.getActiveSprites().get(i).playerControls.movingUp();
+                }
             }
         }
     }
@@ -207,9 +215,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
         public void actionPerformed(ActionEvent e) {
 
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "WASD") {
-                cranberry.playerControls.movingDown();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "WASD") {
+                    sprM.getActiveSprites().get(i).playerControls.movingDown();
+                }
             }
         }
     }
@@ -218,9 +228,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
         public void actionPerformed(ActionEvent e) {
 
-            controllerType = cranberry.playerControls.typeOfController();
-            if (controllerType == "WASD") {
-                cranberry.playerControls.movingLeft();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "WASD") {
+                    sprM.getActiveSprites().get(i).playerControls.movingLeft();
+                }
             }
         }
     }
@@ -229,10 +241,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
         public void actionPerformed(ActionEvent e) {
 
-            controllerType = cranberry.playerControls.typeOfController();
-            System.out.println(controllerType);
-            if (controllerType == "WASD") {
-                cranberry.playerControls.movingRight();
+            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
+                if (controllerType == "WASD") {
+                    sprM.getActiveSprites().get(i).playerControls.movingRight();
+                }
             }
         }
     }
@@ -244,9 +257,11 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void Update() {
 
         // Update each active sprite for movement commands and collisions
-        for (Sprite activeSprite : ActiveSprites) {
-            activeSprite.Update();
+        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+            sprM.getActiveSprites().get(i).Update();
         }
+
+        sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1));
 
         // Repaint all sprites onto the frame with updated parameters
         this.repaint();
@@ -256,6 +271,16 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     public void Pause() {
 
         //Pause Function to be added when user hits Space Bar
+
+    }
+
+    public void InitSprites() {
+
+        Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, sc, cranImagePath, "WRAP", "Cranberry");
+        Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, sc, cranImagePath, "WRAP", "RedBerry");
+
+        sprM.addSprite(cranberry);
+        sprM.addSprite(redberry);
 
     }
 }

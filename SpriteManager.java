@@ -26,8 +26,12 @@ public class SpriteManager {
             if(spriteList.get(i).getName().equals(name)) {
 
                     spriteList.remove(i);
-                    
+
             }
         }
+    }
+
+    public ArrayList<Sprite> getActiveSprites() {
+        return spriteList;
     }
 }

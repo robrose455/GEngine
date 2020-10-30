@@ -156,18 +156,6 @@ public class Sprite extends JPanel {
 
     }
 
-    public void CheckCollisions() {
-
-        boolean isCollided = false;
-
-        topBorder = y;
-        bottomBorder = y + imageHeight;
-        leftBorder = x;
-        rightBorder = x + imageWidth;
-
-
-    }
-
     public void setX(int x){
         this.x = x;
     }
@@ -180,6 +168,10 @@ public class Sprite extends JPanel {
     }
     public int getY() {
         return y;
+    }
+
+    public boolean getVisibility() {
+        return isVisible;
     }
 
     public int getTopBorder() {
@@ -198,7 +190,6 @@ public class Sprite extends JPanel {
     public String getName() {
         return name;
     }
-
 
     public void setPos(int x, int y) {
         setX(x);
@@ -240,8 +231,56 @@ public class Sprite extends JPanel {
     public void Update() {
 
         CheckForMovement();
-        CheckCollisions();
         playerControls.ResetKeys();
+
+    }
+
+    public boolean collidesWith(Sprite s) {
+
+        boolean collision = false;
+
+        if (this.isVisible && s.getVisibility()) {
+
+            updateBorders();
+            s.updateBorders();
+
+            int aTop = topBorder;
+            int aBottom = bottomBorder;
+            int aLeft = leftBorder;
+            int aRight = rightBorder;
+
+            int bTop = s.getTopBorder();
+            int bBottom = s.getBottomBorder();
+            int bLeft = s.getLeftBorder();
+            int bRight = s.getRightBorder();
+
+            collision = true;
+
+            if ((aBottom < bTop) ||
+                    (aTop > bBottom) ||
+                    (aRight < bLeft) ||
+                    (aLeft > bRight)) {
+
+                collision = false;
+
+            }
+        }
+
+        /*if(collision) {
+            System.out.println("Collision is true");
+        } else if (!collision) {
+            System.out.println("Collision is false");
+        }*/
+
+        return collision;
+    }
+
+    public void updateBorders() {
+
+        topBorder = y;
+        bottomBorder = y + imageHeight;
+        leftBorder = x;
+        rightBorder = x + imageWidth;
 
     }
 

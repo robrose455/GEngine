@@ -56,7 +56,8 @@ public class SpriteArrowController extends Controller {
     }
 
     public String typeOfController() {
-        System.out.println("I am a Arrow Key Controller");
+
+        //System.out.println("I am a Arrow Key Controller");
         return "Arrows";
     }
 }
