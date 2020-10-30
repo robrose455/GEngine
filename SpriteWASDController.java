@@ -49,7 +49,7 @@ public class SpriteWASDController extends Controller {
     public String typeOfController() {
 
 
-        System.out.println("I am a WASD Controller");
+        //System.out.println("I am a WASD Controller");
         return "WASD";
     }
 }
