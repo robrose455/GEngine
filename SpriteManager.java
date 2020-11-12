@@ -1,4 +1,5 @@
 package ge;
+import java.awt.*;
 import java.util.ArrayList;
 
 /*
@@ -28,6 +29,13 @@ public class SpriteManager {
             if(spriteList.get(i).getName().equals(name)) {
                     spriteList.remove(i);
             }
+        }
+    }
+
+    public void drawSprites(Graphics g) {
+
+        for (int i = 0; i < spriteList.size(); i++) {
+            spriteList.get(i).DrawSprite(g);
         }
     }
 

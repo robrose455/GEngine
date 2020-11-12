@@ -80,8 +80,7 @@ public class Sprite extends JPanel {
     }
 
     //When called will paint sprite onto scene
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void DrawSprite(Graphics g) {
 
         if(isVisible) {
 

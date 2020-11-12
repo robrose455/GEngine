@@ -7,7 +7,6 @@ import java.awt.event.*;
 public class SceneManager extends JPanel implements  ActionListener {
 
     //Determines if game condition is completed.
-    boolean winner = false;
     int points = 1000;
 
     //Basic hardcoded parameters for sprites to be used in the game.
@@ -28,7 +27,7 @@ public class SceneManager extends JPanel implements  ActionListener {
     //Scene Canvas Reference
     Scene sc;
 
-    //Sprite Manager contains organized use of all the active sprites on the scene inside an ArrayList<Sprite>
+    //Handles Sprite Drawing, Adding, and Removal
     SpriteManager sprM = new SpriteManager(this);
 
     //Handles Key Inputs
@@ -36,6 +35,12 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     //Handles Mouse Inputs
     MouseManager mm = new MouseManager(this);
+
+    //Handles all text on Scene
+    TextManager tm = new TextManager(this);
+
+    //Handles current state of game (win or loss)
+    GameStateManager gsm = new GameStateManager(this);
 
     //Create Timer
     Timer t = new Timer(10, this);
@@ -64,25 +69,12 @@ public class SceneManager extends JPanel implements  ActionListener {
         super.paintComponent(g);
 
         //For each Active Sprite -> Paint onto Scene
-        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-            sprM.getActiveSprites().get(i).paintComponent(g);
-        }
+        sprM.drawSprites(g);
+        tm.drawText(g);
 
-        g.setColor(Color.WHITE);
 
-        Font bigFont = new Font("Verdana", Font.BOLD, 25);
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
-        g.setFont(bigFont);
-
-        g.drawString("Match the Sprites", 350, 100);
-
-        g.setFont(bigFont);
-        g.drawString("Controls: WASD or Arrow Keys", 50, 900);
-
-        g.setFont(smallFont);
-        g.drawString("Created by Rob Rose", 800, 900);
-
-        if (winner) {
+        if (gsm.isWinner()) {
             g.setFont(smallFont);
             g.drawString("You did it!", 350, 130);
             g.setFont(smallFont);
@@ -104,13 +96,13 @@ public class SceneManager extends JPanel implements  ActionListener {
         }
 
         if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
-            winner = true;
+             gsm.Win();
         }
         // Repaint all sprites onto the frame with updated parameters
         this.repaint();
 
         // Every frame the game is not completed, subtract points from score
-        if(!winner) {
+        if(!gsm.isWinner()) {
 
             points--;
 
