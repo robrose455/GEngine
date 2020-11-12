@@ -9,6 +9,7 @@ import java.io.*;
 public class ImageReader {
 
     String filePath;
+    boolean imageFailed = false;
 
     public static BufferedImage image;
 
@@ -24,9 +25,14 @@ public class ImageReader {
             //System.out.println("Image Read");
         } catch (IOException e) {
             //System.out.println("Image Could Not be Read");
+            imageFailed = true;
         }
 
         return image;
+    }
+
+    public boolean didImageFail() {
+        return imageFailed;
     }
 
 

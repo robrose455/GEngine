@@ -3,9 +3,8 @@ package ge;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
-public class SceneManager extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
+public class SceneManager extends JPanel implements  ActionListener {
 
     //Determines if game condition is completed.
     boolean winner = false;
@@ -19,84 +18,39 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
     int player2_x = 500;
     int player2_y = 500;
     String controllerType;
-    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\Cranberry.png";
+    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\cranberry.png";
     String appleImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\apple.png";
-
-    //For Future Pause Function
-    boolean isPaused = false;
-
-    //Key Listeners
-    Action upAction;
-    Action downAction;
-    Action leftAction;
-    Action rightAction;
-
-    Action wAction;
-    Action sAction;
-    Action aAction;
-    Action dAction;
 
     //Create both options for sprite controllers to be used as parameters
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
 
-    //Scene Reference
-    Scene sc = new Scene();
+    //Scene Canvas Reference
+    Scene sc;
 
     //Sprite Manager contains organized use of all the active sprites on the scene inside an ArrayList<Sprite>
     SpriteManager sprM = new SpriteManager(this);
+
+    //Handles Key Inputs
+    KeyManager km = new KeyManager(this);
+
+    //Handles Mouse Inputs
+    MouseManager mm = new MouseManager(this);
 
     //Create Timer
     Timer t = new Timer(10, this);
 
     public SceneManager(Scene s) {
 
-        //Initialize all Listeners and Sprites
+        //Set Initial Background
         this.setBackground(Color.BLACK);
+
+        //Initialize all Listeners and Sprites
         this.sc = s;
+
         player_x = 10;
         player_y = 10;
-
         player_speed = 10;
-
-        addMouseListener(this);
-        addMouseMotionListener(this);
-
-        upAction = new UpAction();
-        downAction = new DownAction();
-        leftAction = new LeftAction();
-        rightAction = new RightAction();
-        wAction = new wAction();
-        sAction = new sAction();
-        aAction = new aAction();
-        dAction = new dAction();
-
-        /*
-        Code for key listeners. Refer to comment below for plans
-        */
-        this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upA");
-        this.getActionMap().put("upA", upAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downA");
-        this.getActionMap().put("downA", downAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftA");
-        this.getActionMap().put("leftA", leftAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightA");
-        this.getActionMap().put("rightA", rightAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("W"), "wA");
-        this.getActionMap().put("wA", wAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("S"), "sA");
-        this.getActionMap().put("sA", sAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("A"), "aA");
-        this.getActionMap().put("aA", aAction);
-
-        this.getInputMap().put(KeyStroke.getKeyStroke("D"), "dA");
-        this.getActionMap().put("dA", dAction);
 
         //Initialize All Designated Sprites to be Active Sprites
         InitSprites();
@@ -138,145 +92,6 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
 
     }
 
-    //Mouse Listeners
-    public void mouseClicked(MouseEvent e) {
-
-
-    }
-    public void mouseEntered(MouseEvent e) {
-
-        //System.out.println("Mouse is Entered");
-    }
-    public void mouseExited(MouseEvent e) {
-
-        //System.out.println("Mouse is Exited");
-    }
-    public void mousePressed(MouseEvent e) {
-
-        //System.out.println("Mouse is Pressed");
-    }
-    public void mouseReleased(MouseEvent e) {
-
-        //System.out.println("Mouse is Released");
-    }
-    public void mouseDragged(MouseEvent e) {
-
-        //System.out.println("Mouse is Dragged");
-    }
-    public void mouseMoved(MouseEvent e) {
-
-        //System.out.println("Mouse is Moved");
-    }
-
-    /*
-           My implementation for key listeners in Java.
-           Very rigid in the keys it can understand.
-           Have to add new class for every key.
-           Will want to either find new implementation or pull all key listeners out into seperate class
-     */
-    //Implementation for "Up Arrow"
-    public class UpAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-               controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "Arrows") {
-                    sprM.getActiveSprites().get(i).playerControls.movingUp();
-                }
-            }
-        }
-    }
-    //Implementation for "Down Arrow"
-    public class DownAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "Arrows") {
-                    sprM.getActiveSprites().get(i).playerControls.movingDown();
-                }
-            }
-        }
-    }
-    //Implementation for "Left Arrow"
-    public class LeftAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "Arrows") {
-                    sprM.getActiveSprites().get(i).playerControls.movingLeft();
-
-                }
-            }
-        }
-    }
-    //Implementation for "Right Arrow"
-    public class RightAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "Arrows") {
-                    sprM.getActiveSprites().get(i).playerControls.movingRight();
-                }
-            }
-        }
-    }
-    //Implementation for "W Key"
-    public class wAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "WASD") {
-                    sprM.getActiveSprites().get(i).playerControls.movingUp();
-                }
-            }
-        }
-    }
-    //Implementation for "S Key"
-    public class sAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "WASD") {
-                    sprM.getActiveSprites().get(i).playerControls.movingDown();
-                }
-            }
-        }
-    }
-    //Implementation for "A Key"
-    public class aAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "WASD") {
-                    sprM.getActiveSprites().get(i).playerControls.movingLeft();
-                }
-            }
-        }
-    }
-    //Implementation for "D Key"
-    public class dAction extends AbstractAction {
-
-        public void actionPerformed(ActionEvent e) {
-
-            for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-                controllerType = sprM.getActiveSprites().get(i).playerControls.typeOfController();
-                if (controllerType == "WASD") {
-                    sprM.getActiveSprites().get(i).playerControls.movingRight();
-                }
-            }
-        }
-    }
-
     public void actionPerformed(ActionEvent e) {
         Update();
     }
@@ -300,12 +115,6 @@ public class SceneManager extends JPanel implements MouseListener, MouseMotionLi
             points--;
 
         }
-
-    }
-
-    public void Pause() {
-
-        //Pause Function to be added when user hits Space Bar
 
     }
 

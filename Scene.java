@@ -23,7 +23,6 @@ public class Scene extends JFrame {
     public void Start() {
 
         //Called in the main function to start the game
-        System.out.println("Drawing Scene");
         DrawScene();
 
     }
@@ -40,6 +39,7 @@ public class Scene extends JFrame {
     }
 
     //Get Canvas Height and Canvas Width
+
     public int getWidth() {
         return width;
     }

@@ -31,8 +31,9 @@ public class Sprite extends JPanel {
 
     //Image Parameters
     String imagePath;
-    int imageHeight;
-    int imageWidth;
+    int height;
+    int width;
+    boolean imageFailed = false;
 
     public static BufferedImage image;
 
@@ -66,9 +67,15 @@ public class Sprite extends JPanel {
 
             ImageReader ir = new ImageReader();
             image = ir.readImage(imagePath);
-
-            imageHeight = image.getHeight();
-            imageWidth = image.getWidth();
+            imageFailed = ir.didImageFail();
+            
+            if(!imageFailed) {
+                height = image.getHeight();
+                width = image.getWidth();
+            } else {
+                height = 100;
+                width = 100;
+            }
 
     }
 
@@ -77,7 +84,15 @@ public class Sprite extends JPanel {
         super.paintComponent(g);
 
         if(isVisible) {
-            g.drawImage(image, x, y, null);
+
+            if(imageFailed){
+                g.setColor(Color.RED);
+                g.fillRect(x,y,100,100);
+            }
+
+            else {
+                g.drawImage(image, x, y, null);
+            }
         }
 
     }
@@ -234,8 +249,8 @@ public class Sprite extends JPanel {
     public void Report() {
 
         System.out.println("Variables for Sprite: " + name);
-        System.out.println("Image Height: " + imageHeight);
-        System.out.println("Image Width: " + imageWidth);
+        System.out.println("Image Height: " + height);
+        System.out.println("Image Width: " + width);
         System.out.println("X: " + x);
         System.out.println("Y: " + y);
         //System.out.println("DX: " + dx);
@@ -302,9 +317,9 @@ public class Sprite extends JPanel {
     public void updateBorders() {
 
         topBorder = y;
-        bottomBorder = y + imageHeight;
+        bottomBorder = y + height;
         leftBorder = x;
-        rightBorder = x + imageWidth;
+        rightBorder = x + width;
 
     }
 
