@@ -54,13 +54,14 @@ public class SceneManager extends JPanel implements  ActionListener {
         //Initialize all Listeners and Sprites
         this.sc = s;
         game = sc.getGame();
-        game.Init(this);
 
         this.sprM = new SpriteManager(this,game);
         this.km = new KeyManager(this);
         this.mm = new MouseManager(this);
         this.tm = new TextManager(this);
         this.gsm = new GameStateManager(this);
+
+        game.Init(this);
 
 
         //Initialize All Designated Sprites to be Active Sprites
@@ -121,5 +122,11 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     public Scene getScene() {
         return sc;
+    }
+    public SpriteManager getSpriteManager() {
+        return sprM;
+    }
+    public GameStateManager getGameStateManager() {
+        return gsm;
     }
 }

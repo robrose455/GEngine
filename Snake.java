@@ -25,6 +25,8 @@ public class Snake extends Game {
 
     Scene sc;
     SceneManager sm;
+    SpriteManager sprM;
+    GameStateManager gsm;
 
     public Snake(Scene sc) {
         super(sc);
@@ -37,6 +39,8 @@ public class Snake extends Game {
     public void Init(SceneManager sm) {
 
         this.sm = sm;
+        this.sprM = sm.getSpriteManager();
+        this.gsm = sm.getGameStateManager();
         //Define Startup Methods
         DefineSprites();
         CreateSprite("Cranberry");
@@ -46,15 +50,18 @@ public class Snake extends Game {
 
     public void Update() {
 
-        for (int i = 0; i < sm.sprM.getActiveSprites().size(); i++) {
-            sm.sprM.getActiveSprites().get(i).Update();
+        //Checks For Movement
+        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
+            sprM.getActiveSprites().get(i).Update();
         }
 
-        if(sm.sprM.getActiveSprites().get(0).collidesWith(sm.sprM.getActiveSprites().get(1))) {
-            sm.gsm.Win();
+        //Checks for collision
+        if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
+            gsm.Win();
         }
 
-        if(!sm.gsm.isWinner()) {
+        //Declare Winner when condition met
+        if(!gsm.isWinner()) {
 
             points--;
 
