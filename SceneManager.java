@@ -16,9 +16,7 @@ public class SceneManager extends JPanel implements  ActionListener {
     int player_y = 10;
     int player2_x = 500;
     int player2_y = 500;
-    String controllerType;
     String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\cranberry.png";
-    String appleImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\apple.png";
 
     //Create both options for sprite controllers to be used as parameters
     SpriteArrowController s = new SpriteArrowController();
@@ -27,20 +25,23 @@ public class SceneManager extends JPanel implements  ActionListener {
     //Scene Canvas Reference
     Scene sc;
 
+    //Reference to the current loaded game
+    Game game;
+
     //Handles Sprite Drawing, Adding, and Removal
-    SpriteManager sprM = new SpriteManager(this);
+    SpriteManager sprM;
 
     //Handles Key Inputs
-    KeyManager km = new KeyManager(this);
+    KeyManager km;
 
     //Handles Mouse Inputs
-    MouseManager mm = new MouseManager(this);
+    MouseManager mm;
 
     //Handles all text on Scene
-    TextManager tm = new TextManager(this);
+    TextManager tm;
 
     //Handles current state of game (win or loss)
-    GameStateManager gsm = new GameStateManager(this);
+    GameStateManager gsm;
 
     //Create Timer
     Timer t = new Timer(10, this);
@@ -52,35 +53,39 @@ public class SceneManager extends JPanel implements  ActionListener {
 
         //Initialize all Listeners and Sprites
         this.sc = s;
+        game = sc.getGame();
+        game.Init(this);
 
-        player_x = 10;
-        player_y = 10;
-        player_speed = 10;
+        this.sprM = new SpriteManager(this,game);
+        this.km = new KeyManager(this);
+        this.mm = new MouseManager(this);
+        this.tm = new TextManager(this);
+        this.gsm = new GameStateManager(this);
+
 
         //Initialize All Designated Sprites to be Active Sprites
-        InitSprites();
+        //TestGame();
         //Start Timer
         t.start();
 
     }
 
     @Override
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        //For each Active Sprite -> Paint onto Scene
         sprM.drawSprites(g);
         tm.drawText(g);
 
-
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
+
         if (gsm.isWinner()) {
             g.setFont(smallFont);
             g.drawString("You did it!", 350, 130);
             g.setFont(smallFont);
             g.drawString("Score: " + points, 350, 160);
         }
-
 
     }
 
@@ -90,15 +95,9 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     public void Update() {
 
-        // Update each active sprite for movement commands and collisions
-        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-            sprM.getActiveSprites().get(i).Update();
-        }
-
-        if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
-             gsm.Win();
-        }
-        // Repaint all sprites onto the frame with updated parameters
+        //Update Each Frame According to Game Logic
+        game.Update();
+        //Repaint All Changes Made
         this.repaint();
 
         // Every frame the game is not completed, subtract points from score
@@ -110,13 +109,17 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     }
 
-    public void InitSprites() {
+    public void TestGame() {
 
-        Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, sc, cranImagePath, "WRAP", "Cranberry");
-        Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, sc, cranImagePath, "WRAP", "RedBerry");
+        Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, cranImagePath, "WRAP", "Cranberry",sc);
+        Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, cranImagePath, "WRAP", "RedBerry",sc);
 
         sprM.addSprite(cranberry);
         sprM.addSprite(redberry);
 
+    }
+
+    public Scene getScene() {
+        return sc;
     }
 }

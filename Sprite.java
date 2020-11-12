@@ -45,7 +45,7 @@ public class Sprite extends JPanel {
     Controller playerControls;
 
     //Constructor
-    public Sprite(int x, int y, int spe, Controller playerControls, Scene sc, String ip, String ba, String n) {
+    public Sprite(int x, int y, int spe, Controller playerControls, String ip, String ba, String n,Scene sc) {
 
             //Initialize All Variables to Default State or Given State
             this.name = n;
@@ -53,11 +53,10 @@ public class Sprite extends JPanel {
             this.y = y;
             this.dx = 0;
             this.dy = 0;
-
+            this.sc = sc;
             this.speed = spe;
             this.boundAction = ba;
             this.playerControls = playerControls;
-            this.sc = sc;
             this.isVisible = true;
 
             this.sHeight = sc.getHeight();
@@ -148,6 +147,12 @@ public class Sprite extends JPanel {
                     case "DIE" -> {
                         speed = 0;
                         Hide();
+                    }
+
+                    case "TRENT" -> {
+
+                        System.out.println("Do the trent animation");
+
                     }
                 }
 

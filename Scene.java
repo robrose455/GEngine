@@ -9,6 +9,7 @@ public class Scene extends JFrame {
 
     //Initialize Height and Width along with the manager for the Scene
     SceneManager sm;
+    Game game;
     int height;
     int width;
 
@@ -20,9 +21,10 @@ public class Scene extends JFrame {
 
     }
 
-    public void Start() {
+    public void Start(Game game) {
 
         //Called in the main function to start the game
+        this.game = game;
         DrawScene();
 
     }
@@ -46,5 +48,8 @@ public class Scene extends JFrame {
     public int getHeight() {
         return height;
     }
+
+    public Game getGame() { return game; }
+    public void setGame(Game g) { this.game = g; }
 
 }

@@ -6,7 +6,8 @@ public class Main {
 
         System.out.println("Game Engine Loading..");
         Scene s = new Scene();
-        s.Start();
+        Game g = new Snake(s);
+        s.Start(g);
 
     }
 }
