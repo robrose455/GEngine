@@ -34,6 +34,7 @@ public class SpriteWASDController extends Controller {
         aPressed = true;
     }
     public void movingRight() {
+        System.out.println("Please let me move right");
         dPressed = true;
     }
 
@@ -48,8 +49,6 @@ public class SpriteWASDController extends Controller {
     }
 
     public String typeOfController() {
-
-
         //System.out.println("I am a WASD Controller");
         return "WASD";
     }

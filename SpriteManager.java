@@ -8,13 +8,15 @@ public class SpriteManager {
 
     SceneManager sm;
     Game g;
-    ArrayList<Sprite> spriteList = new ArrayList<Sprite>();
+    ArrayList<Sprite> spriteList;
+    ArrayList<PlayerSprite> playerSpriteList;
 
     public SpriteManager(SceneManager sm,Game g) {
 
         this.sm = sm;
         this.g = g;
         spriteList = g.GetSprites();
+        parsePlayerSprites();
 
     }
 
@@ -41,6 +43,17 @@ public class SpriteManager {
 
     public ArrayList<Sprite> getActiveSprites() {
         return spriteList;
+    }
+    public ArrayList<PlayerSprite> getPlayerSprites() {return playerSpriteList;}
+
+     public void parsePlayerSprites() {
+
+        for (int i = 0; i < spriteList.size(); i++) {
+            if(spriteList.get(i).TypeOfObject().equals("PlayerSprite")) {
+
+                playerSpriteList.add((PlayerSprite) spriteList.get(i));
+            }
+        }
     }
 
 }

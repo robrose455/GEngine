@@ -42,39 +42,38 @@ public class Sprite extends JPanel {
     boolean isDead;
 
     //Designates controller for sprite (Arrow Keys or WASD)
-    Controller playerControls;
+    Controller playerControls = new NullController();
 
     //Constructor
-    public Sprite(int x, int y, int spe, Controller playerControls, String ip, String ba, String n,Scene sc) {
+    public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, Scene sc) {
 
-            //Initialize All Variables to Default State or Given State
-            this.name = n;
-            this.x = x;
-            this.y = y;
-            this.dx = 0;
-            this.dy = 0;
-            this.sc = sc;
-            this.speed = spe;
-            this.boundAction = ba;
-            this.playerControls = playerControls;
-            this.isVisible = true;
+        //Initialize All Variables to Default State or Given State
+        this.name = n;
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.sc = sc;
+        this.speed = 10;
+        this.boundAction = ba;
+        this.isVisible = true;
 
-            this.sHeight = sc.getHeight();
-            this.sWidth = sc.getWidth();
+        this.sHeight = sc.getHeight();
+        this.sWidth = sc.getWidth();
 
-            this.imagePath = ip;
+        this.imagePath = ip;
 
-            ImageReader ir = new ImageReader();
-            image = ir.readImage(imagePath);
-            imageFailed = ir.didImageFail();
-            
-            if(!imageFailed) {
-                height = image.getHeight();
-                width = image.getWidth();
-            } else {
-                height = 100;
-                width = 100;
-            }
+        ImageReader ir = new ImageReader();
+        image = ir.readImage(imagePath);
+        imageFailed = ir.didImageFail();
+
+        if(!imageFailed) {
+            height = image.getHeight();
+            width = image.getWidth();
+        } else {
+            height = 100;
+            width = 100;
+        }
 
     }
 
@@ -95,90 +94,63 @@ public class Sprite extends JPanel {
 
     }
 
-    //Checks movement through player controller
-    public void CheckForMovement() {
+    public void CheckForBounds() {
 
-        if (playerControls.isMovingUp()) {
-
-            y -= speed;
-
-            if (y <= 0) {
-                switch (boundAction) {
-                    case "WRAP" -> y = y + sc.getHeight();
-                    case "STOP" -> speed = 0;
-                    case "DIE" -> {
-                        speed = 0;
-                        Hide();
-                    }
+        if (y <= 0) {
+            switch (boundAction) {
+                case "WRAP" -> y = y + sc.getHeight();
+                case "STOP" -> speed = 0;
+                case "DIE" -> {
+                    speed = 0;
+                    Hide();
                 }
-            } else {
-                setY(y);
             }
+        } else {
+            setY(y);
         }
 
-        if (playerControls.isMovingDown()) {
-
-            y += speed;
-
-            if (y >= sc.getHeight()) {
-                switch (boundAction) {
-                    case "WRAP" -> y = y - sc.getHeight();
-                    case "STOP" -> speed = 0;
-                    case "DIE" -> {
-                        speed = 0;
-                        Hide();
-                    }
+        if (y >= sc.getHeight()) {
+            switch (boundAction) {
+                case "WRAP" -> y = y - sc.getHeight();
+                case "STOP" -> speed = 0;
+                case "DIE" -> {
+                    speed = 0;
+                    Hide();
                 }
-            } else {
-                setY(y);
             }
+        } else {
+            setY(y);
         }
 
-        if (playerControls.isMovingLeft()) {
+        if (x <= 0) {
 
-            x -= speed;
-
-            System.out.println(x);
-            if (x <= 0) {
-
-                switch (boundAction) {
-                    case "WRAP" -> x = x + sc.getWidth();
-                    case "STOP" -> speed = 0;
-                    case "DIE" -> {
-                        speed = 0;
-                        Hide();
-                    }
-
-                    case "TRENT" -> {
-
-                        System.out.println("Do the trent animation");
-
-                    }
+            switch (boundAction) {
+                case "WRAP" -> x = x + sc.getWidth();
+                case "STOP" -> speed = 0;
+                case "DIE" -> {
+                    speed = 0;
+                    Hide();
                 }
 
-            } else {
-                setX(x);
             }
 
+        } else {
+            setX(x);
         }
 
-        if (playerControls.isMovingRight()) {
-
-            x += speed;
-
-            if (x >= sc.getWidth()) {
-                switch (boundAction) {
-                    case "WRAP" -> x = x - sc.getWidth();
-                    case "STOP" -> speed = 0;
-                    case "DIE" -> {
-                        speed = 0;
-                        Hide();
-                    }
+        if (x >= sc.getWidth()) {
+            switch (boundAction) {
+                case "WRAP" -> x = x - sc.getWidth();
+                case "STOP" -> speed = 0;
+                case "DIE" -> {
+                    speed = 0;
+                    Hide();
                 }
-            } else {
-                setX(x);
             }
+        } else {
+            setX(x);
         }
+
 
     }
 
@@ -196,6 +168,9 @@ public class Sprite extends JPanel {
     public int getY() {
         return y;
     }
+
+    public void setDx(int x) { this.dx = dx; }
+    public void setDy(int y) { this.dy = dy; }
 
     public boolean getVisibility() {
         return isVisible;
@@ -221,9 +196,6 @@ public class Sprite extends JPanel {
     public void setPos(int x, int y) {
         setX(x);
         setY(y);
-    }
-    public void setSpeed(int s) {
-        this.speed = s;
     }
 
     public void changeVisibility() {
@@ -252,26 +224,24 @@ public class Sprite extends JPanel {
     //Can be called by default by clicking on the scene
     public void Report() {
 
-        System.out.println("Variables for Sprite: " + name);
+        System.out.println("\nVariables for Sprite: " + name);
         System.out.println("Image Height: " + height);
         System.out.println("Image Width: " + width);
         System.out.println("X: " + x);
         System.out.println("Y: " + y);
-        //System.out.println("DX: " + dx);
-        //System.out.println("DY: " + dy);
+        System.out.println("DX: " + dx);
+        System.out.println("DY: " + dy);
         //System.out.println("Speed: " + speed);
-        System.out.println("Top Border: " + topBorder);
-        System.out.println("Bottom Border: " + bottomBorder);
-        System.out.println("Left Border: " + leftBorder);
-        System.out.println("Right Border: " + rightBorder);
+        //System.out.println("Top Border: " + topBorder);
+        //System.out.println("Bottom Border: " + bottomBorder);
+       //System.out.println("Left Border: " + leftBorder);
+       //System.out.println("Right Border: " + rightBorder);
 
     }
 
     //Checks for movement every frame the sprite is active
     public void Update() {
 
-        CheckForMovement();
-        playerControls.ResetKeys();
 
     }
 
@@ -335,4 +305,10 @@ public class Sprite extends JPanel {
 
     }
 
+    public String TypeOfObject() {
+
+        System.out.println("Sprite");
+        return "Sprite";
+
+    }
 }

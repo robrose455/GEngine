@@ -1,13 +1,13 @@
 package ge;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Snake extends Game {
+public class TwoCran extends Game {
 
-    int player_speed = 10;
     int player_x = 10;
     int player_y = 10;
+    int player_dx = 0;
+    int player_dy = 0;
     int player2_x = 500;
     int player2_y = 500;
 
@@ -28,7 +28,7 @@ public class Snake extends Game {
     SpriteManager sprM;
     GameStateManager gsm;
 
-    public Snake(Scene sc) {
+    public TwoCran(Scene sc) {
         super(sc);
 
         this.sc = sc;
@@ -43,8 +43,8 @@ public class Snake extends Game {
         this.gsm = sm.getGameStateManager();
         //Define Startup Methods
         DefineSprites();
-        CreateSprite("Cranberry");
-        CreateSprite("Redberry");
+        CreateSprite("RedPlayer");
+        CreateSprite("BluePlayer");
 
     }
 
@@ -74,14 +74,17 @@ public class Snake extends Game {
     public void DefineSprites() {
 
         //Place to define template for all sprites in game
-        Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, cranImagePath, "WRAP", "Cranberry",sc);
-        spriteTemplates.add(cranberry);
+        Sprite redPlayer = new PlayerSprite(player_x, player_y, player_dx, player_dy, w, cranImagePath, "WRAP", "RedPlayer",sc);
+        spriteTemplates.add(redPlayer);
 
-        Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, cranImagePath, "WRAP", "Redberry",sc);
-        spriteTemplates.add(redberry);
+        Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, cranImagePath, "WRAP", "BluePlayer",sc);
+        spriteTemplates.add(bluePlayer);
 
-        Sprite yellowberry = new Sprite(player2_x - 50, player2_y, player_speed, s, cranImagePath, "WRAP", "Yellowberry",sc);
-        spriteTemplates.add(yellowberry);
+        Sprite redTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0, s, cranImagePath, "WRAP", "RedTarget",sc);
+        spriteTemplates.add(redTarget);
+
+        Sprite blueTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0, s, cranImagePath, "WRAP", "BlueTarget",sc);
+        spriteTemplates.add(blueTarget);
 
     }
 

@@ -6,18 +6,6 @@ import java.awt.event.*;
 
 public class SceneManager extends JPanel implements  ActionListener {
 
-    //Determines if game condition is completed.
-    int points = 1000;
-
-    //Basic hardcoded parameters for sprites to be used in the game.
-    //In actual game engine I would assume this could be done in a gui.
-    int player_speed = 10;
-    int player_x = 10;
-    int player_y = 10;
-    int player2_x = 500;
-    int player2_y = 500;
-    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\cranberry.png";
-
     //Create both options for sprite controllers to be used as parameters
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
@@ -85,7 +73,6 @@ public class SceneManager extends JPanel implements  ActionListener {
             g.setFont(smallFont);
             g.drawString("You did it!", 350, 130);
             g.setFont(smallFont);
-            g.drawString("Score: " + points, 350, 160);
         }
 
     }
@@ -101,32 +88,27 @@ public class SceneManager extends JPanel implements  ActionListener {
         //Repaint All Changes Made
         this.repaint();
 
-        // Every frame the game is not completed, subtract points from score
-        if(!gsm.isWinner()) {
-
-            points--;
-
-        }
-
     }
 
     public void TestGame() {
 
-        Sprite cranberry = new Sprite(player_x, player_y, player_speed, w, cranImagePath, "WRAP", "Cranberry",sc);
-        Sprite redberry = new Sprite(player2_x, player2_y, player_speed, s, cranImagePath, "WRAP", "RedBerry",sc);
-
-        sprM.addSprite(cranberry);
-        sprM.addSprite(redberry);
+        //Test a basic game onto the scene here
 
     }
 
     public Scene getScene() {
         return sc;
     }
+    public Game getGame() { return game; }
     public SpriteManager getSpriteManager() {
         return sprM;
     }
     public GameStateManager getGameStateManager() {
         return gsm;
     }
+    public TextManager getTextManager() { return tm; }
+    public KeyManager getKeyManager() { return km; }
+    public MouseManager getMouseManager() { return mm; }
+
+
 }
