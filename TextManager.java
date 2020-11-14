@@ -1,5 +1,7 @@
 package ge;
 
+import ge.core.SceneManager;
+
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,5 +1,7 @@
 package ge;
 
+import ge.core.Scene;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -221,7 +223,6 @@ public class Sprite extends JPanel {
     }
 
     //Shows needed Parameters about given variable
-    //Can be called by default by clicking on the scene
     public void Report() {
 
         System.out.println("\nVariables for Sprite: " + name);

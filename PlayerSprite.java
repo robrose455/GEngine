@@ -1,5 +1,7 @@
 package ge;
 
+import ge.core.Scene;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

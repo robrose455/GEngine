@@ -1,4 +1,6 @@
 package ge;
+import ge.core.SceneManager;
+
 import java.awt.*;
 import java.util.ArrayList;
 

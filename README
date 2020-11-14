@@ -1,4 +1,0 @@
-Program can be run through main.java or JavaGameEngine.jar
-
-Asset Image Files for the sprite are given in the repo but the filepath is local and must be manually changed if ran. 
-if the filepath isn't set up the sprites will default to red rectangles

@@ -1,8 +1,12 @@
 package ge;
 
+import ge.core.GameStateManager;
+import ge.core.Scene;
+import ge.core.SceneManager;
+
 import java.util.ArrayList;
 
-public class TwoCran extends Game {
+public class DoubleNote extends Game {
 
     int player_x = 10;
     int player_y = 10;
@@ -28,7 +32,7 @@ public class TwoCran extends Game {
     SpriteManager sprM;
     GameStateManager gsm;
 
-    public TwoCran(Scene sc) {
+    public DoubleNote(Scene sc) {
         super(sc);
 
         this.sc = sc;
@@ -43,8 +47,12 @@ public class TwoCran extends Game {
         this.gsm = sm.getGameStateManager();
         //Define Startup Methods
         DefineSprites();
+
         CreateSprite("RedPlayer");
         CreateSprite("BluePlayer");
+
+       // CreateSprite("RedTarget");
+       // CreateSprite("BlueTarget");
 
     }
 
@@ -80,10 +88,10 @@ public class TwoCran extends Game {
         Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, cranImagePath, "WRAP", "BluePlayer",sc);
         spriteTemplates.add(bluePlayer);
 
-        Sprite redTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0, s, cranImagePath, "WRAP", "RedTarget",sc);
+        Sprite redTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0,s, cranImagePath, "WRAP", "RedTarget",sc);
         spriteTemplates.add(redTarget);
 
-        Sprite blueTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0, s, cranImagePath, "WRAP", "BlueTarget",sc);
+        Sprite blueTarget = new PlayerSprite(player2_x - 100, player2_y,0, 0,s, cranImagePath, "WRAP", "BlueTarget",sc);
         spriteTemplates.add(blueTarget);
 
     }

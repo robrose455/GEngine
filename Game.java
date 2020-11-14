@@ -1,8 +1,11 @@
 package ge;
 
+import ge.core.Scene;
+import ge.core.SceneManager;
+
 import java.util.ArrayList;
 
-abstract class Game {
+public abstract class Game {
 
     public Game(Scene s) {}
 

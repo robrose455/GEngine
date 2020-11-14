@@ -1,8 +1,8 @@
-package ge;
+package ge.core;
+
+import ge.Game;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Scene extends JFrame {
