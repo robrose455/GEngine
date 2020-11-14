@@ -55,19 +55,14 @@ public class SceneManager extends JPanel implements  ActionListener {
 
         game.Init(this);
 
-
-        //Initialize All Designated Sprites to be Active Sprites
-        //TestGame();
-        //Start Timer
         t.start();
 
     }
 
     @Override
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        System.out.println("Drawing");
         sprM.drawSprites(g);
         tm.drawText(g);
 

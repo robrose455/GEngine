@@ -11,14 +11,14 @@ public class SpriteManager {
     SceneManager sm;
     Game g;
     ArrayList<Sprite> spriteList;
-    ArrayList<PlayerSprite> playerSpriteList;
+    ArrayList<Sprite> playerSpriteList;
 
     public SpriteManager(SceneManager sm,Game g) {
 
         this.sm = sm;
         this.g = g;
         spriteList = g.GetSprites();
-        parsePlayerSprites();
+        playerSpriteList = g.GetPlayerSprites();
 
     }
 
@@ -39,6 +39,7 @@ public class SpriteManager {
     public void drawSprites(Graphics g) {
 
         for (int i = 0; i < spriteList.size(); i++) {
+            //System.out.println(spriteList.get(i).imagePath);
             spriteList.get(i).DrawSprite(g);
         }
     }
@@ -46,16 +47,8 @@ public class SpriteManager {
     public ArrayList<Sprite> getActiveSprites() {
         return spriteList;
     }
-    public ArrayList<PlayerSprite> getPlayerSprites() {return playerSpriteList;}
 
-     public void parsePlayerSprites() {
+    public ArrayList<Sprite> getActivePlayerSprites() {return playerSpriteList;}
 
-        for (int i = 0; i < spriteList.size(); i++) {
-            if(spriteList.get(i).TypeOfObject().equals("PlayerSprite")) {
-
-                playerSpriteList.add((PlayerSprite) spriteList.get(i));
-            }
-        }
-    }
 
 }

@@ -7,41 +7,6 @@ import java.awt.image.BufferedImage;
 
 public class PlayerSprite extends Sprite {
 
-    String name;
-
-    //Positional Parameters
-    int x;
-    int y;
-    int dx;
-    int dy;
-    int speed;
-
-    //Collision Detection Parameters
-    int topBorder;
-    int bottomBorder;
-    int leftBorder;
-    int rightBorder;
-
-    //What to do when out of bounds
-    String boundAction;
-
-    //Scene Reference and Parameters
-    Scene sc;
-    int sHeight;
-    int sWidth;
-
-    //Image Parameters
-    String imagePath;
-    int height;
-    int width;
-    boolean imageFailed = false;
-
-    public static BufferedImage image;
-
-    //Is he dead or alive
-    boolean isVisible;
-    boolean isDead;
-
     //Designates controller for sprite (Arrow Keys or WASD)
     Controller playerControls;
 
@@ -50,33 +15,8 @@ public class PlayerSprite extends Sprite {
 
         super(x,y,dx,dy,ip,ba,n,sc);
             //Initialize All Variables to Default State or Given State
-            this.name = n;
-            this.x = x;
-            this.y = y;
-            this.dx = dx;
-            this.dy = dy;
-            this.sc = sc;
-            this.speed = 10;
-            this.boundAction = ba;
+
             this.playerControls = playerControls;
-            this.isVisible = true;
-
-            this.sHeight = sc.getHeight();
-            this.sWidth = sc.getWidth();
-
-            this.imagePath = ip;
-
-            ImageReader ir = new ImageReader();
-            image = ir.readImage(imagePath);
-            imageFailed = ir.didImageFail();
-            
-            if(!imageFailed) {
-                height = image.getHeight();
-                width = image.getWidth();
-            } else {
-                height = 100;
-                width = 100;
-            }
 
     }
 

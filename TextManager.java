@@ -17,7 +17,6 @@ public class TextManager extends JPanel {
 
     public void drawText(Graphics g) {
 
-
         Font bigFont = new Font("Verdana", Font.BOLD, 25);
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 

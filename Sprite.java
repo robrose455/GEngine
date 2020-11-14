@@ -36,7 +36,6 @@ public class Sprite extends JPanel {
     int height;
     int width;
     boolean imageFailed = false;
-
     public static BufferedImage image;
 
     //Is he dead or alive
@@ -66,34 +65,44 @@ public class Sprite extends JPanel {
         this.imagePath = ip;
 
         ImageReader ir = new ImageReader();
-        image = ir.readImage(imagePath);
-        imageFailed = ir.didImageFail();
+        this.image = ir.readImage(imagePath);
+        System.out.println("Object Image: " + this.image);
+        this.imageFailed = ir.didImageFail();
+
+
 
         if(!imageFailed) {
             height = image.getHeight();
             width = image.getWidth();
         } else {
-            height = 100;
-            width = 100;
+            height = 50;
+            width = 50;
         }
 
     }
 
     //When called will paint sprite onto scene
+
     public void DrawSprite(Graphics g) {
 
+        System.out.println("Drawing!!!!");
         if(isVisible) {
 
-            if(imageFailed){
-                g.setColor(Color.RED);
-                g.fillRect(x,y,100,100);
+            if(imagePath.equals("Red")){
+                System.out.println("Hello?");
+                g.setColor(Color.GREEN);
+                g.fillRect(x,y,50,50);
+            } else if (imagePath.equals("Blue")){
+                g.setColor(Color.BLUE);
+                g.fillRect(x,y,50,50);
             }
 
             else {
+                System.out.println("Wtf");
                 g.drawImage(image, x, y, null);
             }
         }
-
+        System.out.println("HELLO");
     }
 
     public void CheckForBounds() {

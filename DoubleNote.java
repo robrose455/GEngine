@@ -18,14 +18,15 @@ public class DoubleNote extends Game {
     int points = 1000;
 
     String controllerType;
-    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\cranberry.png";
-    String appleImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\apple.png";
+    String cranImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\assets\\Cranberry.png";
+    String noteImagePath = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\assets\\icon.png";
 
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
 
     ArrayList<Sprite> spriteTemplates = new ArrayList<Sprite>();
     ArrayList<Sprite> activeSprites = new ArrayList<Sprite>();
+    ArrayList<Sprite> activePlayerSprites = new ArrayList<>();
 
     Scene sc;
     SceneManager sm;
@@ -48,11 +49,11 @@ public class DoubleNote extends Game {
         //Define Startup Methods
         DefineSprites();
 
-        CreateSprite("RedPlayer");
-        CreateSprite("BluePlayer");
+        CreatePlayerSprite("RedPlayer");
+        CreatePlayerSprite("BluePlayer");
 
-       // CreateSprite("RedTarget");
-       // CreateSprite("BlueTarget");
+        CreateSprite("RedTarget");
+        CreateSprite("BlueTarget");
 
     }
 
@@ -88,10 +89,10 @@ public class DoubleNote extends Game {
         Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, cranImagePath, "WRAP", "BluePlayer",sc);
         spriteTemplates.add(bluePlayer);
 
-        Sprite redTarget = new PlayerSprite(player2_x - 50, player2_y,0, 0,s, cranImagePath, "WRAP", "RedTarget",sc);
+        Sprite redTarget = new PlayerSprite(200 - 50, player2_y,0, 0,s, cranImagePath, "WRAP", "RedTarget",sc);
         spriteTemplates.add(redTarget);
 
-        Sprite blueTarget = new PlayerSprite(player2_x - 100, player2_y,0, 0,s, cranImagePath, "WRAP", "BlueTarget",sc);
+        Sprite blueTarget = new PlayerSprite(700, player2_y,0, 0,s, cranImagePath, "WRAP", "BlueTarget",sc);
         spriteTemplates.add(blueTarget);
 
     }
@@ -107,9 +108,25 @@ public class DoubleNote extends Game {
 
 
     }
+
+    public void CreatePlayerSprite(String name) {
+
+        for (int i = 0; i < spriteTemplates.size(); i++) {
+            String n = (spriteTemplates.get(i).getName());
+            if (n.equals(name)) {
+                activeSprites.add(spriteTemplates.get(i));
+                activePlayerSprites.add(spriteTemplates.get(i));
+            }
+        }
+    }
+
     @Override
     public ArrayList<Sprite> GetSprites() {
         return activeSprites;
+    }
+
+    public ArrayList<Sprite> GetPlayerSprites() {
+        return activePlayerSprites;
     }
 
 
