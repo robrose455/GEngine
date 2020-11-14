@@ -20,6 +20,7 @@ public class PlayerSprite extends Sprite {
 
     }
 
+
     //Checks movement through player controller
     public void CheckForMovement() {
 

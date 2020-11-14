@@ -14,6 +14,7 @@ public class ImageReader {
     public BufferedImage readImage(String filePath) {
 
         try{
+            //System.out.println("CURRENT FILEPATH: " filePath);
             image = ImageIO.read(new File(filePath));
         } catch (IOException e) {
             imageFailed = true;

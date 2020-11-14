@@ -36,7 +36,7 @@ public class Sprite extends JPanel {
     int height;
     int width;
     boolean imageFailed = false;
-    public static BufferedImage image;
+    public  BufferedImage image;
 
     //Is he dead or alive
     boolean isVisible;
@@ -79,7 +79,6 @@ public class Sprite extends JPanel {
     }
 
     //When called will paint sprite onto scene
-
     public void DrawSprite(Graphics g) {
 
         if(isVisible) {
@@ -96,7 +95,6 @@ public class Sprite extends JPanel {
                 g.drawImage(image, x, y, null);
             }
         }
-
     }
 
     public void CheckForBounds() {
@@ -238,16 +236,13 @@ public class Sprite extends JPanel {
         //System.out.println("Speed: " + speed);
         //System.out.println("Top Border: " + topBorder);
         //System.out.println("Bottom Border: " + bottomBorder);
-       //System.out.println("Left Border: " + leftBorder);
-       //System.out.println("Right Border: " + rightBorder);
+        //System.out.println("Left Border: " + leftBorder);
+        //System.out.println("Right Border: " + rightBorder);
 
     }
 
     //Checks for movement every frame the sprite is active
-    public void Update() {
-
-
-    }
+    public void Update() {}
 
     //Collision Detection
     public boolean collidesWith(Sprite s) {
