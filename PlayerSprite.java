@@ -101,21 +101,4 @@ public class PlayerSprite extends Sprite {
 
     }
 
-    @Override
-    public void DrawSprite(Graphics g) {
-
-        if(isVisible) {
-
-            if(imageFailed){
-                g.setColor(Color.RED);
-                g.fillRect(x,y,100,100);
-            }
-
-            else {
-                g.drawImage(image, x, y, null);
-            }
-        }
-
-    }
-
 }
