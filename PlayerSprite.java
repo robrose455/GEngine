@@ -1,10 +1,5 @@
 package ge;
 
-import ge.core.Scene;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 public class PlayerSprite extends Sprite {
 
     //Designates controller for sprite (Arrow Keys or WASD)

@@ -1,4 +1,4 @@
-package ge.core;
+package ge;
 
 import ge.*;
 import ge.KeyManager;
@@ -29,9 +29,6 @@ public class SceneManager extends JPanel implements  ActionListener {
     //Handles Mouse Inputs
     MouseManager mm;
 
-    //Handles all text on Scene
-    TextManager tm;
-
     //Handles current state of game (win or loss)
     GameStateManager gsm;
 
@@ -47,11 +44,10 @@ public class SceneManager extends JPanel implements  ActionListener {
         this.sc = s;
         game = sc.getGame();
 
-        this.sprM = new SpriteManager(this,game);
         this.km = new KeyManager(this);
         this.mm = new MouseManager(this);
-        this.tm = new TextManager(this);
-        this.gsm = new GameStateManager(this);
+        this.sprM = new SpriteManager(game);
+        this.gsm = new GameStateManager(sprM);
 
         game.Init(this);
 
@@ -63,8 +59,7 @@ public class SceneManager extends JPanel implements  ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        sprM.drawSprites(g);
-        tm.drawText(g);
+        gsm.drawState(g);
 
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
@@ -83,6 +78,7 @@ public class SceneManager extends JPanel implements  ActionListener {
     public void Update() {
 
         //Update Each Frame According to Game Logic
+        //System.out.println("Update in Scene Manager");
         game.Update();
         //Repaint All Changes Made
         this.repaint();
@@ -105,7 +101,6 @@ public class SceneManager extends JPanel implements  ActionListener {
     public GameStateManager getGameStateManager() {
         return gsm;
     }
-    public TextManager getTextManager() { return tm; }
     public KeyManager getKeyManager() { return km; }
     public MouseManager getMouseManager() { return mm; }
 

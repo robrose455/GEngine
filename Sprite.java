@@ -1,7 +1,5 @@
 package ge;
 
-import ge.core.Scene;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -66,7 +64,6 @@ public class Sprite extends JPanel {
 
         ImageReader ir = new ImageReader();
         this.image = ir.readImage(imagePath);
-        System.out.println("Object Image: " + this.image);
         this.imageFailed = ir.didImageFail();
 
         if(!imageFailed) {

@@ -1,9 +1,5 @@
 package ge;
 
-import ge.core.GameStateManager;
-import ge.core.Scene;
-import ge.core.SceneManager;
-
 import java.util.ArrayList;
 
 public class DoubleNote extends Game {
@@ -43,35 +39,21 @@ public class DoubleNote extends Game {
     @Override
     public void Init(SceneManager sm) {
 
+        DefineSprites();
         this.sm = sm;
         this.sprM = sm.getSpriteManager();
         this.gsm = sm.getGameStateManager();
-        //Define Startup Methods
-        DefineSprites();
 
-        for (int i = 0; i < spriteTemplates.size(); i++) {
-            System.out.println("In Init(): " + spriteTemplates.get(i).imagePath);
-        }
-
-        CreatePlayerSprite("RedPlayer");
-        CreatePlayerSprite("BluePlayer");
-
-        CreateSprite("RedTarget");
-        CreateSprite("BlueTarget");
+        gsm.LoadStates();
 
     }
 
     public void Update() {
 
         //Checks For Movement
-        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-            sprM.getActiveSprites().get(i).Update();
-        }
-
-        //Checks for collision
-        if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
-            gsm.Win();
-        }
+        //System.out.println("Update In DoubleNote");
+        //System.out.println("Current Number of Sprites in DoubleNote In Update: " + activeSprites.size());
+        gsm.curState.Update();
 
         //Declare Winner when condition met
         if(!gsm.isWinner()) {
@@ -97,31 +79,36 @@ public class DoubleNote extends Game {
         Sprite blueTarget = new Sprite(700, player2_y,0, 0, note, "WRAP", "BlueTarget",sc);
         spriteTemplates.add(blueTarget);
 
-        for (int i = 0; i < spriteTemplates.size(); i++) {
-            System.out.println("In DefineSprites(): " + spriteTemplates.get(i).imagePath);
-        }
+        //System.out.println("In DefineSprites(): We made # of sprites: " + spriteTemplates.size());
+
 
     }
 
     public void CreateSprite(String name) {
 
+       // System.out.println("Adding Sprite to list in doubleNote");
         for (int i = 0; i < spriteTemplates.size(); i++) {
             String n = (spriteTemplates.get(i).getName());
             if (n.equals(name)) {
+                System.out.println("Hit This");
                 activeSprites.add(spriteTemplates.get(i));
             }
         }
+        //System.out.println("Current Number of Sprites in DoubleNote In CreateSprite: " + activeSprites.size());
     }
 
     public void CreatePlayerSprite(String name) {
 
+        //System.out.println("Adding Player Sprite to list in doubleNote");
         for (int i = 0; i < spriteTemplates.size(); i++) {
             String n = (spriteTemplates.get(i).getName());
             if (n.equals(name)) {
+                //System.out.println("Hit This");
                 activeSprites.add(spriteTemplates.get(i));
                 activePlayerSprites.add(spriteTemplates.get(i));
             }
         }
+        //System.out.println("Current Number of Sprites in DoubleNote In CreatePlayerSprite: " + activeSprites.size());
     }
 
     public ArrayList<Sprite> GetSprites() {
@@ -130,5 +117,9 @@ public class DoubleNote extends Game {
 
     public ArrayList<Sprite> GetPlayerSprites() {
         return activePlayerSprites;
+    }
+
+    public void setCurState(int index) {
+        gsm.setCurState(index);
     }
 }

@@ -1,7 +1,4 @@
-package ge.core;
-
-import ge.Game;
-import ge.DoubleNote;
+package ge;
 
 public class Main {
 
