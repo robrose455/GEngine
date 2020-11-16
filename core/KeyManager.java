@@ -1,7 +1,7 @@
-package ge.core.sprite;
+package ge.core;
 
 
-import ge.core.SceneManager;
+import ge.core.sprite.PlayerSprite;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +24,7 @@ public class KeyManager implements ActionListener {
     
     public KeyManager(SceneManager sm) {
 
+        System.out.println("--Creating Key Manager--");
         this.sm = sm;
 
         upAction = new KeyManager.UpAction();

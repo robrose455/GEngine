@@ -1,6 +1,5 @@
 package ge.core;
 
-import ge.core.sprite.KeyManager;
 import ge.core.sprite.controller.SpriteArrowController;
 import ge.core.sprite.controller.SpriteWASDController;
 import ge.game.Game;
@@ -38,6 +37,7 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     public SceneManager(Scene s) {
 
+        System.out.println("--Creating Scene Manager--");
         //Set Initial Background
         this.setBackground(Color.BLACK);
 
@@ -103,7 +103,9 @@ public class SceneManager extends JPanel implements  ActionListener {
         return gsm;
     }
     public KeyManager getKeyManager() { return km; }
-    public MouseManager getMouseManager() { return mm; }
+    public MouseManager getMouseManager() {
+        return mm;
+    }
 
 
 }

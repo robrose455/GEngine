@@ -1,26 +1,26 @@
 package ge.game.state;
 
-import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
+import ge.core.sprite.Sprite;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Menu extends State {
+public class GameOver extends State {
 
-
-    public Menu(SpriteManager sprM, ArrayList<Sprite> spriteList) {
+    public GameOver(SpriteManager sprM, ArrayList<Sprite> spriteList) {
         super(sprM, spriteList);
 
-        System.out.println("--Creating State: Menu--");
-
-
     }
-
     @Override
     public void Init() {
 
-        System.out.println("Making Sprites");
+        System.out.println("Deleting Sprites");
+        g.DeleteSprite("RedPlayer");
+        g.DeleteSprite("BluePlayer");
+        g.DeleteSprite("RedTarget");
+        g.DeleteSprite("BlueTarget");
+        System.out.println("Sprites Deleted");
 
     }
 
@@ -29,7 +29,9 @@ public class Menu extends State {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
             g.setCurState(1);
+            System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
             g.GetSceneManager().getMouseManager().Reset();
+            System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
         }
 
     }
@@ -37,14 +39,11 @@ public class Menu extends State {
     @Override
     public void DrawSprites(Graphics g) {
 
-        for (int i = 0; i < spriteList.size(); i++) {
-            //System.out.println(spriteList.get(i).imagePath);
-            spriteList.get(i).DrawSprite(g);
-        }
-
         DrawText(g);
 
     }
+
+    @Override
     public void DrawText(Graphics g) {
 
         Font bigFont = new Font("Verdana", Font.BOLD, 45);
@@ -56,8 +55,8 @@ public class Menu extends State {
         g.drawString("DOUBLE NOTE", 315, 100);
 
         g.setFont(medFont);
-        g.drawString("MATCH RED WITH BLUE AND BLUE WITH RED", 150, 200);
-        g.drawString("CLICK ANYWHERE TO START", 270, 300);
+        g.drawString("GAME OVER", 300, 200);
+        g.drawString("CLICK ANYWHERE TO RETRY", 270, 300);
 
         g.setFont(smallFont);
         g.drawString("Created by Rob Rose", 800, 900);
@@ -66,5 +65,4 @@ public class Menu extends State {
         g.drawString("Controls: WASD or Arrow Keys", 50, 900);
 
     }
-
 }

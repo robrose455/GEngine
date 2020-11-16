@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Sprite extends JPanel {
 
+
     public String name;
 
     //Positional Parameters
@@ -49,6 +50,7 @@ public class Sprite extends JPanel {
     public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, Scene sc) {
 
         //Initialize All Variables to Default State or Given State
+        System.out.println("--Creating Sprite--");
         this.name = n;
         this.x = x;
         this.y = y;
@@ -83,17 +85,22 @@ public class Sprite extends JPanel {
         if(isVisible) {
 
             if(imagePath.equals("Red")){
-                g.setColor(Color.GREEN);
+                g.setColor(Color.RED);
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("Blue")){
                 g.setColor(Color.BLUE);
                 g.fillRect(x,y,50,50);
+            } else if (imagePath.equals("BlueT")){
+                g.setColor(Color.BLUE);
+                g.fillOval(x,y, 25,25);
+            }  else if (imagePath.equals("RedT")) {
+                g.setColor(Color.RED);
+                g.fillOval(x, y, 25, 25);
             }
-
+        }
             else {
                 g.drawImage(image, x, y, null);
             }
-        }
     }
 
     public void CheckForBounds() {
@@ -101,9 +108,13 @@ public class Sprite extends JPanel {
         if (y <= 0) {
             switch (boundAction) {
                 case "WRAP" -> y = y + sc.getHeight();
-                case "STOP" -> speed = 0;
+                case "STOP" -> {
+                    dx = 0;
+                    dy = 0;
+                }
                 case "DIE" -> {
-                    speed = 0;
+                    dx = 0;
+                    dy = 0;
                     Hide();
                 }
             }
@@ -114,9 +125,13 @@ public class Sprite extends JPanel {
         if (y >= sc.getHeight()) {
             switch (boundAction) {
                 case "WRAP" -> y = y - sc.getHeight();
-                case "STOP" -> speed = 0;
+                case "STOP" -> {
+                    dx = 0;
+                    dy = 0;
+                }
                 case "DIE" -> {
-                    speed = 0;
+                    dx = 0;
+                    dy = 0;
                     Hide();
                 }
             }
@@ -128,9 +143,13 @@ public class Sprite extends JPanel {
 
             switch (boundAction) {
                 case "WRAP" -> x = x + sc.getWidth();
-                case "STOP" -> speed = 0;
+                case "STOP" -> {
+                    dx = 0;
+                    dy = 0;
+                }
                 case "DIE" -> {
-                    speed = 0;
+                    dx = 0;
+                    dy = 0;
                     Hide();
                 }
 
@@ -143,9 +162,13 @@ public class Sprite extends JPanel {
         if (x >= sc.getWidth()) {
             switch (boundAction) {
                 case "WRAP" -> x = x - sc.getWidth();
-                case "STOP" -> speed = 0;
+                case "STOP" -> {
+                    dx = 0;
+                    dy = 0;
+                }
                 case "DIE" -> {
-                    speed = 0;
+                    dx = 0;
+                    dy = 0;
                     Hide();
                 }
             }
@@ -210,13 +233,14 @@ public class Sprite extends JPanel {
     }
 
     //Called to declare this variable has died in-game
-    public void Death(boolean b) {
-        this.isDead = b;
+    public boolean Death() {
+        return isDead;
     }
 
     //Changes Visibility
     public void Hide() {
         isVisible = false;
+        isDead = true;
     }
     public void Show() {
         isVisible = true;

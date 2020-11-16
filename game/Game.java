@@ -18,5 +18,7 @@ public abstract class Game {
     public abstract void DefineSprites();
     public abstract void Update();
     public abstract void setCurState(int index);
+    public abstract SceneManager GetSceneManager();
+    public abstract void DeleteSprite(String n);
 
 }

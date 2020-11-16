@@ -1,5 +1,6 @@
 package ge.core;
 
+import ge.game.state.GameOver;
 import ge.game.state.LevelOne;
 import ge.game.state.Menu;
 import ge.game.state.State;
@@ -15,11 +16,14 @@ public class GameStateManager {
 
     State menu;
     State levelOne;
+    State gameOver;
 
     ArrayList<State> states = new ArrayList<>();
     SpriteManager sprM;
 
     public GameStateManager(SpriteManager sprM) {
+
+        System.out.println("--Creating Game State Manager--");
 
         winner = false;
         this.sprM = sprM;
@@ -43,6 +47,8 @@ public class GameStateManager {
         levelOne = new LevelOne(sprM, sprM.getActiveSprites());
         states.add(levelOne);
 
+        gameOver = new GameOver(sprM, sprM.getActiveSprites());
+        states.add(gameOver);
 
         curState = states.get(0);
         curState.Init();

@@ -9,11 +9,12 @@ import java.awt.event.MouseMotionListener;
 public class MouseManager implements MouseListener, MouseMotionListener {
 
     SceneManager sm;
+    boolean mouseClicked = false;
 
     public MouseManager(SceneManager sm) {
 
+        System.out.println("--Creating Mouse Manager--");
         this.sm = sm;
-
         sm.addMouseListener(this);
         sm.addMouseMotionListener(this);
 
@@ -22,6 +23,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mouseClicked(MouseEvent e) {
 
         System.out.println("Mouse is clicked");
+        mouseClicked = true;
 
     }
     public void mouseEntered(MouseEvent e) {
@@ -47,6 +49,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
 
         //System.out.println("Mouse is Moved");
+    }
+    public boolean WasMouseClicked() {
+        return mouseClicked;
+    }
+    public void Reset() {
+        mouseClicked = false;
     }
 
 

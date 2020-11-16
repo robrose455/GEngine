@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class DoubleNote extends Game {
 
     int player_x = 10;
-    int player_y = 10;
+    int player_y = 500;
     int player_dx = 0;
     int player_dy = 0;
-    int player2_x = 500;
+    int player2_x = 900;
     int player2_y = 500;
 
     int points = 1000;
@@ -28,8 +28,8 @@ public class DoubleNote extends Game {
     SpriteArrowController s = new SpriteArrowController();
     SpriteWASDController w = new SpriteWASDController();
 
-    ArrayList<Sprite> spriteTemplates = new ArrayList<Sprite>();
-    ArrayList<Sprite> activeSprites = new ArrayList<Sprite>();
+    ArrayList<Sprite> spriteTemplates = new ArrayList<>();
+    ArrayList<Sprite> activeSprites = new ArrayList<>();
     ArrayList<Sprite> activePlayerSprites = new ArrayList<>();
 
     Scene sc;
@@ -40,6 +40,7 @@ public class DoubleNote extends Game {
     public DoubleNote(Scene sc) {
         super(sc);
 
+        System.out.println("--Creating Game--");
         this.sc = sc;
 
     }
@@ -48,6 +49,7 @@ public class DoubleNote extends Game {
     public void Init(SceneManager sm) {
 
         DefineSprites();
+
         this.sm = sm;
         this.sprM = sm.getSpriteManager();
         this.gsm = sm.getGameStateManager();
@@ -58,9 +60,6 @@ public class DoubleNote extends Game {
 
     public void Update() {
 
-        //Checks For Movement
-        //System.out.println("Update In DoubleNote");
-        //System.out.println("Current Number of Sprites in DoubleNote In Update: " + activeSprites.size());
         gsm.getCurState().Update();
 
         //Declare Winner when condition met
@@ -75,16 +74,16 @@ public class DoubleNote extends Game {
     public void DefineSprites() {
 
         //Place to define template for all sprites in game
-        Sprite redPlayer = new PlayerSprite(player_x, player_y, player_dx, player_dy, w, cran, "WRAP", "RedPlayer",sc);
+        Sprite redPlayer = new PlayerSprite(player_x, player_y, player_dx, player_dy, w, "Red", "DIE", "RedPlayer",sc);
         spriteTemplates.add(redPlayer);
 
-        Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, cran, "WRAP", "BluePlayer",sc);
+        Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, "Blue", "DIE", "BluePlayer",sc);
         spriteTemplates.add(bluePlayer);
 
-        Sprite redTarget = new Sprite(200 - 50, player2_y,0, 0, note, "WRAP", "RedTarget",sc);
+        Sprite redTarget = new Sprite(100, 100,0, 0, "RedT", "DIE", "RedTarget",sc);
         spriteTemplates.add(redTarget);
 
-        Sprite blueTarget = new Sprite(700, player2_y,0, 0, note, "WRAP", "BlueTarget",sc);
+        Sprite blueTarget = new Sprite(900, 100,0, 0, "BlueT", "DIE", "BlueTarget",sc);
         spriteTemplates.add(blueTarget);
 
         //System.out.println("In DefineSprites(): We made # of sprites: " + spriteTemplates.size());
@@ -127,5 +126,13 @@ public class DoubleNote extends Game {
 
     public void setCurState(int index) {
         gsm.setCurState(index);
+    }
+
+    public SceneManager GetSceneManager() {
+        return sm;
+    }
+
+    public void DeleteSprite(String n) {
+        sprM.removeSprite(n);
     }
 }

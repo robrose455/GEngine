@@ -11,24 +11,43 @@ public class LevelOne extends State {
     public LevelOne(SpriteManager sprM, ArrayList<Sprite> spriteList) {
         super(sprM, spriteList);
 
+        System.out.println("--Creating Level One--");
 
     }
 
     @Override
     public void Init() {
 
+        spriteList = sprM.getActiveSprites();
+        System.out.println("Size of SpriteList in Level One beg: " + spriteList.size());
+        g.CreatePlayerSprite("RedPlayer");
+        g.CreatePlayerSprite("BluePlayer");
+
         g.CreateSprite("RedTarget");
-        System.out.println("Updating position..");
-        UpdatePos("RedPlayer",0,0);
+        g.CreateSprite("BlueTarget");
+        System.out.println("Size of SpriteList in Level One: " + spriteList.size());
 
     }
 
     @Override
     public void Update() {
 
-        spriteList = sprM.getActiveSprites();
         for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
             sprM.getActiveSprites().get(i).Update();
+        }
+
+        if (spriteList.get(0).collidesWith(spriteList.get(3))){
+            System.out.println("Red Target Achieved");
+            spriteList.get(3).Hide();
+        }
+
+        if (spriteList.get(1).collidesWith(spriteList.get(2))) {
+            System.out.println("Blue Target Achieved");
+            spriteList.get(2).Hide();
+        }
+
+        if (spriteList.get(0).Death() || spriteList.get(1).Death()) {
+            g.setCurState(2);
         }
 
     }
@@ -48,17 +67,12 @@ public class LevelOne extends State {
     public void DrawText(Graphics g) {
 
         Font bigFont = new Font("Verdana", Font.BOLD, 25);
+        Font medFont = new Font("Verdana", Font.PLAIN, 20);
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
-        g.setFont(bigFont);
+        g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level Two", 350, 100);
-
-        g.setFont(bigFont);
-        g.drawString("Controls: WASD or Arrow Keys", 50, 900);
-
-        g.setFont(smallFont);
-        g.drawString("Created by Rob Rose", 800, 900);
+        g.drawString("Level One", 450, 50);
 
     }
 

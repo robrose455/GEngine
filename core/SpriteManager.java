@@ -16,6 +16,7 @@ public class SpriteManager {
 
     public SpriteManager(Game g) {
 
+        System.out.println("--Creating Sprite Manager--");
         this.g = g;
         spriteList = g.GetSprites();
         playerSpriteList = g.GetPlayerSprites();
@@ -27,13 +28,20 @@ public class SpriteManager {
         spriteList.add(s);
     }
 
-    public void removeSprite(Sprite s, String name) {
+    public void removeSprite(String name) {
 
         for(int i = 0; i < spriteList.size(); i++) {
             if(spriteList.get(i).getName().equals(name)) {
                     spriteList.remove(i);
             }
         }
+
+        for(int i = 0; i < playerSpriteList.size(); i++) {
+            if(playerSpriteList.get(i).getName().equals(name)) {
+                playerSpriteList.remove(i);
+            }
+        }
+        System.out.println("Size of SpritesList: " + spriteList.size());
     }
 
     public ArrayList<Sprite> getActiveSprites() {

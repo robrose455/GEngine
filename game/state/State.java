@@ -19,7 +19,7 @@ public abstract class State {
         this.sprM = sprM;
         this.spriteList = spriteList;
         this.g = sprM.getGame();
-        
+
     }
 
     public abstract void Init();

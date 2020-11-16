@@ -15,6 +15,7 @@ public class Scene extends JFrame {
 
     public Scene() {
 
+        System.out.println("--Creating Scene--");
         //Default Canvas Height and Width
         height = 1000;
         width = 1000;
