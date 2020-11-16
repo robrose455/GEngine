@@ -1,5 +1,6 @@
-package ge;
+package ge.game.state;
 
+import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
@@ -17,6 +18,8 @@ public class LevelOne extends State {
     public void Init() {
 
         g.CreateSprite("RedTarget");
+        System.out.println("Updating position..");
+        UpdatePos("RedPlayer",0,0);
 
     }
 
@@ -26,12 +29,6 @@ public class LevelOne extends State {
         spriteList = sprM.getActiveSprites();
         for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
             sprM.getActiveSprites().get(i).Update();
-        }
-
-        //Checks for collision
-        if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
-            System.out.println("Change Scene");
-            g.setCurState(1);
         }
 
     }
@@ -62,6 +59,17 @@ public class LevelOne extends State {
 
         g.setFont(smallFont);
         g.drawString("Created by Rob Rose", 800, 900);
+
+    }
+
+    public void UpdatePos(String name, int x, int y) {
+
+        for (int i = 0; i < spriteList.size(); i++) {
+            String n = (spriteList.get(i).getName());
+            if (n.equals(name)) {
+                spriteList.get(i).setPos(x,y);
+            }
+        }
 
     }
 

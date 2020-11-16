@@ -1,6 +1,6 @@
 package ge.game;
 
-import ge.Sprite;
+import ge.core.sprite.Sprite;
 import ge.core.Scene;
 import ge.core.SceneManager;
 

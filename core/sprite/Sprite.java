@@ -1,4 +1,4 @@
-package ge;
+package ge.core.sprite;
 
 import ge.core.ImageReader;
 import ge.core.Scene;
@@ -9,42 +9,41 @@ import java.awt.image.BufferedImage;
 
 public class Sprite extends JPanel {
 
-    String name;
+    public String name;
 
     //Positional Parameters
-    int x;
-    int y;
-    int dx;
-    int dy;
-    int speed;
+    public int x;
+    public int y;
+    public int dx;
+    public int dy;
+    public int speed;
 
     //Collision Detection Parameters
-    int topBorder;
-    int bottomBorder;
-    int leftBorder;
-    int rightBorder;
+    public int topBorder;
+    public int bottomBorder;
+    public int leftBorder;
+    public int rightBorder;
 
     //What to do when out of bounds
-    String boundAction;
+    public String boundAction;
 
     //Scene Reference and Parameters
-    Scene sc;
-    int sHeight;
-    int sWidth;
+    public Scene sc;
+    public int sHeight;
+    public int sWidth;
 
     //Image Parameters
-    String imagePath;
-    int height;
-    int width;
-    boolean imageFailed = false;
+    public String imagePath;
+    public int height;
+    public int width;
+    public boolean imageFailed = false;
     public  BufferedImage image;
 
     //Is he dead or alive
-    boolean isVisible;
-    boolean isDead;
+    public boolean isVisible;
+    public boolean isDead;
 
     //Designates controller for sprite (Arrow Keys or WASD)
-    Controller playerControls = new NullController();
 
     //Constructor
     public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, Scene sc) {

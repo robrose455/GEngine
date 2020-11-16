@@ -1,11 +1,12 @@
-package ge;
+package ge.core.sprite;
 
+import ge.core.sprite.controller.Controller;
 import ge.core.Scene;
 
 public class PlayerSprite extends Sprite {
 
     //Designates controller for sprite (Arrow Keys or WASD)
-    Controller playerControls;
+    public Controller playerControls;
 
     //Constructor
     public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n, Scene sc) {

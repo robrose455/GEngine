@@ -1,8 +1,8 @@
-package ge;
+package ge.core.sprite.controller;
 
-import javax.swing.*;
+import ge.core.sprite.controller.Controller;
+
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SpriteArrowController extends Controller {
 

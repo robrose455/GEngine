@@ -1,4 +1,4 @@
-package ge;
+package ge.core.sprite;
 
 
 import ge.core.SceneManager;

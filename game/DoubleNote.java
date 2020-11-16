@@ -1,14 +1,13 @@
 package ge.game;
 
-import ge.PlayerSprite;
-import ge.Sprite;
-import ge.SpriteArrowController;
-import ge.SpriteWASDController;
+import ge.core.sprite.PlayerSprite;
+import ge.core.sprite.Sprite;
+import ge.core.sprite.controller.SpriteArrowController;
+import ge.core.sprite.controller.SpriteWASDController;
 import ge.core.GameStateManager;
 import ge.core.Scene;
 import ge.core.SceneManager;
 import ge.core.SpriteManager;
-import ge.game.Game;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,6 @@ public class DoubleNote extends Game {
 
     int points = 1000;
 
-    String controllerType;
     String cran = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\assets\\Cranberry.png";
     String note = "C:\\Users\\Robert\\Projects\\Java\\JavaGameEngine\\src\\assets\\icon.png";
 
@@ -100,7 +98,6 @@ public class DoubleNote extends Game {
         for (int i = 0; i < spriteTemplates.size(); i++) {
             String n = (spriteTemplates.get(i).getName());
             if (n.equals(name)) {
-                System.out.println("Hit This");
                 activeSprites.add(spriteTemplates.get(i));
             }
         }
@@ -113,7 +110,6 @@ public class DoubleNote extends Game {
         for (int i = 0; i < spriteTemplates.size(); i++) {
             String n = (spriteTemplates.get(i).getName());
             if (n.equals(name)) {
-                //System.out.println("Hit This");
                 activeSprites.add(spriteTemplates.get(i));
                 activePlayerSprites.add(spriteTemplates.get(i));
             }

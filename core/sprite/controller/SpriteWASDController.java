@@ -1,4 +1,6 @@
-package ge;
+package ge.core.sprite.controller;
+
+import ge.core.sprite.controller.Controller;
 
 public class SpriteWASDController extends Controller {
 

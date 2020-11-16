@@ -1,8 +1,8 @@
 package ge.core;
 
-import ge.LevelOne;
-import ge.Menu;
-import ge.State;
+import ge.game.state.LevelOne;
+import ge.game.state.Menu;
+import ge.game.state.State;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -56,9 +56,12 @@ public class GameStateManager {
     public State getCurState() {
         return curState;
     }
+
     public void setCurState(int index) {
+
         curState = states.get(index);
         curState.Init();
+
     }
 
 

@@ -1,5 +1,6 @@
-package ge;
+package ge.game.state;
 
+import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class Menu extends State {
 
         //Checks for collision
         if(sprM.getActiveSprites().get(0).collidesWith(sprM.getActiveSprites().get(1))) {
-            System.out.println("Change Scene");
+            System.out.println("Changing State..");
             g.setCurState(1);
         }
 

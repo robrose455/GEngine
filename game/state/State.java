@@ -1,12 +1,13 @@
-package ge;
+package ge.game.state;
 
+import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 import ge.game.Game;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-abstract public class State {
+public abstract class State {
 
     SpriteManager sprM;
     ArrayList<Sprite> spriteList;
@@ -18,8 +19,7 @@ abstract public class State {
         this.sprM = sprM;
         this.spriteList = spriteList;
         this.g = sprM.getGame();
-
-
+        
     }
 
     public abstract void Init();

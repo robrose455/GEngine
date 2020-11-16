@@ -1,7 +1,7 @@
 package ge.core;
 
+import ge.core.sprite.Sprite;
 import ge.game.Game;
-import ge.Sprite;
 
 import java.util.ArrayList;
 
