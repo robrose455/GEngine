@@ -85,7 +85,7 @@ public class DoubleNote extends Game {
     public void DefineSprites() {
 
         //Place to define template for all sprites in game
-        Sprite redPlayer = new PlayerSprite(player_x, player_y, player_dx, player_dy, w, note, "WRAP", "RedPlayer",sc);
+        Sprite redPlayer = new PlayerSprite(player_x, player_y, player_dx, player_dy, w, cran, "WRAP", "RedPlayer",sc);
         spriteTemplates.add(redPlayer);
 
         Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, cran, "WRAP", "BluePlayer",sc);
@@ -94,7 +94,7 @@ public class DoubleNote extends Game {
         Sprite redTarget = new Sprite(200 - 50, player2_y,0, 0, note, "WRAP", "RedTarget",sc);
         spriteTemplates.add(redTarget);
 
-        Sprite blueTarget = new Sprite(700, player2_y,0, 0, cran, "WRAP", "BlueTarget",sc);
+        Sprite blueTarget = new Sprite(700, player2_y,0, 0, note, "WRAP", "BlueTarget",sc);
         spriteTemplates.add(blueTarget);
 
         for (int i = 0; i < spriteTemplates.size(); i++) {
