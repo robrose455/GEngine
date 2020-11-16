@@ -1,4 +1,8 @@
-package ge;
+package ge.game;
+
+import ge.Sprite;
+import ge.core.Scene;
+import ge.core.SceneManager;
 
 import java.util.ArrayList;
 

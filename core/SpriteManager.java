@@ -1,6 +1,8 @@
-package ge;
+package ge.core;
 
-import java.awt.*;
+import ge.game.Game;
+import ge.Sprite;
+
 import java.util.ArrayList;
 
 

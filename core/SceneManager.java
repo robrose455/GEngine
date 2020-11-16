@@ -1,8 +1,7 @@
-package ge;
+package ge.core;
 
 import ge.*;
-import ge.KeyManager;
-import ge.MouseManager;
+import ge.game.Game;
 
 import javax.swing.*;
 import java.awt.*;

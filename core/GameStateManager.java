@@ -1,8 +1,11 @@
-package ge;
+package ge.core;
+
+import ge.LevelOne;
+import ge.Menu;
+import ge.State;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 public class GameStateManager {
 
@@ -50,6 +53,9 @@ public class GameStateManager {
         curState.DrawSprites(g);
     }
 
+    public State getCurState() {
+        return curState;
+    }
     public void setCurState(int index) {
         curState = states.get(index);
         curState.Init();

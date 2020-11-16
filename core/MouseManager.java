@@ -1,4 +1,6 @@
-package ge;
+package ge.core;
+
+import ge.core.SceneManager;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

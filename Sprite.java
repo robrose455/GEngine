@@ -1,5 +1,8 @@
 package ge;
 
+import ge.core.ImageReader;
+import ge.core.Scene;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

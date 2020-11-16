@@ -1,5 +1,7 @@
 package ge;
 
+import ge.core.SpriteManager;
+
 import java.awt.*;
 import java.util.ArrayList;
 

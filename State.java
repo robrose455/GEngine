@@ -1,5 +1,8 @@
 package ge;
 
+import ge.core.SpriteManager;
+import ge.game.Game;
+
 import java.awt.*;
 import java.util.ArrayList;
 

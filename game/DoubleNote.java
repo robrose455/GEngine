@@ -1,4 +1,14 @@
-package ge;
+package ge.game;
+
+import ge.PlayerSprite;
+import ge.Sprite;
+import ge.SpriteArrowController;
+import ge.SpriteWASDController;
+import ge.core.GameStateManager;
+import ge.core.Scene;
+import ge.core.SceneManager;
+import ge.core.SpriteManager;
+import ge.game.Game;
 
 import java.util.ArrayList;
 
@@ -53,7 +63,7 @@ public class DoubleNote extends Game {
         //Checks For Movement
         //System.out.println("Update In DoubleNote");
         //System.out.println("Current Number of Sprites in DoubleNote In Update: " + activeSprites.size());
-        gsm.curState.Update();
+        gsm.getCurState().Update();
 
         //Declare Winner when condition met
         if(!gsm.isWinner()) {

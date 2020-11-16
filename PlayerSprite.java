@@ -1,12 +1,14 @@
 package ge;
 
+import ge.core.Scene;
+
 public class PlayerSprite extends Sprite {
 
     //Designates controller for sprite (Arrow Keys or WASD)
     Controller playerControls;
 
     //Constructor
-    public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n,Scene sc) {
+    public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n, Scene sc) {
 
         super(x,y,dx,dy,ip,ba,n,sc);
             //Initialize All Variables to Default State or Given State
