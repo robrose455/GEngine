@@ -1,7 +1,6 @@
 package ge.core.sprite;
 
 import ge.core.sprite.controller.Controller;
-import ge.core.Scene;
 
 public class PlayerSprite extends Sprite {
 
@@ -9,9 +8,9 @@ public class PlayerSprite extends Sprite {
     public Controller playerControls;
 
     //Constructor
-    public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n, Scene sc) {
+    public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n) {
 
-        super(x,y,dx,dy,ip,ba,n,sc);
+        super(x,y,dx,dy,ip,ba,n);
             //Initialize All Variables to Default State or Given State
 
             this.playerControls = playerControls;
@@ -47,7 +46,6 @@ public class PlayerSprite extends Sprite {
 
         if (playerControls.isMovingRight()) {
 
-            System.out.println("I REALLY should be moving right");
             dx = 3;
             dy = 0;
 

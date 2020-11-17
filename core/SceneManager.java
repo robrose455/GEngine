@@ -10,12 +10,8 @@ import java.awt.event.*;
 
 public class SceneManager extends JPanel implements  ActionListener {
 
-    //Create both options for sprite controllers to be used as parameters
-    SpriteArrowController s = new SpriteArrowController();
-    SpriteWASDController w = new SpriteWASDController();
-
     //Scene Canvas Reference
-    Scene sc;
+    Scene s;
 
     //Reference to the current loaded game
     Game game;
@@ -38,16 +34,22 @@ public class SceneManager extends JPanel implements  ActionListener {
     public SceneManager(Scene s) {
 
         System.out.println("--Creating Scene Manager--");
-        //Set Initial Background
+
         this.setBackground(Color.BLACK);
 
-        //Initialize all Listeners and Sprites
-        this.sc = s;
-        game = sc.getGame();
-
-        this.km = new KeyManager(this);
+        this.s = s;
         this.mm = new MouseManager(this);
+
+        //Load Game Code
+        game = s.getGame();
+
+        //Sprite Manager takes Game Code and Contains SpriteList
         this.sprM = new SpriteManager(game);
+
+        //Key Manager pulls SpriteList and Listens for Key Presses
+        this.km = new KeyManager(this, sprM);
+
+        //Game State Manager Contains all game states for game
         this.gsm = new GameStateManager(sprM);
 
         game.Init(this);
@@ -56,53 +58,36 @@ public class SceneManager extends JPanel implements  ActionListener {
 
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        gsm.drawState(g);
-
-        Font smallFont = new Font("Verdana",Font.PLAIN, 12);
-
-        if (gsm.isWinner()) {
-            g.setFont(smallFont);
-            g.drawString("You did it!", 350, 130);
-            g.setFont(smallFont);
-        }
-
-    }
-
     public void actionPerformed(ActionEvent e) {
         Update();
     }
 
-    public void Update() {
-
-        //Update Each Frame According to Game Logic
-        //System.out.println("Update in Scene Manager");
-        game.Update();
-        //Repaint All Changes Made
-        this.repaint();
-
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        gsm.drawState(g);
     }
 
-    public void TestGame() {
-
-        //Test a basic game onto the scene here
-
+    public void Update() {
+        game.Update();
+        this.repaint();
     }
 
     public Scene getScene() {
-        return sc;
+        return s;
     }
+
     public Game getGame() { return game; }
+
     public SpriteManager getSpriteManager() {
         return sprM;
     }
+
     public GameStateManager getGameStateManager() {
         return gsm;
     }
+
     public KeyManager getKeyManager() { return km; }
+
     public MouseManager getMouseManager() {
         return mm;
     }

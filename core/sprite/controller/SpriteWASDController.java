@@ -1,7 +1,5 @@
 package ge.core.sprite.controller;
 
-import ge.core.sprite.controller.Controller;
-
 public class SpriteWASDController extends Controller {
 
     boolean wPressed;
@@ -36,7 +34,6 @@ public class SpriteWASDController extends Controller {
         aPressed = true;
     }
     public void movingRight() {
-        System.out.println("Please let me move right");
         dPressed = true;
     }
 

@@ -1,8 +1,6 @@
 package ge.core.sprite;
 
 import ge.core.ImageReader;
-import ge.core.Scene;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,9 +27,9 @@ public class Sprite extends JPanel {
     public String boundAction;
 
     //Scene Reference and Parameters
-    public Scene sc;
-    public int sHeight;
-    public int sWidth;
+
+    public int sHeight = 1000;
+    public int sWidth = 1000;
 
     //Image Parameters
     public String imagePath;
@@ -47,7 +45,7 @@ public class Sprite extends JPanel {
     //Designates controller for sprite (Arrow Keys or WASD)
 
     //Constructor
-    public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, Scene sc) {
+    public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n) {
 
         //Initialize All Variables to Default State or Given State
         System.out.println("--Creating Sprite--");
@@ -56,13 +54,9 @@ public class Sprite extends JPanel {
         this.y = y;
         this.dx = dx;
         this.dy = dy;
-        this.sc = sc;
         this.speed = 10;
         this.boundAction = ba;
         this.isVisible = true;
-
-        this.sHeight = sc.getHeight();
-        this.sWidth = sc.getWidth();
 
         this.imagePath = ip;
 
@@ -79,6 +73,15 @@ public class Sprite extends JPanel {
         }
     }
 
+    public void ResetToPos(int x, int y) {
+
+        this.x = x;
+        this.y = y;
+        this.dx = 0;
+        this.dy = 0;
+        this.isDead = false;
+
+    }
     //When called will paint sprite onto scene
     public void DrawSprite(Graphics g) {
 
@@ -107,7 +110,7 @@ public class Sprite extends JPanel {
 
         if (y <= 0) {
             switch (boundAction) {
-                case "WRAP" -> y = y + sc.getHeight();
+                case "WRAP" -> y = y + 1000;
                 case "STOP" -> {
                     dx = 0;
                     dy = 0;
@@ -122,9 +125,9 @@ public class Sprite extends JPanel {
             setY(y);
         }
 
-        if (y >= sc.getHeight()) {
+        if (y >= 1000) {
             switch (boundAction) {
-                case "WRAP" -> y = y - sc.getHeight();
+                case "WRAP" -> y = y - 1000;
                 case "STOP" -> {
                     dx = 0;
                     dy = 0;
@@ -142,7 +145,7 @@ public class Sprite extends JPanel {
         if (x <= 0) {
 
             switch (boundAction) {
-                case "WRAP" -> x = x + sc.getWidth();
+                case "WRAP" -> x = x + 1000;
                 case "STOP" -> {
                     dx = 0;
                     dy = 0;
@@ -159,9 +162,9 @@ public class Sprite extends JPanel {
             setX(x);
         }
 
-        if (x >= sc.getWidth()) {
+        if (x >= 1000) {
             switch (boundAction) {
-                case "WRAP" -> x = x - sc.getWidth();
+                case "WRAP" -> x = x - 1000;
                 case "STOP" -> {
                     dx = 0;
                     dy = 0;
@@ -244,6 +247,7 @@ public class Sprite extends JPanel {
     }
     public void Show() {
         isVisible = true;
+        isDead = false;
     }
 
     //Shows needed Parameters about given variable

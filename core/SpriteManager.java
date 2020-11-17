@@ -3,6 +3,7 @@ package ge.core;
 import ge.core.sprite.Sprite;
 import ge.game.Game;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -11,47 +12,89 @@ public class SpriteManager {
 
     Game g;
 
-    ArrayList<Sprite> spriteList;
-    ArrayList<Sprite> playerSpriteList;
+    ArrayList<Sprite> sprites = new ArrayList<>();
+    ArrayList<Sprite> playerSprites = new ArrayList<>();
+    ArrayList<Sprite> spriteTemplates;
 
     public SpriteManager(Game g) {
 
         System.out.println("--Creating Sprite Manager--");
         this.g = g;
-        spriteList = g.GetSprites();
-        playerSpriteList = g.GetPlayerSprites();
+
+        //Loads Sprite Templates
+        spriteTemplates = g.getSpriteTemplates();
 
     }
 
 
-    public void addSprite(Sprite s) {
-        spriteList.add(s);
+    public void addSprite(String name) {
+
+        //System.out.println("Adding Sprite to SpriteList: " + name);
+        for (int i = 0; i < spriteTemplates.size(); i++) {
+            String n = (spriteTemplates.get(i).getName());
+            if (n.equals(name)) {
+                Sprite s = spriteTemplates.get(i);
+                sprites.add(s);
+            }
+        }
+        //System.out.println("SpriteList size: " + sprites.size());
+    }
+
+    public void addPlayerSprite(String name) {
+
+        //System.out.println("Adding PlayerSprite to SpriteList: " + name);
+        for (int i = 0; i < spriteTemplates.size(); i++) {
+            String n = (spriteTemplates.get(i).getName());
+            if (n.equals(name)) {
+                Sprite s = spriteTemplates.get(i);
+                sprites.add(s);
+                playerSprites.add(s);
+            }
+        }
+        //System.out.println("Player SpriteList size: " + sprites.size());
     }
 
     public void removeSprite(String name) {
 
-        for(int i = 0; i < spriteList.size(); i++) {
-            if(spriteList.get(i).getName().equals(name)) {
-                    spriteList.remove(i);
+        //System.out.println("Removing Sprite from SpriteList: " + name);
+        for (int i = 0; i < sprites.size(); i++) {
+            String n = (sprites.get(i).getName());
+            if (n.equals(name)) {
+                sprites.remove(sprites.get(i));
             }
         }
+        //System.out.println("SpriteList size: " + sprites.size());
+    }
 
-        for(int i = 0; i < playerSpriteList.size(); i++) {
-            if(playerSpriteList.get(i).getName().equals(name)) {
-                playerSpriteList.remove(i);
+    public void removePlayerSprite(String name) {
+
+        for (int i = 0; i < sprites.size(); i++) {
+            String n = (sprites.get(i).getName());
+            if (n.equals(name)) {
+                sprites.remove(sprites.get(i));
+                playerSprites.remove(sprites.get(i));
             }
         }
-        System.out.println("Size of SpritesList: " + spriteList.size());
     }
 
-    public ArrayList<Sprite> getActiveSprites() {
-        spriteList = g.GetSprites();
-        return spriteList;
+    public void ClearSprites(String n) {
+
+
     }
 
-    public ArrayList<Sprite> getActivePlayerSprites() {return playerSpriteList;}
+    public void SpriteReport() {
+
+
+    }
 
     public Game getGame() { return g; }
+
+    public ArrayList<Sprite> getSprites() {
+        return sprites;
+    }
+    public ArrayList<Sprite> getPlayerSprites() {
+        return playerSprites;
+    }
 
 
 }

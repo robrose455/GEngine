@@ -20,12 +20,15 @@ public class KeyManager implements ActionListener {
     Action dAction;
 
     SceneManager sm;
+    SpriteManager sprM;
+
     String controllerType;
     
-    public KeyManager(SceneManager sm) {
+    public KeyManager(SceneManager sm, SpriteManager sprM) {
 
         System.out.println("--Creating Key Manager--");
         this.sm = sm;
+        this.sprM = sprM;
 
         upAction = new KeyManager.UpAction();
         downAction = new KeyManager.DownAction();
@@ -67,11 +70,19 @@ public class KeyManager implements ActionListener {
     //Implementation for "Up Arrow"
     public class UpAction extends AbstractAction {
 
+
+        /*
+        Controller Type = Type of Controller
+        (sprM.getActivePlayerSprites.get(i)) -> Returns PlayerSprite
+        (getPlayerControls()) -> Returns controller
+        (typeofController()) -> returns controller string
+         */
+
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                    controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                    controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingUp();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingUp();
                 }
             }
         }
@@ -80,10 +91,10 @@ public class KeyManager implements ActionListener {
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingDown();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingDown();
                 }
             }
         }
@@ -93,10 +104,10 @@ public class KeyManager implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingLeft();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingLeft();
 
                 }
             }
@@ -106,10 +117,10 @@ public class KeyManager implements ActionListener {
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingRight();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingRight();
                 }
             }
         }
@@ -118,10 +129,10 @@ public class KeyManager implements ActionListener {
     public class wAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingUp();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingUp();
                 }
             }
         }
@@ -131,10 +142,10 @@ public class KeyManager implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingDown();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingDown();
                 }
             }
         }
@@ -144,10 +155,10 @@ public class KeyManager implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingLeft();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingLeft();
                 }
             }
         }
@@ -157,10 +168,10 @@ public class KeyManager implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sm.getSpriteManager().getActivePlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().typeOfController();
+            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
+                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
                 if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sm.getSpriteManager().getActivePlayerSprites().get(i)).getPlayerControls().movingRight();
+                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingRight();
                 }
             }
         }

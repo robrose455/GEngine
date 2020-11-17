@@ -15,12 +15,9 @@ public class GameOver extends State {
     @Override
     public void Init() {
 
-        System.out.println("Deleting Sprites");
-        g.DeleteSprite("RedPlayer");
-        g.DeleteSprite("BluePlayer");
-        g.DeleteSprite("RedTarget");
-        g.DeleteSprite("BlueTarget");
-        System.out.println("Sprites Deleted");
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Hide();
+        }
 
     }
 
@@ -29,9 +26,9 @@ public class GameOver extends State {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
             g.setCurState(1);
-            System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
+            //System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
             g.GetSceneManager().getMouseManager().Reset();
-            System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
+            //System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
         }
 
     }
@@ -55,7 +52,7 @@ public class GameOver extends State {
         g.drawString("DOUBLE NOTE", 315, 100);
 
         g.setFont(medFont);
-        g.drawString("GAME OVER", 300, 200);
+        g.drawString("GAME OVER", 400, 200);
         g.drawString("CLICK ANYWHERE TO RETRY", 270, 300);
 
         g.setFont(smallFont);

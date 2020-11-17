@@ -41,13 +41,13 @@ public class GameStateManager {
     public void LoadStates() {
 
 
-        menu = new Menu(sprM, sprM.getActiveSprites());
+        menu = new Menu(sprM, sprM.getSprites());
         states.add(menu);
 
-        levelOne = new LevelOne(sprM, sprM.getActiveSprites());
+        levelOne = new LevelOne(sprM, sprM.getSprites());
         states.add(levelOne);
 
-        gameOver = new GameOver(sprM, sprM.getActiveSprites());
+        gameOver = new GameOver(sprM, sprM.getSprites());
         states.add(gameOver);
 
         curState = states.get(0);
@@ -65,8 +65,10 @@ public class GameStateManager {
 
     public void setCurState(int index) {
 
+        System.out.println("Cur State Index to be: " + index);
         curState = states.get(index);
         curState.Init();
+        System.out.println(curState);
 
     }
 

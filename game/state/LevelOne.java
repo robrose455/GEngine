@@ -18,36 +18,46 @@ public class LevelOne extends State {
     @Override
     public void Init() {
 
-        spriteList = sprM.getActiveSprites();
-        System.out.println("Size of SpriteList in Level One beg: " + spriteList.size());
-        g.CreatePlayerSprite("RedPlayer");
-        g.CreatePlayerSprite("BluePlayer");
+        if(sprM.getSprites().size() == 0) {
 
-        g.CreateSprite("RedTarget");
-        g.CreateSprite("BlueTarget");
-        System.out.println("Size of SpriteList in Level One: " + spriteList.size());
+            sprM.addPlayerSprite("RedPlayer");
+            sprM.addPlayerSprite("BluePlayer");
+            sprM.addSprite("RedTarget");
+            sprM.addSprite("BlueTarget");
+
+        }
+
+            for (int i = 0; i < sprM.getSprites().size(); i++) {
+                sprM.getSprites().get(i).Show();
+            }
+
+            sprM.getSprites().get(0).ResetToPos(100,900);
+            sprM.getSprites().get(1).ResetToPos(900,900);
+
 
     }
 
     @Override
     public void Update() {
 
-        for (int i = 0; i < sprM.getActiveSprites().size(); i++) {
-            sprM.getActiveSprites().get(i).Update();
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Update();
         }
 
-        if (spriteList.get(0).collidesWith(spriteList.get(3))){
+        if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
-            spriteList.get(3).Hide();
+            sprM.getSprites().get(3).Hide();
         }
 
-        if (spriteList.get(1).collidesWith(spriteList.get(2))) {
+        if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
-            spriteList.get(2).Hide();
         }
 
-        if (spriteList.get(0).Death() || spriteList.get(1).Death()) {
+        if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
+            System.out.println("Change Condition obj 1: " + sprM.getSprites().get(0).Death());
+            System.out.println("Change Condition obj 2: " + sprM.getSprites().get(1).Death());
             g.setCurState(2);
+
         }
 
     }
@@ -55,9 +65,9 @@ public class LevelOne extends State {
     @Override
     public void DrawSprites(Graphics g) {
 
-        for (int i = 0; i < spriteList.size(); i++) {
-            //System.out.println(spriteList.get(i).imagePath);
-            spriteList.get(i).DrawSprite(g);
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            //System.out.println(sprM.getSprites().get(i).imagePath);
+            sprM.getSprites().get(i).DrawSprite(g);
         }
 
         DrawText(g);
@@ -75,16 +85,4 @@ public class LevelOne extends State {
         g.drawString("Level One", 450, 50);
 
     }
-
-    public void UpdatePos(String name, int x, int y) {
-
-        for (int i = 0; i < spriteList.size(); i++) {
-            String n = (spriteList.get(i).getName());
-            if (n.equals(name)) {
-                spriteList.get(i).setPos(x,y);
-            }
-        }
-
-    }
-
 }

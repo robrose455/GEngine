@@ -37,11 +37,6 @@ public class Menu extends State {
     @Override
     public void DrawSprites(Graphics g) {
 
-        for (int i = 0; i < spriteList.size(); i++) {
-            //System.out.println(spriteList.get(i).imagePath);
-            spriteList.get(i).DrawSprite(g);
-        }
-
         DrawText(g);
 
     }
