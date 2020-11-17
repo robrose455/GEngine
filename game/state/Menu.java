@@ -12,6 +12,8 @@ public class Menu extends State {
     public Menu(SpriteManager sprM) {
         super(sprM);
 
+        this.name = "menu";
+
         System.out.println("--Creating State: Menu--");
 
 
@@ -28,7 +30,7 @@ public class Menu extends State {
     public void Update() {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
-            g.setCurState(3);
+            g.setCurState("levelOne");
             g.GetSceneManager().getMouseManager().Reset();
         }
 

@@ -74,10 +74,14 @@ public class GameStateManager {
         return curState;
     }
 
-    public void setCurState(int index) {
+    public void setCurState(String n) {
 
         //System.out.println("Cur State Index to be: " + index);
-        curState = states.get(index);
+        for (int i = 0; i < states.size(); i++) {
+            if (n.equals(states.get(i).getName())) {
+                curState = states.get(i);
+            }
+        }
         curState.Init();
         //System.out.println(curState);
 

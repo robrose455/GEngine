@@ -11,6 +11,8 @@ public class Win extends State {
     public Win(SpriteManager sprM) {
         super(sprM);
 
+        this.name = "win";
+
     }
     @Override
     public void Init() {

@@ -18,7 +18,7 @@ public abstract class Game {
 
     public abstract void Update();
 
-    public abstract void setCurState(int index);
+    public abstract void setCurState(String n);
 
     public abstract SceneManager GetSceneManager();
     public abstract GameStateManager getGameStateManager();

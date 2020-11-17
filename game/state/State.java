@@ -11,6 +11,7 @@ public abstract class State {
 
     SpriteManager sprM;
     Game g;
+    String name;
 
     public State(SpriteManager sprM) {
 
@@ -27,5 +28,6 @@ public abstract class State {
     public void HasWon() {
         g.getGameStateManager().Win();
     }
+    public String getName() { return name; };
 
 }

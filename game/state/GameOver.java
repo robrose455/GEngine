@@ -11,6 +11,8 @@ public class GameOver extends State {
     public GameOver(SpriteManager sprM) {
         super(sprM);
 
+        this.name = "gameOver";
+
     }
     @Override
     public void Init() {
@@ -25,7 +27,7 @@ public class GameOver extends State {
     public void Update() {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
-            g.setCurState(3);
+            g.setCurState("levelOne");
             g.GetSceneManager().getMouseManager().Reset();
         }
 

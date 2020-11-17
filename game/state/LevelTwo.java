@@ -16,6 +16,7 @@ public class LevelTwo extends State {
         super(sprM);
 
         this.sprM = sprM;
+        this.name = "levelTwo";
         System.out.println("--Creating Level One--");
 
     }
@@ -57,11 +58,11 @@ public class LevelTwo extends State {
         }
 
         if (redWin && blueWin) {
-            g.setCurState(5);
+            g.setCurState("levelThree");
         }
 
         if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
-            g.setCurState(1);
+            g.setCurState("gameOver");
         }
 
         for (int i = 0; i < sprM.getSprites().size(); i++) {
@@ -99,6 +100,9 @@ public class LevelTwo extends State {
         sprM.getSprites().get(1).ResetToPos(900,900);
         sprM.getSprites().get(2).ResetToPos(200,10);
         sprM.getSprites().get(3).ResetToPos(300,200);
+
+        blueWin = false;
+        redWin = false;
 
     }
 }
