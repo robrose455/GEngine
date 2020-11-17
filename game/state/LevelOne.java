@@ -8,9 +8,12 @@ import java.util.ArrayList;
 
 public class LevelOne extends State {
 
-    public LevelOne(SpriteManager sprM, ArrayList<Sprite> spriteList) {
-        super(sprM, spriteList);
+    SpriteManager sprM;
 
+    public LevelOne(SpriteManager sprM) {
+        super(sprM);
+
+        this.sprM = sprM;
         System.out.println("--Creating Level One--");
 
     }
@@ -31,8 +34,7 @@ public class LevelOne extends State {
                 sprM.getSprites().get(i).Show();
             }
 
-            sprM.getSprites().get(0).ResetToPos(100,900);
-            sprM.getSprites().get(1).ResetToPos(900,900);
+            ResetSprites();
 
 
     }
@@ -40,24 +42,25 @@ public class LevelOne extends State {
     @Override
     public void Update() {
 
-        for (int i = 0; i < sprM.getSprites().size(); i++) {
-            sprM.getSprites().get(i).Update();
-        }
-
         if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
-            sprM.getSprites().get(3).Hide();
+            //Go To Level 2
+            HasWon();
         }
 
         if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
+            //Go To Level 2
+            HasWon();
         }
 
         if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
-            System.out.println("Change Condition obj 1: " + sprM.getSprites().get(0).Death());
-            System.out.println("Change Condition obj 2: " + sprM.getSprites().get(1).Death());
             g.setCurState(2);
 
+        }
+
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Update();
         }
 
     }
@@ -66,7 +69,6 @@ public class LevelOne extends State {
     public void DrawSprites(Graphics g) {
 
         for (int i = 0; i < sprM.getSprites().size(); i++) {
-            //System.out.println(sprM.getSprites().get(i).imagePath);
             sprM.getSprites().get(i).DrawSprite(g);
         }
 
@@ -83,6 +85,13 @@ public class LevelOne extends State {
         g.setFont(medFont);
         g.setColor(Color.WHITE);
         g.drawString("Level One", 450, 50);
+
+    }
+
+    public void ResetSprites() {
+
+        sprM.getSprites().get(0).ResetToPos(100,900);
+        sprM.getSprites().get(1).ResetToPos(900,900);
 
     }
 }

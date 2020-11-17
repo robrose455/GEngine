@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class GameOver extends State {
 
-    public GameOver(SpriteManager sprM, ArrayList<Sprite> spriteList) {
-        super(sprM, spriteList);
+    public GameOver(SpriteManager sprM) {
+        super(sprM);
 
     }
     @Override
@@ -26,9 +26,7 @@ public class GameOver extends State {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
             g.setCurState(1);
-            //System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
             g.GetSceneManager().getMouseManager().Reset();
-            //System.out.println(g.GetSceneManager().getMouseManager().WasMouseClicked());
         }
 
     }

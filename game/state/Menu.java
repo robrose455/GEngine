@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Menu extends State {
 
 
-    public Menu(SpriteManager sprM, ArrayList<Sprite> spriteList) {
-        super(sprM, spriteList);
+    public Menu(SpriteManager sprM) {
+        super(sprM);
 
         System.out.println("--Creating State: Menu--");
 

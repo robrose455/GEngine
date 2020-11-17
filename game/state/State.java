@@ -10,14 +10,11 @@ import java.util.ArrayList;
 public abstract class State {
 
     SpriteManager sprM;
-    ArrayList<Sprite> spriteList;
-    ArrayList<Sprite> spritePlayerList;
     Game g;
 
-    public State(SpriteManager sprM, ArrayList<Sprite> spriteList) {
+    public State(SpriteManager sprM) {
 
         this.sprM = sprM;
-        this.spriteList = spriteList;
         this.g = sprM.getGame();
 
     }
@@ -27,6 +24,9 @@ public abstract class State {
 
     public abstract void DrawSprites(Graphics g);
     public abstract void DrawText(Graphics g);
+    public void HasWon() {
+        g.getGameStateManager().Win();
+    }
 
 
 }

@@ -50,6 +50,9 @@ public class DoubleNote extends Game {
 
     public void Update() {
 
+        if(gsm.isWinner()) {
+            gsm.setCurState(3);
+        }
         gsm.getCurState().Update();
 
     }
@@ -83,5 +86,6 @@ public class DoubleNote extends Game {
     public SceneManager GetSceneManager() {
         return sm;
     }
+    public GameStateManager getGameStateManager() { return gsm; }
 
 }
