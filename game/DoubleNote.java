@@ -67,10 +67,10 @@ public class DoubleNote extends Game {
         Sprite bluePlayer = new PlayerSprite(player2_x, player2_y, 0, 0, s, "Blue", "DIE", "BluePlayer");
         spriteTemplates.add(bluePlayer);
 
-        Sprite redTarget = new Sprite(100, 100,0, 0, "RedT", "DIE", "RedTarget");
+        Sprite redTarget = new Sprite(425, 400,0, 0, "RedT", "DIE", "RedTarget");
         spriteTemplates.add(redTarget);
 
-        Sprite blueTarget = new Sprite(900, 100,0, 0, "BlueT", "DIE", "BlueTarget");
+        Sprite blueTarget = new Sprite(550, 400,0, 0, "BlueT", "DIE", "BlueTarget");
         spriteTemplates.add(blueTarget);
 
     }

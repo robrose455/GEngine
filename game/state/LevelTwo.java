@@ -97,6 +97,8 @@ public class LevelTwo extends State {
 
         sprM.getSprites().get(0).ResetToPos(100,900);
         sprM.getSprites().get(1).ResetToPos(900,900);
+        sprM.getSprites().get(2).ResetToPos(200,10);
+        sprM.getSprites().get(3).ResetToPos(300,200);
 
     }
 }

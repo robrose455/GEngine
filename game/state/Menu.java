@@ -48,7 +48,7 @@ public class Menu extends State {
 
         g.setFont(bigFont);
         g.setColor(Color.WHITE);
-        g.drawString("DOUBLE NOTE", 315, 100);
+        g.drawString("ERIC SPEED RUN", 315, 100);
 
         g.setFont(medFont);
         g.drawString("MATCH RED WITH BLUE AND BLUE WITH RED", 150, 200);
