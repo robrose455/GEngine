@@ -12,12 +12,6 @@ public class SpriteArrowController extends Controller {
     boolean rightPressed;
 
     public SpriteArrowController() {
-
-    }
-
-    public void actionPerformed(ActionEvent e) {
-
-
     }
 
     public boolean isMovingUp() {
@@ -57,8 +51,6 @@ public class SpriteArrowController extends Controller {
     }
 
     public String typeOfController() {
-
-        //System.out.println("I am a Arrow Key Controller");
         return "Arrows";
     }
 }

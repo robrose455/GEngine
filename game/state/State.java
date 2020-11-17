@@ -28,5 +28,4 @@ public abstract class State {
         g.getGameStateManager().Win();
     }
 
-
 }

@@ -44,6 +44,5 @@ public class Win extends State {
         g.setColor(Color.WHITE);
         g.drawString("YOU WIN", 375, 400);
 
-
     }
 }

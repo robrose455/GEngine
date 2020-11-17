@@ -326,8 +326,6 @@ public class Sprite extends JPanel {
     //Declares what the sprite will do on collision
     public void CollisionAction() {
 
-        isDead = true;
-        speed = 0;
 
     }
 

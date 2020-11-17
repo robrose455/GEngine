@@ -7,9 +7,7 @@ public class SpriteWASDController extends Controller {
     boolean aPressed;
     boolean dPressed;
 
-    public SpriteWASDController() {
-
-    }
+    public SpriteWASDController() { }
 
     public boolean isMovingUp() {
         return wPressed;
@@ -48,7 +46,6 @@ public class SpriteWASDController extends Controller {
     }
 
     public String typeOfController() {
-        //System.out.println("I am a WASD Controller");
         return "WASD";
     }
 }

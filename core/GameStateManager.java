@@ -14,6 +14,8 @@ public class GameStateManager {
 
     State menu;
     State levelOne;
+    State levelTwo;
+    State levelThree;
     State gameOver;
     State win;
 
@@ -43,14 +45,21 @@ public class GameStateManager {
         menu = new Menu(sprM);
         states.add(menu);
 
-        levelOne = new LevelOne(sprM);
-        states.add(levelOne);
-
         gameOver = new GameOver(sprM);
         states.add(gameOver);
 
         win = new Win(sprM);
         states.add(win);
+
+        levelOne = new LevelOne(sprM);
+        states.add(levelOne);
+
+        levelTwo = new LevelTwo(sprM);
+        states.add(levelTwo);
+
+        levelThree = new LevelThree(sprM);
+        states.add(levelThree);
+
 
         curState = states.get(0);
         curState.Init();
@@ -67,10 +76,10 @@ public class GameStateManager {
 
     public void setCurState(int index) {
 
-        System.out.println("Cur State Index to be: " + index);
+        //System.out.println("Cur State Index to be: " + index);
         curState = states.get(index);
         curState.Init();
-        System.out.println(curState);
+        //System.out.println(curState);
 
     }
 

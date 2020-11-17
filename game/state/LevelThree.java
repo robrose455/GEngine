@@ -6,13 +6,13 @@ import ge.core.SpriteManager;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class LevelOne extends State {
+public class LevelThree extends State {
 
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
 
-    public LevelOne(SpriteManager sprM) {
+    public LevelThree(SpriteManager sprM) {
         super(sprM);
 
         this.sprM = sprM;
@@ -32,11 +32,11 @@ public class LevelOne extends State {
 
         }
 
-            for (int i = 0; i < sprM.getSprites().size(); i++) {
-                sprM.getSprites().get(i).Show();
-            }
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Show();
+        }
 
-            ResetSprites();
+        ResetSprites();
 
 
     }
@@ -47,17 +47,13 @@ public class LevelOne extends State {
         if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
             //Go To Level 2
-            redWin = true;
+            HasWon();
         }
 
         if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
             //Go To Level 2
-            blueWin = true;
-        }
-
-        if (redWin && blueWin) {
-            g.setCurState(4);
+            HasWon();
         }
 
         if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
@@ -89,7 +85,7 @@ public class LevelOne extends State {
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level One", 450, 50);
+        g.drawString("Level Three", 450, 50);
 
     }
 

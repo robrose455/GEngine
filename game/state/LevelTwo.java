@@ -6,13 +6,13 @@ import ge.core.SpriteManager;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class LevelOne extends State {
+public class LevelTwo extends State {
 
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
 
-    public LevelOne(SpriteManager sprM) {
+    public LevelTwo(SpriteManager sprM) {
         super(sprM);
 
         this.sprM = sprM;
@@ -32,11 +32,11 @@ public class LevelOne extends State {
 
         }
 
-            for (int i = 0; i < sprM.getSprites().size(); i++) {
-                sprM.getSprites().get(i).Show();
-            }
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Show();
+        }
 
-            ResetSprites();
+        ResetSprites();
 
 
     }
@@ -57,7 +57,7 @@ public class LevelOne extends State {
         }
 
         if (redWin && blueWin) {
-            g.setCurState(4);
+            g.setCurState(5);
         }
 
         if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
@@ -89,7 +89,7 @@ public class LevelOne extends State {
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level One", 450, 50);
+        g.drawString("Level Two", 450, 50);
 
     }
 

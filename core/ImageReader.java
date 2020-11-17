@@ -27,8 +27,4 @@ public class ImageReader {
     public boolean didImageFail() {
         return imageFailed;
     }
-
-
-
-
 }

@@ -28,7 +28,7 @@ public class Menu extends State {
     public void Update() {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
-            g.setCurState(1);
+            g.setCurState(3);
             g.GetSceneManager().getMouseManager().Reset();
         }
 
