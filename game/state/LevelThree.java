@@ -12,6 +12,9 @@ public class LevelThree extends State {
     boolean redWin = false;
     boolean blueWin = false;
 
+    Sprite red;
+    Sprite blue;
+
     public LevelThree(SpriteManager sprM) {
         super(sprM);
 
@@ -37,6 +40,12 @@ public class LevelThree extends State {
             sprM.getSprites().get(i).Show();
         }
 
+        red = sprM.getSprites().get(0);
+        red.setSpeed(2);
+
+        blue = sprM.getSprites().get(1);
+        blue.setSpeed(2);
+
         ResetSprites();
 
 
@@ -45,19 +54,19 @@ public class LevelThree extends State {
     @Override
     public void Update() {
 
-        if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
+        if (blue.collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
             //Go To Level 2
             HasWon();
         }
 
-        if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
+        if (red.collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
             //Go To Level 2
             HasWon();
         }
 
-        if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
+        if (red.Death() || blue.Death()) {
             g.setCurState("gameOver");
         }
 
@@ -92,8 +101,8 @@ public class LevelThree extends State {
 
     public void ResetSprites() {
 
-        sprM.getSprites().get(0).ResetToPos(100,900);
-        sprM.getSprites().get(1).ResetToPos(900,900);
+        red.ResetToPos(100,900);
+        blue.ResetToPos(900,900);
         sprM.getSprites().get(2).ResetToPos(10,10);
         sprM.getSprites().get(3).ResetToPos(900,10);
 

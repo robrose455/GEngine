@@ -57,7 +57,6 @@ public class Sprite extends JPanel {
         this.speed = 10;
         this.boundAction = ba;
         this.isVisible = true;
-
         this.imagePath = ip;
 
         ImageReader ir = new ImageReader();
@@ -82,7 +81,7 @@ public class Sprite extends JPanel {
         this.isDead = false;
 
     }
-    //When called will paint sprite onto scene
+
     public void DrawSprite(Graphics g) {
 
         if(isVisible) {
@@ -182,7 +181,6 @@ public class Sprite extends JPanel {
 
     }
 
-    //Get and Set
     public void setX(int x){
         this.x = x;
     }
@@ -199,6 +197,10 @@ public class Sprite extends JPanel {
 
     public void setDx(int x) { this.dx = dx; }
     public void setDy(int y) { this.dy = dy; }
+
+    public void setSpeed(int s) {
+        speed = s;
+    }
 
     public boolean getVisibility() {
         return isVisible;
@@ -226,15 +228,6 @@ public class Sprite extends JPanel {
         setY(y);
     }
 
-    public void changeVisibility() {
-
-        if (isVisible) {
-            isVisible = false;
-        } else {
-            isVisible = true;
-        }
-    }
-
     //Called to declare this variable has died in-game
     public boolean Death() {
         return isDead;
@@ -260,11 +253,11 @@ public class Sprite extends JPanel {
         System.out.println("Y: " + y);
         System.out.println("DX: " + dx);
         System.out.println("DY: " + dy);
-        //System.out.println("Speed: " + speed);
-        //System.out.println("Top Border: " + topBorder);
-        //System.out.println("Bottom Border: " + bottomBorder);
-        //System.out.println("Left Border: " + leftBorder);
-        //System.out.println("Right Border: " + rightBorder);
+        System.out.println("Speed: " + speed);
+        System.out.println("Top Border: " + topBorder);
+        System.out.println("Bottom Border: " + bottomBorder);
+        System.out.println("Left Border: " + leftBorder);
+        System.out.println("Right Border: " + rightBorder);
 
     }
 

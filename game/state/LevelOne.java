@@ -4,13 +4,14 @@ import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class LevelOne extends State {
 
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
+    Sprite red;
+    Sprite blue;
 
     public LevelOne(SpriteManager sprM) {
         super(sprM);
@@ -32,6 +33,12 @@ public class LevelOne extends State {
             sprM.addSprite("BlueTarget");
 
         }
+
+        red = sprM.getSprites().get(0);
+        red.setSpeed(3);
+
+        blue = sprM.getSprites().get(1);
+        blue.setSpeed(3);
 
             for (int i = 0; i < sprM.getSprites().size(); i++) {
                 sprM.getSprites().get(i).Show();
@@ -61,7 +68,7 @@ public class LevelOne extends State {
             g.setCurState("levelTwo");
         }
 
-        if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
+        if (red.Death() || blue.Death()) {
             g.setCurState("gameOver");
         }
 
@@ -96,8 +103,11 @@ public class LevelOne extends State {
 
     public void ResetState() {
 
-        sprM.getSprites().get(0).ResetToPos(100,900);
-        sprM.getSprites().get(1).ResetToPos(900,900);
+        red.ResetToPos(100,900);
+        blue.ResetToPos(900,900);
+        sprM.getSprites().get(2).ResetToPos(425,400);
+        sprM.getSprites().get(3).ResetToPos(550,400);
+
 
         redWin = false;
         blueWin = false;

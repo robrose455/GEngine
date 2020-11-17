@@ -12,7 +12,6 @@ public class PlayerSprite extends Sprite {
 
         super(x,y,dx,dy,ip,ba,n);
             //Initialize All Variables to Default State or Given State
-
             this.playerControls = playerControls;
 
     }
@@ -23,14 +22,14 @@ public class PlayerSprite extends Sprite {
 
         if (playerControls.isMovingUp()) {
 
-            dy = -3;
+            dy = -(speed);
             dx = 0;
 
         }
 
         if (playerControls.isMovingDown()) {
 
-            dy = 3;
+            dy = speed;
             dx = 0;
 
 
@@ -38,7 +37,7 @@ public class PlayerSprite extends Sprite {
 
         if (playerControls.isMovingLeft()) {
 
-            dx = -3;
+            dx = -(speed);
             dy = 0;
 
 
@@ -46,7 +45,7 @@ public class PlayerSprite extends Sprite {
 
         if (playerControls.isMovingRight()) {
 
-            dx = 3;
+            dx = speed;
             dy = 0;
 
         }

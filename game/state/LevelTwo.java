@@ -11,6 +11,8 @@ public class LevelTwo extends State {
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
+    Sprite red;
+    Sprite blue;
 
     public LevelTwo(SpriteManager sprM) {
         super(sprM);
@@ -37,6 +39,12 @@ public class LevelTwo extends State {
             sprM.getSprites().get(i).Show();
         }
 
+        red = sprM.getSprites().get(0);
+        red.setSpeed(5);
+
+        blue = sprM.getSprites().get(1);
+        blue.setSpeed(5);
+
         ResetSprites();
 
 
@@ -61,7 +69,7 @@ public class LevelTwo extends State {
             g.setCurState("levelThree");
         }
 
-        if (sprM.getSprites().get(0).Death() || sprM.getSprites().get(1).Death()) {
+        if (red.Death() || blue.Death()) {
             g.setCurState("gameOver");
         }
 
@@ -96,8 +104,8 @@ public class LevelTwo extends State {
 
     public void ResetSprites() {
 
-        sprM.getSprites().get(0).ResetToPos(100,900);
-        sprM.getSprites().get(1).ResetToPos(900,900);
+        red.ResetToPos(100,900);
+        blue.ResetToPos(900,900);
         sprM.getSprites().get(2).ResetToPos(200,10);
         sprM.getSprites().get(3).ResetToPos(300,200);
 
