@@ -1,7 +1,5 @@
 package ge.core;
 
-import ge.game.Game;
-
 import java.awt.*;
 import javax.swing.*;
 

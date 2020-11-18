@@ -1,25 +1,23 @@
-package ge.game.state;
+package ge.doublenote.state;
 
 import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
-import java.util.ArrayList;
 
-public class LevelThree extends State {
+public class LevelTwo extends Level {
 
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
-
     Sprite red;
     Sprite blue;
 
-    public LevelThree(SpriteManager sprM) {
+    public LevelTwo(SpriteManager sprM) {
         super(sprM);
 
         this.sprM = sprM;
-        this.name = "levelThree";
+        this.name = "levelTwo";
         System.out.println("--Creating Level One--");
 
     }
@@ -41,10 +39,10 @@ public class LevelThree extends State {
         }
 
         red = sprM.getSprites().get(0);
-        red.setSpeed(2);
+        red.setSpeed(5);
 
         blue = sprM.getSprites().get(1);
-        blue.setSpeed(2);
+        blue.setSpeed(5);
 
         ResetSprites();
 
@@ -54,16 +52,20 @@ public class LevelThree extends State {
     @Override
     public void Update() {
 
-        if (blue.collidesWith(sprM.getSprites().get(3))){
+        if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
             //Go To Level 2
-            HasWon();
+            redWin = true;
         }
 
-        if (red.collidesWith(sprM.getSprites().get(2))) {
+        if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
             //Go To Level 2
-            HasWon();
+            blueWin = true;
+        }
+
+        if (redWin && blueWin) {
+            g.setCurState("levelThree");
         }
 
         if (red.Death() || blue.Death()) {
@@ -95,7 +97,7 @@ public class LevelThree extends State {
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level Three", 450, 50);
+        g.drawString("Level Two", 450, 50);
 
     }
 
@@ -103,8 +105,8 @@ public class LevelThree extends State {
 
         red.ResetToPos(100,900);
         blue.ResetToPos(900,900);
-        sprM.getSprites().get(2).ResetToPos(10,10);
-        sprM.getSprites().get(3).ResetToPos(900,10);
+        sprM.getSprites().get(2).ResetToPos(200,10);
+        sprM.getSprites().get(3).ResetToPos(300,200);
 
         blueWin = false;
         redWin = false;

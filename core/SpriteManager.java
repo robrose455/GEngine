@@ -1,12 +1,8 @@
 package ge.core;
 
 import ge.core.sprite.Sprite;
-import ge.game.Game;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-
 
 public class SpriteManager {
 

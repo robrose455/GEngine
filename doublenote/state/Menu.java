@@ -1,10 +1,8 @@
-package ge.game.state;
+package ge.doublenote.state;
 
-import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Menu extends State {
 

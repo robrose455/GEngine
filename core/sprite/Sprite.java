@@ -1,6 +1,8 @@
 package ge.core.sprite;
 
 import ge.core.ImageReader;
+import ge.core.KeyManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -42,10 +44,10 @@ public class Sprite extends JPanel {
     public boolean isVisible;
     public boolean isDead;
 
-    //Designates controller for sprite (Arrow Keys or WASD)
+    public KeyManager km;
 
     //Constructor
-    public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n) {
+    public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
 
         //Initialize All Variables to Default State or Given State
         System.out.println("--Creating Sprite--");
@@ -58,6 +60,9 @@ public class Sprite extends JPanel {
         this.boundAction = ba;
         this.isVisible = true;
         this.imagePath = ip;
+
+        this.km = km;
+
 
         ImageReader ir = new ImageReader();
         this.image = ir.readImage(imagePath);
@@ -86,10 +91,10 @@ public class Sprite extends JPanel {
 
         if(isVisible) {
 
-            if(imagePath.equals("Red")){
+            if(imagePath.equals("RED")){
                 g.setColor(Color.RED);
                 g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("Blue")){
+            } else if (imagePath.equals("BLUE")){
                 g.setColor(Color.BLUE);
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("BlueT")){
@@ -262,7 +267,11 @@ public class Sprite extends JPanel {
     }
 
     //Checks for movement every frame the sprite is active
-    public void Update() {}
+    public void Update() {
+        CheckForMovement();
+    }
+
+    public void CheckForMovement() { }
 
     //Collision Detection
     public boolean collidesWith(Sprite s) {

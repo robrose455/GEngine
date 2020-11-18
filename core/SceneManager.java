@@ -1,9 +1,5 @@
 package ge.core;
 
-import ge.core.sprite.controller.SpriteArrowController;
-import ge.core.sprite.controller.SpriteWASDController;
-import ge.game.Game;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

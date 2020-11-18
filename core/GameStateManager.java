@@ -1,7 +1,7 @@
 package ge.core;
 
-import ge.game.state.*;
-import ge.game.state.Menu;
+import ge.doublenote.state.*;
+import ge.doublenote.state.Menu;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,11 +1,9 @@
-package ge.game.state;
+package ge.doublenote.state;
 
-import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
-import ge.game.Game;
+import ge.core.Game;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class State {
 

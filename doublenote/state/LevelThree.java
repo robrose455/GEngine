@@ -1,23 +1,24 @@
-package ge.game.state;
+package ge.doublenote.state;
 
 import ge.core.sprite.Sprite;
 import ge.core.SpriteManager;
 
 import java.awt.*;
 
-public class LevelOne extends State {
+public class LevelThree extends Level {
 
     SpriteManager sprM;
     boolean redWin = false;
     boolean blueWin = false;
+
     Sprite red;
     Sprite blue;
 
-    public LevelOne(SpriteManager sprM) {
+    public LevelThree(SpriteManager sprM) {
         super(sprM);
 
         this.sprM = sprM;
-        this.name = "levelOne";
+        this.name = "levelThree";
         System.out.println("--Creating Level One--");
 
     }
@@ -34,17 +35,17 @@ public class LevelOne extends State {
 
         }
 
+        for (int i = 0; i < sprM.getSprites().size(); i++) {
+            sprM.getSprites().get(i).Show();
+        }
+
         red = sprM.getSprites().get(0);
-        red.setSpeed(3);
+        red.setSpeed(2);
 
         blue = sprM.getSprites().get(1);
-        blue.setSpeed(3);
+        blue.setSpeed(2);
 
-            for (int i = 0; i < sprM.getSprites().size(); i++) {
-                sprM.getSprites().get(i).Show();
-            }
-
-            ResetState();
+        ResetSprites();
 
 
     }
@@ -52,20 +53,16 @@ public class LevelOne extends State {
     @Override
     public void Update() {
 
-        if (sprM.getSprites().get(0).collidesWith(sprM.getSprites().get(3))){
+        if (blue.collidesWith(sprM.getSprites().get(3))){
             System.out.println("Red Target Achieved");
             //Go To Level 2
-            redWin = true;
+            HasWon();
         }
 
-        if (sprM.getSprites().get(1).collidesWith(sprM.getSprites().get(2))) {
+        if (red.collidesWith(sprM.getSprites().get(2))) {
             System.out.println("Blue Target Achieved");
             //Go To Level 2
-            blueWin = true;
-        }
-
-        if (redWin && blueWin) {
-            g.setCurState("levelTwo");
+            HasWon();
         }
 
         if (red.Death() || blue.Death()) {
@@ -97,20 +94,19 @@ public class LevelOne extends State {
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level One", 450, 50);
+        g.drawString("Level Three", 450, 50);
 
     }
 
-    public void ResetState() {
+    public void ResetSprites() {
 
         red.ResetToPos(100,900);
         blue.ResetToPos(900,900);
-        sprM.getSprites().get(2).ResetToPos(425,400);
-        sprM.getSprites().get(3).ResetToPos(550,400);
+        sprM.getSprites().get(2).ResetToPos(10,10);
+        sprM.getSprites().get(3).ResetToPos(900,10);
 
-
-        redWin = false;
         blueWin = false;
+        redWin = false;
 
     }
 }

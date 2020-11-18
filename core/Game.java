@@ -1,4 +1,4 @@
-package ge.game;
+package ge.core;
 
 import ge.core.GameStateManager;
 import ge.core.sprite.Sprite;

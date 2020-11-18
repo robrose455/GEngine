@@ -1,10 +1,8 @@
-package ge.game.state;
+package ge.doublenote.state;
 
 import ge.core.SpriteManager;
-import ge.core.sprite.Sprite;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Win extends State {
 

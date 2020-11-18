@@ -1,66 +1,32 @@
 package ge.core.sprite;
 
-import ge.core.sprite.controller.Controller;
+import ge.core.KeyManager;
 
 public class PlayerSprite extends Sprite {
 
     //Designates controller for sprite (Arrow Keys or WASD)
-    public Controller playerControls;
+    public String playerControls;
+    public KeyManager km;
 
     //Constructor
-    public PlayerSprite(int x, int y, int dx, int dy, Controller playerControls, String ip, String ba, String n) {
+    public PlayerSprite(int x, int y, int dx, int dy, String playerControls, String ip, String ba, String n, KeyManager km) {
 
-        super(x,y,dx,dy,ip,ba,n);
+        super(x,y,dx,dy,ip,ba,n, km);
             //Initialize All Variables to Default State or Given State
             this.playerControls = playerControls;
+            this.km = km;
 
     }
 
 
     //Checks movement through player controller
-    public void CheckForMovement() {
-
-        if (playerControls.isMovingUp()) {
-
-            dy = -(speed);
-            dx = 0;
-
-        }
-
-        if (playerControls.isMovingDown()) {
-
-            dy = speed;
-            dx = 0;
-
-
-        }
-
-        if (playerControls.isMovingLeft()) {
-
-            dx = -(speed);
-            dy = 0;
-
-
-        }
-
-        if (playerControls.isMovingRight()) {
-
-            dx = speed;
-            dy = 0;
-
-        }
-
-        CheckForBounds();
-        y += dy;
-        x += dx;
-
-    }
+    @Override
+    public void CheckForMovement(){ }
 
     @Override
     public void Update() {
 
         CheckForMovement();
-        playerControls.ResetKeys();
 
     }
 
@@ -72,7 +38,7 @@ public class PlayerSprite extends Sprite {
 
     }
 
-    public Controller getPlayerControls() {
+    public String getPlayerControls() {
 
         return playerControls;
 
@@ -88,11 +54,11 @@ public class PlayerSprite extends Sprite {
         System.out.println("Y: " + y);
         System.out.println("DX: " + dx);
         System.out.println("DY: " + dy);
-        //System.out.println("Speed: " + speed);
-        //System.out.println("Top Border: " + topBorder);
-        //System.out.println("Bottom Border: " + bottomBorder);
-        //System.out.println("Left Border: " + leftBorder);
-        //System.out.println("Right Border: " + rightBorder);
+        System.out.println("Speed: " + speed);
+        System.out.println("Top Border: " + topBorder);
+        System.out.println("Bottom Border: " + bottomBorder);
+        System.out.println("Left Border: " + leftBorder);
+        System.out.println("Right Border: " + rightBorder);
         System.out.println("Type of Controller: " + getPlayerControls());
 
     }

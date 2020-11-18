@@ -1,8 +1,5 @@
 package ge.core;
 
-
-import ge.core.sprite.PlayerSprite;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,15 +11,49 @@ public class KeyManager implements ActionListener {
     Action leftAction;
     Action rightAction;
 
-    Action wAction;
-    Action sAction;
-    Action aAction;
-    Action dAction;
+    Action fPressAction;
+    Action fReleaseAction;
+
+    Action dPressAction;
+    Action dReleaseAction;
+
+    Action sPressAction;
+    Action sReleaseAction;
+
+    Action aPressAction;
+    Action aReleaseAction;
+
+    Action jPressAction;
+    Action jReleaseAction;
+
+    Action kPressAction;
+    Action kReleaseAction;
+
+    Action lPressAction;
+    Action lReleaseAction;
+
+    Action scPressAction;
+    Action scReleaseAction;
+
+    Action spaceAction;
+
+    boolean down = false;
+    boolean up = false;
+    boolean left = false;
+    boolean right = false;
+
+    boolean s = false;
+    boolean f = false;
+    boolean a = false;
+    boolean d = false;
+
+    boolean j = false;
+    boolean k = false;
+    boolean l = false;
+    boolean sc = false;
 
     SceneManager sm;
     SpriteManager sprM;
-
-    String controllerType;
     
     public KeyManager(SceneManager sm, SpriteManager sprM) {
 
@@ -35,10 +66,31 @@ public class KeyManager implements ActionListener {
         leftAction = new KeyManager.LeftAction();
         rightAction = new KeyManager.RightAction();
 
-        wAction = new KeyManager.wAction();
-        sAction = new KeyManager.sAction();
-        aAction = new KeyManager.aAction();
-        dAction = new KeyManager.dAction();
+        fPressAction = new KeyManager.fPressAction();
+        fReleaseAction = new KeyManager.fReleaseAction();
+
+        dPressAction = new KeyManager.dPressAction();
+        dReleaseAction = new KeyManager.dReleaseAction();
+
+        sPressAction = new KeyManager.sPressAction();
+        sReleaseAction = new KeyManager.sReleaseAction();
+
+        aPressAction = new KeyManager.aPressAction();
+        aReleaseAction = new KeyManager.aReleaseAction();
+
+        jPressAction = new KeyManager.jPressAction();
+        jReleaseAction = new KeyManager.jReleaseAction();
+
+        kPressAction = new KeyManager.kPressAction();
+        kReleaseAction = new KeyManager.kReleaseAction();
+
+        lPressAction = new KeyManager.lPressAction();
+        lReleaseAction = new KeyManager.lReleaseAction();
+
+        scPressAction = new KeyManager.scPressAction();
+        scReleaseAction = new KeyManager.scReleaseAction();
+
+        spaceAction = new KeyManager.spaceAction();
         
         sm.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upA");
         sm.getActionMap().put("upA", upAction);
@@ -52,133 +104,284 @@ public class KeyManager implements ActionListener {
         sm.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightA");
         sm.getActionMap().put("rightA", rightAction);
 
-        sm.getInputMap().put(KeyStroke.getKeyStroke("W"), "wA");
-        sm.getActionMap().put("wA", wAction);
+        KeyStroke F_KEY_PRESSED = KeyStroke.getKeyStroke('F', 0, false);
+        KeyStroke F_KEY_RELEASED = KeyStroke.getKeyStroke('F', 0, true);
 
-        sm.getInputMap().put(KeyStroke.getKeyStroke("S"), "sA");
-        sm.getActionMap().put("sA", sAction);
+        sm.getInputMap().put(F_KEY_PRESSED, "fPA");
+        sm.getActionMap().put("fPA", fPressAction);
 
-        sm.getInputMap().put(KeyStroke.getKeyStroke("A"), "aA");
-        sm.getActionMap().put("aA", aAction);
+        sm.getInputMap().put(F_KEY_RELEASED, "fRA");
+        sm.getActionMap().put("fRA", fReleaseAction);
 
-        sm.getInputMap().put(KeyStroke.getKeyStroke("D"), "dA");
-        sm.getActionMap().put("dA", dAction);
+        KeyStroke D_KEY_PRESSED = KeyStroke.getKeyStroke('D', 0, false);
+        KeyStroke D_KEY_RELEASED = KeyStroke.getKeyStroke('D', 0, true);
+
+        sm.getInputMap().put(D_KEY_PRESSED, "dPA");
+        sm.getActionMap().put("dPA", dPressAction);
+
+        sm.getInputMap().put(D_KEY_RELEASED, "dRA");
+        sm.getActionMap().put("dRA", dReleaseAction);
+
+        KeyStroke S_KEY_PRESSED = KeyStroke.getKeyStroke('S', 0, false);
+        KeyStroke S_KEY_RELEASED = KeyStroke.getKeyStroke('S', 0, true);
+
+        sm.getInputMap().put(S_KEY_PRESSED, "sPA");
+        sm.getActionMap().put("sPA", sPressAction);
+
+        sm.getInputMap().put(S_KEY_RELEASED, "sRA");
+        sm.getActionMap().put("sRA", sReleaseAction);
+
+        KeyStroke A_KEY_PRESSED = KeyStroke.getKeyStroke('A', 0, false);
+        KeyStroke A_KEY_RELEASED = KeyStroke.getKeyStroke('A', 0, true);
+
+        sm.getInputMap().put(A_KEY_PRESSED, "aPA");
+        sm.getActionMap().put("aPA", aPressAction);
+
+        sm.getInputMap().put(A_KEY_RELEASED, "aRA");
+        sm.getActionMap().put("aRA", aReleaseAction);
+
+        KeyStroke J_KEY_PRESSED = KeyStroke.getKeyStroke('J', 0, false);
+        KeyStroke J_KEY_RELEASED = KeyStroke.getKeyStroke('J', 0, true);
+
+        sm.getInputMap().put(J_KEY_PRESSED, "jPA");
+        sm.getActionMap().put("jPA", jPressAction);
+
+        sm.getInputMap().put(J_KEY_RELEASED, "jRA");
+        sm.getActionMap().put("jRA", jReleaseAction);
+
+        KeyStroke K_KEY_PRESSED = KeyStroke.getKeyStroke('K', 0, false);
+        KeyStroke K_KEY_RELEASED = KeyStroke.getKeyStroke('K', 0, true);
+
+        sm.getInputMap().put(K_KEY_PRESSED, "kPA");
+        sm.getActionMap().put("kPA", kPressAction);
+
+        sm.getInputMap().put(K_KEY_RELEASED, "kRA");
+        sm.getActionMap().put("kRA", kReleaseAction);
+
+        KeyStroke L_KEY_PRESSED = KeyStroke.getKeyStroke('L', 0, false);
+        KeyStroke L_KEY_RELEASED = KeyStroke.getKeyStroke('L', 0, true);
+
+        sm.getInputMap().put(L_KEY_PRESSED, "lPA");
+        sm.getActionMap().put("lPA", lPressAction);
+
+        sm.getInputMap().put(L_KEY_RELEASED, "lRA");
+        sm.getActionMap().put("lRA", lReleaseAction);
+
+        KeyStroke SC_KEY_PRESSED = KeyStroke.getKeyStroke(';', 0, false);
+        KeyStroke SC_KEY_RELEASED = KeyStroke.getKeyStroke(';', 0, true);
+
+        sm.getInputMap().put(SC_KEY_PRESSED, "scPA");
+        sm.getActionMap().put("scPA", scPressAction);
+
+        sm.getInputMap().put(SC_KEY_RELEASED, "scRA");
+        sm.getActionMap().put("scRA", scReleaseAction);
+
+        sm.getInputMap().put(KeyStroke.getKeyStroke(' '), "spaceA");
+        sm.getActionMap().put("spaceA", spaceAction);
+
         
         
     }
 
-    //Implementation for "Up Arrow"
     public class UpAction extends AbstractAction {
 
-
-        /*
-        Controller Type = Type of Controller
-        (sprM.getActivePlayerSprites.get(i)) -> Returns PlayerSprite
-        (getPlayerControls()) -> Returns controller
-        (typeofController()) -> returns controller string
-         */
-
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                    controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingUp();
-                }
-            }
+            up = true;
         }
     }
-    //Implementation for "Down Arrow"
+
     public class DownAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingDown();
-                }
-            }
+                down = true;
         }
     }
-    //Implementation for "Left Arrow"
+
     public class LeftAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingLeft();
-
-                }
-            }
+            left = true;
         }
     }
-    //Implementation for "Right Arrow"
+
     public class RightAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("Arrows")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingRight();
-                }
-            }
+            right = true;
         }
     }
-    //Implementation for "W Key"
-    public class wAction extends AbstractAction {
 
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingUp();
-                }
-            }
-        }
-    }
-    //Implementation for "S Key"
-    public class sAction extends AbstractAction {
+    public class fPressAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingDown();
-                }
-            }
+            f = true;
         }
     }
-    //Implementation for "A Key"
-    public class aAction extends AbstractAction {
+
+    public class fReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Released");
+            f = false;
+        }
+    }
+
+    public class dPressAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingLeft();
-                }
-            }
+            d = true;
         }
     }
-    //Implementation for "D Key"
-    public class dAction extends AbstractAction {
+
+    public class dReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Released");
+            d = false;
+        }
+    }
+
+    public class sPressAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
 
-            for (int i = 0; i < sprM.getPlayerSprites().size(); i++) {
-                controllerType = ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().typeOfController();
-                if (controllerType.equals("WASD")) {
-                    ((PlayerSprite) sprM.getPlayerSprites().get(i)).getPlayerControls().movingRight();
-                }
-            }
+            s = true;
         }
     }
+
+    public class sReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Released");
+            s = false;
+        }
+    }
+
+    public class aPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            a = true;
+        }
+    }
+
+    public class aReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Released");
+            a = false;
+        }
+    }
+
+
+    public class jPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            j = true;
+        }
+    }
+
+    public class jReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Released");
+            j = false;
+        }
+    }
+
+    public class kPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            k = true;
+        }
+    }
+
+    public class kReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            k = false;
+        }
+    }
+
+    public class lPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            l = true;
+        }
+    }
+
+    public class lReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+            l = false;
+        }
+    }
+
+    public class scPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            sc = true;
+        }
+    }
+
+    public class scReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            sc = false;
+        }
+    }
+
+    public class spaceAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+
 
     public void actionPerformed(ActionEvent e) {
         sm.actionPerformed(e);
     }
+
+    public boolean movingDown() {
+        return down;
+    }
+    public boolean movingUp() {
+        return up;
+    }
+    public boolean movingLeft() {
+        return left;
+    }
+    public boolean movingRight() {
+        return right;
+    }
+
+    public boolean s() {
+        return s;
+    }
+    public boolean f() {
+        return f;
+    }
+    public boolean a() {
+        return a;
+    }
+    public boolean d() {
+        return d;
+    }
+
+    public boolean j() { return j;}
+    public boolean k() { return k;}
+    public boolean l() {
+        return l;
+    }
+    public boolean sc() { return sc;}
     
 }

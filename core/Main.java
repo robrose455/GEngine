@@ -1,7 +1,6 @@
 package ge.core;
 
-import ge.game.DoubleNote;
-import ge.game.Game;
+import ge.doublenote.DoubleNote;
 
 public class Main {
 
