@@ -77,11 +77,29 @@ public class DoubleNote extends Game {
 
 
 
-        Sprite redTarget = new Note(575, 10,0, 2, "RED", "DIE", "RedNote", sm.getKeyManager());
-        spriteTemplates.add(redTarget);
+        Sprite redNote = new Note(0, 10,0, 2, "RED", "DIE", "RedNote", sm.getKeyManager());
+        spriteTemplates.add(redNote);
 
-        Sprite blueTarget = new Note(425, 10,0, 2, "BLUE", "DIE", "BlueNote", sm.getKeyManager());
-        spriteTemplates.add(blueTarget);
+        Sprite orangeNote = new Note(0, 10,0, 2, "ORANGE", "DIE", "OrangeNote", sm.getKeyManager());
+        spriteTemplates.add(orangeNote);
+
+        Sprite yellowNote = new Note(0, 10,0, 2, "YELLOW", "DIE", "YellowNote", sm.getKeyManager());
+        spriteTemplates.add(yellowNote);
+
+        Sprite whiteNote = new Note(0, 10,0, 2, "WHITE", "DIE", "WhiteNote", sm.getKeyManager());
+        spriteTemplates.add(whiteNote);
+
+        Sprite purpleNote = new Note(0, 10,0, 2, "PURPLE", "DIE", "PurpleNote", sm.getKeyManager());
+        spriteTemplates.add(purpleNote);
+
+        Sprite blueNote = new Note(0, 10,0, 2, "BLUE", "DIE", "BlueNote", sm.getKeyManager());
+        spriteTemplates.add(blueNote);
+
+        Sprite lblueNote = new Note(0, 10,0, 2, "LBLUE", "DIE", "LBlueNote", sm.getKeyManager());
+        spriteTemplates.add(lblueNote);
+
+        Sprite greenNote = new Note(0, 10,0, 2, "GREEN", "DIE", "GreenNote", sm.getKeyManager());
+        spriteTemplates.add(greenNote);
 
     }
 

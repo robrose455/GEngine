@@ -29,28 +29,36 @@ public class Note extends Sprite {
         if(isVisible) {
 
             if(imagePath.equals("RED")){
-                g.setColor(Color.decode("#9a9da1"));
+                x = 575;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("ORANGE")){
-                g.setColor(Color.decode("#9a9da1"));
+                x = 625;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("YELLOW")){
-                g.setColor(Color.decode("#9a9da1"));
+                x = 675;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             }  else if (imagePath.equals("WHITE")) {
-                g.setColor(Color.decode("#9a9da1"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("BLUE")) {
-                g.setColor(Color.decode("#9a9da1"));
+                x = 725;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("PURPLE")) {
-                g.setColor(Color.decode("#9a9da1"));
+                x = 425;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("GREEN")) {
-                g.setColor(Color.decode("#9a9da1"));
+            } else if (imagePath.equals("BLUE")) {
+                x = 375;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             } else if (imagePath.equals("LBLUE")) {
-                g.setColor(Color.decode("#9a9da1"));
+                x = 325;
+                g.setColor(Color.decode("#000000"));
+                g.fillRect(x,y,50,50);
+            } else if (imagePath.equals("GREEN")) {
+                x = 275;
+                g.setColor(Color.decode("#000000"));
                 g.fillRect(x,y,50,50);
             }
         }

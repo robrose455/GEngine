@@ -8,8 +8,6 @@ import java.awt.*;
 public class LevelOne extends Level {
 
     SpriteManager sprM;
-    Sprite red;
-    Sprite blue;
 
     public LevelOne(SpriteManager sprM) {
         super(sprM);
@@ -37,6 +35,16 @@ public class LevelOne extends Level {
 
         }
 
+            sprM.addSprite("RedNote");
+            sprM.addSprite("OrangeNote");
+            sprM.addSprite("YellowNote");
+            sprM.addSprite("WhiteNote");
+
+            sprM.addSprite("BlueNote");
+            sprM.addSprite("LBlueNote");
+            sprM.addSprite("GreenNote");
+            sprM.addSprite("PurpleNote");
+
     }
 
     @Override
@@ -45,6 +53,8 @@ public class LevelOne extends Level {
         for (int i = 0; i < sprM.getSprites().size(); i++) {
             sprM.getSprites().get(i).Update();
         }
+
+        //Check Collisions (For Each Hitter Type -> Check for collision of Note Type)
 
     }
 
@@ -110,6 +120,19 @@ public class LevelOne extends Level {
 
         g.setColor(Color.decode("#6dd17a"));
         g.fillRect(275,0,50,1000);
+
+        g.setColor(Color.BLACK);
+        g.fillRect(0,890,1000,10);
+        g.fillRect(0,950,1000,20);
+
+        g.drawLine(324,0,324,950);
+        g.drawLine(374,0,374,950);
+        g.drawLine(424,0,424,950);
+
+        g.drawLine(624,0,624,950);
+        g.drawLine(674,0,674,950);
+        g.drawLine(724,0,724,950);
+
 
     }
 }
