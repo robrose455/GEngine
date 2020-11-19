@@ -1,9 +1,12 @@
 package ge.core;
 
+import ge.doublenote.Song;
+import ge.doublenote.SongManager;
 import ge.doublenote.state.*;
 import ge.doublenote.state.Menu;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class GameStateManager {
@@ -13,20 +16,20 @@ public class GameStateManager {
     State curState;
 
     State menu;
-    State levelOne;
-    State levelTwo;
-    State levelThree;
+    State track;
     State gameOver;
     State win;
 
     ArrayList<State> states = new ArrayList<>();
     SpriteManager sprM;
+    SongManager songM;
 
-    public GameStateManager(SpriteManager sprM) {
+    public GameStateManager(SpriteManager sprM, SongManager songM) {
 
         System.out.println("--Creating Game State Manager--");
 
         winner = false;
+        this.songM = songM;
         this.sprM = sprM;
 
     }
@@ -39,7 +42,7 @@ public class GameStateManager {
         winner = true;
     }
 
-    public void LoadStates() {
+    public void LoadStates() throws FileNotFoundException {
 
 
         menu = new Menu(sprM);
@@ -51,19 +54,19 @@ public class GameStateManager {
         win = new Win(sprM);
         states.add(win);
 
-        levelOne = new LevelOne(sprM);
-        states.add(levelOne);
-
-        levelTwo = new LevelTwo(sprM);
-        states.add(levelTwo);
-
-        levelThree = new LevelThree(sprM);
-        states.add(levelThree);
-
+        //Test before interface works
+        Song s = songM.getSongList().get(2);
+        track = new Track(sprM, s);
+        states.add(track);
 
         curState = states.get(0);
         curState.Init();
 
+    }
+
+    public void setTrack(String name) {
+
+        //How Track Will be set in future
     }
 
     public void drawState(Graphics g) {
@@ -74,7 +77,7 @@ public class GameStateManager {
         return curState;
     }
 
-    public void setCurState(String n) {
+    public void setCurState(String n) throws FileNotFoundException {
 
         //System.out.println("Cur State Index to be: " + index);
         for (int i = 0; i < states.size(); i++) {

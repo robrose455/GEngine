@@ -8,6 +8,7 @@ import ge.core.SpriteManager;
 import ge.doublenote.sprite.Note;
 import ge.doublenote.sprite.NoteHitter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class DoubleNote extends Game {
@@ -17,6 +18,7 @@ public class DoubleNote extends Game {
     SceneManager sm;
     SpriteManager sprM;
     GameStateManager gsm;
+    SongManager songM = new SongManager();
 
     public DoubleNote() {
         super();
@@ -26,11 +28,14 @@ public class DoubleNote extends Game {
     }
 
     @Override
-    public void Init(SceneManager sm) {
+    public void Init(SceneManager sm) throws FileNotFoundException {
 
+        LoadSongs();
 
         this.sm = sm;
+
         DefineSprites();
+
         this.sprM = sm.getSpriteManager();
         this.gsm = sm.getGameStateManager();
 
@@ -38,7 +43,7 @@ public class DoubleNote extends Game {
 
     }
 
-    public void Update() {
+    public void Update() throws FileNotFoundException {
 
         if(gsm.isWinner()) {
             gsm.setCurState("win");
@@ -77,7 +82,7 @@ public class DoubleNote extends Game {
 
 
 
-        Sprite redNote = new Note(0, 10,0, 2, "RED", "DIE", "RedNote", sm.getKeyManager());
+        Sprite redNote = new Note(0, 10,0, 6, "RED", "DIE", "RedNote", sm.getKeyManager());
         spriteTemplates.add(redNote);
 
         Sprite orangeNote = new Note(0, 10,0, 2, "ORANGE", "DIE", "OrangeNote", sm.getKeyManager());
@@ -103,11 +108,24 @@ public class DoubleNote extends Game {
 
     }
 
+    public void LoadSongs() {
+
+        Song merrygoroundoflife = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/howls.wav", "Merry Go Round of Life");
+        songM.AddSong(merrygoroundoflife);
+
+        Song hotelroomservice = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/hotelroomservice.wav", "Hotel Room Service");
+        songM.AddSong(hotelroomservice);
+
+        Song beefoven = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/Beefoven.wav", "Beefoven");
+        songM.AddSong(beefoven);
+
+    }
+
     public ArrayList<Sprite> getSpriteTemplates() {
         return spriteTemplates;
     }
 
-    public void setCurState(String n) {
+    public void setCurState(String n) throws FileNotFoundException {
         gsm.setCurState(n);
     }
 
@@ -115,5 +133,6 @@ public class DoubleNote extends Game {
         return sm;
     }
     public GameStateManager getGameStateManager() { return gsm; }
+    public SongManager getSongManager() { return songM; }
 
 }

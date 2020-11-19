@@ -3,6 +3,7 @@ package ge.doublenote.state;
 import ge.core.SpriteManager;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public class Menu extends State {
 
@@ -18,17 +19,13 @@ public class Menu extends State {
     }
 
     @Override
-    public void Init() {
-
-        System.out.println("Making Sprites");
-
-    }
+    public void Init() { }
 
     @Override
-    public void Update() {
+    public void Update() throws FileNotFoundException {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
-            g.setCurState("levelOne");
+            g.setCurState("Track");
             g.GetSceneManager().getMouseManager().Reset();
         }
 
@@ -47,18 +44,18 @@ public class Menu extends State {
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
         g.setFont(bigFont);
+
         g.setColor(Color.WHITE);
-        g.drawString("ERIC SPEED RUN", 315, 100);
+        g.drawString("Double Note", 335, 100);
 
         g.setFont(medFont);
-        g.drawString("MATCH RED WITH BLUE AND BLUE WITH RED", 150, 200);
-        g.drawString("CLICK ANYWHERE TO START", 270, 300);
+        g.drawString("Select a Song by Clicking", 305, 250);
+
+        g.setFont(medFont);
+        g.drawString("Merry Go Round of Life", 315, 300);
 
         g.setFont(smallFont);
         g.drawString("Created by Rob Rose", 800, 900);
-
-        g.setFont(medFont);
-        g.drawString("Controls: WASD or Arrow Keys", 50, 900);
 
     }
 

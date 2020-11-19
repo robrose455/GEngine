@@ -1,26 +1,32 @@
 package ge.doublenote.state;
 
-import ge.core.sprite.Sprite;
+import ge.core.AudioManager;
 import ge.core.SpriteManager;
+import ge.doublenote.Song;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
-public class LevelOne extends Level {
+public class Track extends State {
 
     SpriteManager sprM;
+    AudioManager am;
+    Song s;
 
-    public LevelOne(SpriteManager sprM) {
+    public Track(SpriteManager sprM, Song s) {
         super(sprM);
 
+        this.am = new AudioManager();
         this.sprM = sprM;
-        this.name = "levelOne";
-        System.out.println("--Creating Level One--");
+        this.name = "Track";
+        this.s = s;
 
     }
 
     @Override
-    public void Init() {
+    public void Init() throws FileNotFoundException {
 
+        am.PlaySong(s.getFilePath());
         if(sprM.getSprites().size() == 0) {
 
             sprM.addPlayerSprite("RedHitter");
@@ -75,9 +81,12 @@ public class LevelOne extends Level {
         Font medFont = new Font("Verdana", Font.PLAIN, 20);
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
-        g.setFont(bigFont);
+        g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString("Level One", 50, 100);
+        g.drawString(s.getName(), 25, 100);
+
+        g.setFont(smallFont);
+        g.drawString("Difficulty: Medium", 25, 150);
 
         g.setColor(Color.BLACK);
         g.drawString("A",290,935);
@@ -132,6 +141,13 @@ public class LevelOne extends Level {
         g.drawLine(624,0,624,950);
         g.drawLine(674,0,674,950);
         g.drawLine(724,0,724,950);
+
+        g.setColor(Color.GRAY);
+        g.fillRect(265, 0, 8,1000);
+        g.fillRect(477, 0, 8,1000);
+        g.fillRect(565, 0, 8,1000);
+        g.fillRect(777, 0, 8,1000);
+
 
 
     }

@@ -3,6 +3,7 @@ package ge.core;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
 
 public class SceneManager extends JPanel implements  ActionListener {
 
@@ -27,7 +28,7 @@ public class SceneManager extends JPanel implements  ActionListener {
     //Create Timer
     Timer t = new Timer(10, this);
 
-    public SceneManager(Scene s) {
+    public SceneManager(Scene s) throws FileNotFoundException {
 
         System.out.println("--Creating Scene Manager--");
 
@@ -46,7 +47,7 @@ public class SceneManager extends JPanel implements  ActionListener {
         this.km = new KeyManager(this, sprM);
 
         //Game State Manager Contains all game states for game
-        this.gsm = new GameStateManager(sprM);
+        this.gsm = new GameStateManager(sprM, game.getSongManager());
 
         game.Init(this);
 
@@ -55,7 +56,11 @@ public class SceneManager extends JPanel implements  ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        Update();
+        try {
+            Update();
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -63,7 +68,7 @@ public class SceneManager extends JPanel implements  ActionListener {
         gsm.drawState(g);
     }
 
-    public void Update() {
+    public void Update() throws FileNotFoundException {
         game.Update();
         this.repaint();
     }

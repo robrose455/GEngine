@@ -3,6 +3,7 @@ package ge.doublenote.state;
 import ge.core.SpriteManager;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public class GameOver extends State {
 
@@ -22,7 +23,7 @@ public class GameOver extends State {
     }
 
     @Override
-    public void Update() {
+    public void Update() throws FileNotFoundException {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
             g.setCurState("levelOne");

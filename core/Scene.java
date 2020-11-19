@@ -1,6 +1,7 @@
 package ge.core;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import javax.swing.*;
 
 public class Scene extends JFrame {
@@ -20,7 +21,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void Start(Game game) {
+    public void Start(Game game) throws FileNotFoundException {
 
         //Called in the main function to start the game
         this.game = game;
@@ -28,7 +29,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void DrawScene() {
+    public void DrawScene() throws FileNotFoundException {
 
         //Create Scene
         sm = new SceneManager(this);

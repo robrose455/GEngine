@@ -1,10 +1,13 @@
 package ge.core;
 
 import ge.doublenote.DoubleNote;
+import ge.pitbull.Pitbull;
+
+import java.io.FileNotFoundException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         System.out.println("Game Engine Loading..");
 

@@ -4,6 +4,7 @@ import ge.core.SpriteManager;
 import ge.core.Game;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public abstract class State {
 
@@ -18,14 +19,11 @@ public abstract class State {
 
     }
 
-    public abstract void Init();
-    public abstract void Update();
-
+    public abstract void Init() throws FileNotFoundException;
+    public abstract void Update() throws FileNotFoundException;
     public abstract void DrawSprites(Graphics g);
     public abstract void DrawText(Graphics g);
-    public void HasWon() {
-        g.getGameStateManager().Win();
-    }
+
     public String getName() { return name; };
 
 }
