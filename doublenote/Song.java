@@ -4,12 +4,14 @@ public class Song {
 
     String filePath;
     String name;
+    NoteFactory nf;
 
-    public Song(String filePath, String name) {
+    public Song(String filePath, String name, NoteFactory nf) {
 
         //Will Store Sprite Track at Later Point
         this.filePath = filePath;
         this.name = name;
+        this.nf = nf;
 
     }
 
@@ -19,5 +21,13 @@ public class Song {
 
     public String getName() {
         return name;
+    }
+
+    public NoteFactory getNoteFactory() {
+        return nf;
+    }
+
+    public void SpawnNotes() {
+
     }
 }

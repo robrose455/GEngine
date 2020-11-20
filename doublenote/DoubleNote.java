@@ -30,9 +30,10 @@ public class DoubleNote extends Game {
     @Override
     public void Init(SceneManager sm) throws FileNotFoundException, InterruptedException {
 
-        LoadSongs();
 
         this.sm = sm;
+
+        LoadSongs();
 
         DefineSprites();
 
@@ -86,14 +87,21 @@ public class DoubleNote extends Game {
 
     public void LoadSongs() {
 
-        Song merrygoroundoflife = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/howls.wav", "Merry Go Round of Life");
+        NoteFactory nf = new NoteFactory(sm);
+
+        Song merrygoroundoflife = new MerryGoRoundOfLife("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/howls.wav", "Merry Go Round of Life",nf);
         songM.AddSong(merrygoroundoflife);
 
-        Song hotelroomservice = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/hotelroomservice.wav", "Hotel Room Service");
+        Song hotelroomservice = new HotelRoomService("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/hotelroomservice.wav", "Hotel Room Service",nf);
         songM.AddSong(hotelroomservice);
 
-        Song beefoven = new Song("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/Beefoven.wav", "Beefoven");
+        Song beefoven = new Beefoven("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/Beefoven.wav", "Beefoven",nf);
         songM.AddSong(beefoven);
+
+        Song furelise = new FurElise("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/FurElise.wav", "FurElise",nf);
+        songM.AddSong(furelise);
+
+
 
     }
 

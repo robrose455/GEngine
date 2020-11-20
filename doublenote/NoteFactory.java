@@ -2,18 +2,12 @@ package ge.doublenote;
 
 import ge.core.KeyManager;
 import ge.core.SceneManager;
-import ge.core.SpriteManager;
 import ge.core.sprite.Sprite;
 import ge.doublenote.sprite.Note;
-import ge.doublenote.sprite.NoteHitter;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 public class NoteFactory {
 
-    Song s;
-    SpriteManager sprM;
+    SceneManager sm;
     KeyManager km;
 
     ArrayList<Sprite> redNotes = new ArrayList<>();
@@ -26,15 +20,15 @@ public class NoteFactory {
     ArrayList<Sprite> greenNotes = new ArrayList<>();
 
 
-    public NoteFactory(Song s, SpriteManager sprM, SceneManager sm) {
+    public NoteFactory(SceneManager sm) {
 
-        this.s = s;
-        this.sprM = sprM;
+        this.sm = sm;
         this.km = sm.getKeyManager();
 
     }
 
     public void CreateRedNote() {
+        System.out.println("Making Note:");
         Sprite redNote = new Note(0, 10,0, 4, "RED", "DIE", "RedNote", km);
         redNotes.add(redNote);
     }
@@ -43,10 +37,8 @@ public class NoteFactory {
         orangeNotes.add(orangeNote);
     }
     public void CreateYellowNote() {
-        System.out.println("Hit");
         Sprite yellowNote = new Note(0, 10,0, 4, "YELLOW", "DIE", "YellowNote", km);
         yellowNotes.add(yellowNote);
-        System.out.println("Note Size: " + yellowNotes.size());
     }
     public void CreateWhiteNote() {
         Sprite whiteNote = new Note(0, 10,0, 4, "WHITE", "DIE", "WhiteNote", km);

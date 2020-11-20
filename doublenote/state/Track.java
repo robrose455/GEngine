@@ -46,7 +46,6 @@ public class Track extends State {
         this.name = "Track";
         this.s = s;
         this.sm = sprM.getGame().GetSceneManager();
-        this.nf = new NoteFactory(s,sprM,sm);
         this.km = sm.getKeyManager();
 
     }
@@ -91,6 +90,7 @@ public class Track extends State {
 
         }
 
+        this.nf = s.getNoteFactory();
         nf.CreateRedNote();
         nf.CreateOrangeNote();
         nf.CreateYellowNote();
@@ -103,47 +103,14 @@ public class Track extends State {
         StartNoteSpawns();
 
     }
-
-    public void PumpNotes() {
-
-        try {
-            while(pc.getPoints() < 1000) {
-                nf.CreateRedNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreateOrangeNote();
-                nf.CreateRedNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreateYellowNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreateWhiteNote();
-                nf.CreateBlueNote();
-                nf.CreateRedNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreatePurpleNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreateBlueNote();
-                nf.CreateRedNote();
-                TimeUnit.MILLISECONDS.sleep(480);
-                nf.CreateGreenNote();
-                nf.CreateLBlueNote();
-            }
-        }
-        catch(InterruptedException ex)
-        {
-            Thread.currentThread().interrupt();
-        }
-    }
     @Override
     public void Update() {
 
-        //CheckNoteSpawns();
-        System.out.println(System.currentTimeMillis());
         for (int i = 0; i < hitterList.size(); i++) {
             hitterList.get(i).Update();
         }
 
         //Red Notes
-        //System.out.println(redHitter.collidesWith(nf.getRedNotes().get(0)));
         for (int i = 0; i < nf.getRedNotes().size(); i++) {
             if(redHitter.collidesWith(nf.getRedNotes().get(i))){
                 System.out.println("r dub");
@@ -155,8 +122,8 @@ public class Track extends State {
             }
             nf.getRedNotes().get(i).Update();
         }
+
         //Orange Notes
-        System.out.println(orangeHitter.collidesWith(nf.getOrangeNotes().get(0)));
         for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
             if(orangeHitter.collidesWith(nf.getOrangeNotes().get(i))){
                 System.out.println("o dub");
@@ -246,7 +213,6 @@ public class Track extends State {
     @Override
     public void DrawSprites(Graphics g) {
 
-        System.out.println("YO");
         DrawTrack(g);
 
         //Draw the Hitters
@@ -256,6 +222,8 @@ public class Track extends State {
 
         //Red Notes
         for (int i = 0; i < nf.getRedNotes().size(); i++) {
+            System.out.println("Drawing Note");
+            System.out.println("Size of :" + nf.getRedNotes().size());
             nf.getRedNotes().get(i).DrawSprite(g);
         }
         //Orange Notes
@@ -263,9 +231,7 @@ public class Track extends State {
             nf.getOrangeNotes().get(i).DrawSprite(g);
         }
         //Yellow Notes
-        System.out.println("Yellow Notes Size in TRACK: " + nf.getYellowNotes().size());
         for (int i = 0; i < nf.getYellowNotes().size(); i++) {
-            System.out.println("Hit draw sprite");
             nf.getYellowNotes().get(i).DrawSprite(g);
         }
         //White Notes
@@ -382,7 +348,7 @@ public class Track extends State {
     public class NoteThread extends Thread {
 
         public void run() {
-            PumpNotes();
+            s.SpawnNotes();
         }
     }
 }
