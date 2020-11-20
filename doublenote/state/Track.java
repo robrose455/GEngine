@@ -61,31 +61,31 @@ public class Track extends State {
             hitterList.add(redHitter);
 
             Sprite orangeHitter = new NoteHitter(625, 900, 0, 0,  "ORANGE", "DIE", "OrangeHitter", sm.getKeyManager());
-            this.orangeHitter = redHitter;
+            this.orangeHitter = orangeHitter;
             hitterList.add(orangeHitter);
 
             Sprite yellowHitter = new NoteHitter(675, 900, 0, 0,  "YELLOW", "DIE", "YellowHitter", sm.getKeyManager());
-            this.yellowHitter = redHitter;
+            this.yellowHitter = yellowHitter;
             hitterList.add(yellowHitter);
 
             Sprite whiteHitter = new NoteHitter(725, 900, 0, 0,  "WHITE", "DIE", "WhiteHitter", sm.getKeyManager());
-            this.whiteHitter = redHitter;
+            this.whiteHitter = whiteHitter;
             hitterList.add(whiteHitter);
 
             Sprite purpleHitter = new NoteHitter(425, 900, 0, 0,  "PURPLE", "DIE", "PurpleHitter", sm.getKeyManager());
-            this.purpleHitter = redHitter;
+            this.purpleHitter = purpleHitter;
             hitterList.add(purpleHitter);
 
             Sprite blueHitter = new NoteHitter(375, 900, 0, 0,  "BLUE", "DIE", "BlueHitter", sm.getKeyManager());
-            this.blueHitter = redHitter;
+            this.blueHitter = blueHitter;
             hitterList.add(blueHitter);
 
             Sprite lblueHitter = new NoteHitter(325, 900, 0, 0,  "LBLUE", "DIE", "LBlueHitter", sm.getKeyManager());
-            this.lblueHitter = redHitter;
+            this.lblueHitter = lblueHitter;
             hitterList.add(lblueHitter);
 
             Sprite greenHitter = new NoteHitter(275, 900, 0, 0,  "GREEN", "DIE", "GreenHitter", sm.getKeyManager());
-            this.greenHitter = redHitter;
+            this.greenHitter = greenHitter;
             hitterList.add(greenHitter);
 
         }
