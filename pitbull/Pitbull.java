@@ -4,7 +4,7 @@ import ge.core.Game;
 import ge.core.GameStateManager;
 import ge.core.SceneManager;
 import ge.core.sprite.Sprite;
-import ge.doublenote.SongManager;
+import ge.doublenote.songs.SongManager;
 
 import java.util.ArrayList;
 

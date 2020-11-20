@@ -5,15 +5,14 @@ import ge.core.KeyManager;
 import ge.core.SceneManager;
 import ge.core.SpriteManager;
 import ge.core.sprite.Sprite;
-import ge.doublenote.NoteFactory;
-import ge.doublenote.PointCounter;
-import ge.doublenote.Song;
+import ge.doublenote.notelogic.NoteFactory;
+import ge.doublenote.notelogic.PointCounter;
+import ge.doublenote.songs.Song;
 import ge.doublenote.sprite.NoteHitter;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Track extends State {
 

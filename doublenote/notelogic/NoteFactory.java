@@ -1,4 +1,4 @@
-package ge.doublenote;
+package ge.doublenote.notelogic;
 
 import ge.core.KeyManager;
 import ge.core.SceneManager;

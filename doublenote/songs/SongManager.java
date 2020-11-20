@@ -1,4 +1,4 @@
-package ge.doublenote;
+package ge.doublenote.songs;
 
 import java.util.ArrayList;
 

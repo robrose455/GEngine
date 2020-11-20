@@ -1,7 +1,7 @@
 package ge.core;
 
 import ge.core.sprite.Sprite;
-import ge.doublenote.SongManager;
+import ge.doublenote.songs.SongManager;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

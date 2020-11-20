@@ -1,6 +1,6 @@
 package ge.core;
 
-import ge.doublenote.DoubleNote;
+import ge.doublenote.definition.DoubleNote;
 
 import java.io.FileNotFoundException;
 

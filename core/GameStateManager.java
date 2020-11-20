@@ -1,7 +1,7 @@
 package ge.core;
 
-import ge.doublenote.Song;
-import ge.doublenote.SongManager;
+import ge.doublenote.songs.Song;
+import ge.doublenote.songs.SongManager;
 import ge.doublenote.state.*;
 import ge.doublenote.state.Menu;
 

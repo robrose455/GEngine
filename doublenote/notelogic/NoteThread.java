@@ -1,4 +1,4 @@
-package ge.doublenote;
+package ge.doublenote.notelogic;
 
 public class NoteThread extends Thread {
 

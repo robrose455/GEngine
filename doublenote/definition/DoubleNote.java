@@ -1,11 +1,13 @@
-package ge.doublenote;
+package ge.doublenote.definition;
 
 import ge.core.Game;
 import ge.core.sprite.Sprite;
 import ge.core.GameStateManager;
 import ge.core.SceneManager;
 import ge.core.SpriteManager;
-import ge.doublenote.sprite.Note;
+import ge.doublenote.notelogic.NoteFactory;
+import ge.doublenote.songs.SongManager;
+import ge.doublenote.songs.*;
 import ge.doublenote.sprite.NoteHitter;
 
 import java.io.FileNotFoundException;

@@ -1,10 +1,12 @@
-package ge.doublenote;
+package ge.doublenote.songs;
+
+import ge.doublenote.notelogic.NoteFactory;
 
 public class Song {
 
-    String filePath;
-    String name;
-    NoteFactory nf;
+    public String filePath;
+    public String name;
+    public NoteFactory nf;
 
     public Song(String filePath, String name, NoteFactory nf) {
 
