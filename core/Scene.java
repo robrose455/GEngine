@@ -21,7 +21,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void Start(Game game) throws FileNotFoundException {
+    public void Start(Game game) throws FileNotFoundException, InterruptedException {
 
         //Called in the main function to start the game
         this.game = game;
@@ -29,7 +29,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void DrawScene() throws FileNotFoundException {
+    public void DrawScene() throws FileNotFoundException, InterruptedException {
 
         //Create Scene
         sm = new SceneManager(this);

@@ -35,35 +35,37 @@ public class NoteFactory {
     }
 
     public void CreateRedNote() {
-        Sprite redNote = new Note(0, 10,0, 6, "RED", "DIE", "RedNote", km);
+        Sprite redNote = new Note(0, 10,0, 4, "RED", "DIE", "RedNote", km);
         redNotes.add(redNote);
     }
     public void CreateOrangeNote() {
-        Sprite orangeNote = new Note(0, 10,0, 6, "ORANGE", "DIE", "OrangeNote", km);
+        Sprite orangeNote = new Note(0, 10,0, 4, "ORANGE", "DIE", "OrangeNote", km);
         orangeNotes.add(orangeNote);
     }
     public void CreateYellowNote() {
-        Sprite yellowNote = new Note(0, 10,0, 2, "YELLOW", "DIE", "YellowNote", km);
+        System.out.println("Hit");
+        Sprite yellowNote = new Note(0, 10,0, 4, "YELLOW", "DIE", "YellowNote", km);
         yellowNotes.add(yellowNote);
+        System.out.println("Note Size: " + yellowNotes.size());
     }
     public void CreateWhiteNote() {
-        Sprite whiteNote = new Note(0, 10,0, 2, "WHITE", "DIE", "WhiteNote", km);
+        Sprite whiteNote = new Note(0, 10,0, 4, "WHITE", "DIE", "WhiteNote", km);
         whiteNotes.add(whiteNote);
     }
     public void CreateBlueNote() {
-        Sprite blueNote = new Note(0, 10,0, 2, "BLUE", "DIE", "BlueNote", km);
+        Sprite blueNote = new Note(0, 10,0, 4, "BLUE", "DIE", "BlueNote", km);
         blueNotes.add(blueNote);
     }
     public void CreatePurpleNote() {
-        Sprite purpleNote = new Note(0, 10,0, 2, "PURPLE", "DIE", "PurpleNote", km);
+        Sprite purpleNote = new Note(0, 10,0, 4, "PURPLE", "DIE", "PurpleNote", km);
         purpleNotes.add(purpleNote);
     }
     public void CreateLBlueNote() {
-        Sprite lblueNote = new Note(0, 10,0, 2, "LBLUE", "DIE", "LBlueNote", km);
+        Sprite lblueNote = new Note(0, 10,0, 4, "LBLUE", "DIE", "LBlueNote", km);
         lblueNotes.add(lblueNote);
     }
     public void CreateGreenNote() {
-        Sprite greenNote = new Note(0, 10,0, 2, "GREEN", "DIE", "GreenNote", km);
+        Sprite greenNote = new Note(0, 10,0, 4, "GREEN", "DIE", "GreenNote", km);
         greenNotes.add(greenNote);
     }
 

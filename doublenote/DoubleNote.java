@@ -28,7 +28,7 @@ public class DoubleNote extends Game {
     }
 
     @Override
-    public void Init(SceneManager sm) throws FileNotFoundException {
+    public void Init(SceneManager sm) throws FileNotFoundException, InterruptedException {
 
         LoadSongs();
 
@@ -43,7 +43,7 @@ public class DoubleNote extends Game {
 
     }
 
-    public void Update() throws FileNotFoundException {
+    public void Update() throws FileNotFoundException, InterruptedException {
 
         if(gsm.isWinner()) {
             gsm.setCurState("win");
@@ -101,7 +101,7 @@ public class DoubleNote extends Game {
         return spriteTemplates;
     }
 
-    public void setCurState(String n) throws FileNotFoundException {
+    public void setCurState(String n) throws FileNotFoundException, InterruptedException {
         gsm.setCurState(n);
     }
 

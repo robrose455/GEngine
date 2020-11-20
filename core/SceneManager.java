@@ -28,7 +28,7 @@ public class SceneManager extends JPanel implements ActionListener {
     //Create Timer
     Timer t = new Timer(10, this);
 
-    public SceneManager(Scene s) throws FileNotFoundException {
+    public SceneManager(Scene s) throws FileNotFoundException, InterruptedException {
 
         System.out.println("--Creating Scene Manager--");
 
@@ -58,7 +58,7 @@ public class SceneManager extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             Update();
-        } catch (FileNotFoundException fileNotFoundException) {
+        } catch (FileNotFoundException | InterruptedException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         }
     }
@@ -68,7 +68,7 @@ public class SceneManager extends JPanel implements ActionListener {
         gsm.drawState(g);
     }
 
-    public void Update() throws FileNotFoundException {
+    public void Update() throws FileNotFoundException, InterruptedException {
         game.Update();
         this.repaint();
     }

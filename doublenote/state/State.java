@@ -19,8 +19,8 @@ public abstract class State {
 
     }
 
-    public abstract void Init() throws FileNotFoundException;
-    public abstract void Update() throws FileNotFoundException;
+    public abstract void Init() throws FileNotFoundException, InterruptedException;
+    public abstract void Update() throws FileNotFoundException, InterruptedException;
     public abstract void DrawSprites(Graphics g);
     public abstract void DrawText(Graphics g);
 

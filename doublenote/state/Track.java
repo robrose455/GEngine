@@ -13,6 +13,7 @@ import ge.doublenote.sprite.NoteHitter;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Track extends State {
 
@@ -50,10 +51,9 @@ public class Track extends State {
     }
 
     @Override
-    public void Init() throws FileNotFoundException {
+    public void Init() throws FileNotFoundException, InterruptedException {
 
         am.PlaySong(s.getFilePath());
-
         if(hitterList.size() == 0) {
 
             Sprite redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
@@ -90,17 +90,51 @@ public class Track extends State {
 
         }
 
-            nf.CreateRedNote();
-            nf.CreateOrangeNote();
-            nf.CreateYellowNote();
-            nf.CreateWhiteNote();
-            nf.CreatePurpleNote();
-            nf.CreateBlueNote();
-            nf.CreateGreenNote();
-            nf.CreateLBlueNote();
+        /*nf.CreateRedNote();
+        nf.CreateOrangeNote();
+        nf.CreateYellowNote();
+        nf.CreateWhiteNote();
+        nf.CreatePurpleNote();
+        nf.CreateBlueNote();
+        nf.CreateGreenNote();
+        nf.CreateLBlueNote();
+        */
+
+        startNoteSpawns();
 
     }
 
+    public void startNoteSpawns() {
+
+        NoteThread thread = new NoteThread();
+        thread.start();
+
+    }
+
+    public void PumpNotes() {
+
+        System.out.println("Threadin");
+        try {
+            nf.CreateRedNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreateOrangeNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreateYellowNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreateWhiteNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreatePurpleNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreateBlueNote();
+            TimeUnit.SECONDS.sleep(1);
+            nf.CreateGreenNote();
+            nf.CreateLBlueNote();
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
     @Override
     public void Update() {
 
@@ -217,6 +251,7 @@ public class Track extends State {
     @Override
     public void DrawSprites(Graphics g) {
 
+        System.out.println("YO");
         DrawTrack(g);
 
         //Draw the Hitters
@@ -233,7 +268,9 @@ public class Track extends State {
             nf.getOrangeNotes().get(i).DrawSprite(g);
         }
         //Yellow Notes
+        System.out.println("Yellow Notes Size in TRACK: " + nf.getYellowNotes().size());
         for (int i = 0; i < nf.getYellowNotes().size(); i++) {
+            System.out.println("Hit draw sprite");
             nf.getYellowNotes().get(i).DrawSprite(g);
         }
         //White Notes
@@ -339,5 +376,12 @@ public class Track extends State {
 
 
 
+    }
+
+    public class NoteThread extends Thread {
+
+        public void run() {
+            PumpNotes();
+        }
     }
 }

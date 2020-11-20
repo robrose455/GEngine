@@ -22,7 +22,7 @@ public class Menu extends State {
     public void Init() { }
 
     @Override
-    public void Update() throws FileNotFoundException {
+    public void Update() throws FileNotFoundException, InterruptedException {
 
         if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
             g.setCurState("Track");

@@ -42,7 +42,7 @@ public class GameStateManager {
         winner = true;
     }
 
-    public void LoadStates() throws FileNotFoundException {
+    public void LoadStates() throws FileNotFoundException, InterruptedException {
 
 
         menu = new Menu(sprM);
@@ -77,7 +77,7 @@ public class GameStateManager {
         return curState;
     }
 
-    public void setCurState(String n) throws FileNotFoundException {
+    public void setCurState(String n) throws FileNotFoundException, InterruptedException {
 
         //System.out.println("Cur State Index to be: " + index);
         for (int i = 0; i < states.size(); i++) {
