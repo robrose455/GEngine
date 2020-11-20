@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class Note extends Sprite {
 
+    boolean hit = false;
+
     public Note(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
         super(x, y, dx, dy, ip, ba, n, km);
 
@@ -29,41 +31,48 @@ public class Note extends Sprite {
         if(isVisible) {
 
             if(imagePath.equals("RED")){
-                x = 575;
+                x = 579;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("ORANGE")){
-                x = 625;
+                x = 629;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("YELLOW")){
-                x = 675;
+                x = 679;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             }  else if (imagePath.equals("WHITE")) {
-                x = 725;
+                x = 729;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("PURPLE")) {
-                x = 425;
+                x = 429;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("BLUE")) {
-                x = 375;
+                x = 379;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("LBLUE")) {
-                x = 325;
+                x = 329;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             } else if (imagePath.equals("GREEN")) {
-                x = 275;
+                x = 279;
                 g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,50,50);
+                g.fillRect(x,y,40,40);
             }
         }
         else {
             g.drawImage(image, x, y, null);
         }
+    }
+
+    public void hit(){
+        hit = true;
+    }
+    public boolean isHit() {
+        return hit;
     }
 }

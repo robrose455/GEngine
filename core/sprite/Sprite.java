@@ -7,9 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Sprite extends JPanel {
+public class Sprite extends JPanel implements Cloneable {
 
-
+    boolean used = false;
+    boolean hit = false;
     public String name;
 
     //Positional Parameters
@@ -77,13 +78,8 @@ public class Sprite extends JPanel {
         }
     }
 
-    public void ResetToPos(int x, int y) {
-
-        this.x = x;
-        this.y = y;
-        this.dx = 0;
-        this.dy = 0;
-        this.isDead = false;
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
 
     }
 
@@ -336,5 +332,22 @@ public class Sprite extends JPanel {
         System.out.println("Sprite");
         return "Sprite";
 
+    }
+
+    public KeyManager getKeyManager() {
+        return km;
+    }
+
+    public void hit(){
+        hit = true;
+    }
+    public boolean isHit() {
+        return hit;
+    }
+    public boolean hasBeenUsed() {
+        return used;
+    }
+    public void used() {
+        used = true;
     }
 }

@@ -73,23 +73,10 @@ public class SpriteManager {
         }
     }
 
-    public void ClearSprites(String n) {
-
-
-    }
-
-    public void SpriteReport() {
-
-
-    }
-
     public Game getGame() { return g; }
 
     public ArrayList<Sprite> getSprites() {
         return sprites;
-    }
-    public ArrayList<Sprite> getPlayerSprites() {
-        return playerSprites;
     }
 
 

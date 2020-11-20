@@ -183,6 +183,10 @@ public class KeyManager implements ActionListener {
         
     }
 
+    public KeyManager() {
+
+    }
+
     public class UpAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {

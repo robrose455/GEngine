@@ -1,9 +1,6 @@
 package ge.core;
 
-import ge.core.GameStateManager;
 import ge.core.sprite.Sprite;
-import ge.core.Scene;
-import ge.core.SceneManager;
 import ge.doublenote.SongManager;
 
 import java.io.FileNotFoundException;

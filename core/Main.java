@@ -1,7 +1,6 @@
 package ge.core;
 
 import ge.doublenote.DoubleNote;
-import ge.pitbull.Pitbull;
 
 import java.io.FileNotFoundException;
 

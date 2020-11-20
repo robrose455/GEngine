@@ -26,6 +26,7 @@ public class NoteHitter extends Sprite {
 
     public void CheckHits() {
 
+
         if (km.j() && name.equals("RedHitter")) {
             Show();
         } else if (km.k() && name.equals("OrangeHitter")) {
@@ -81,6 +82,10 @@ public class NoteHitter extends Sprite {
         else {
             g.drawImage(image, x, y, null);
         }
+    }
+
+    public KeyManager getKeyManager() {
+        return km;
     }
 
 

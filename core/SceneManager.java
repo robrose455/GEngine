@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 
-public class SceneManager extends JPanel implements  ActionListener {
+public class SceneManager extends JPanel implements ActionListener {
 
     //Scene Canvas Reference
     Scene s;

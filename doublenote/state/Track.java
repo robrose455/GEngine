@@ -1,25 +1,51 @@
 package ge.doublenote.state;
 
 import ge.core.AudioManager;
+import ge.core.KeyManager;
+import ge.core.SceneManager;
 import ge.core.SpriteManager;
+import ge.core.sprite.Sprite;
+import ge.doublenote.NoteFactory;
+import ge.doublenote.PointCounter;
 import ge.doublenote.Song;
+import ge.doublenote.sprite.NoteHitter;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Track extends State {
 
     SpriteManager sprM;
+    SceneManager sm;
     AudioManager am;
+    PointCounter pc;
+    NoteFactory nf;
+    KeyManager km;
     Song s;
+
+    Sprite redHitter;
+    Sprite orangeHitter;
+    Sprite yellowHitter;
+    Sprite whiteHitter;
+    Sprite purpleHitter;
+    Sprite blueHitter;
+    Sprite lblueHitter;
+    Sprite greenHitter;
+
+    ArrayList<Sprite> hitterList = new ArrayList<>();
 
     public Track(SpriteManager sprM, Song s) {
         super(sprM);
 
+        this.pc = new PointCounter();
         this.am = new AudioManager();
         this.sprM = sprM;
         this.name = "Track";
         this.s = s;
+        this.sm = sprM.getGame().GetSceneManager();
+        this.nf = new NoteFactory(s,sprM,sm);
+        this.km = sm.getKeyManager();
 
     }
 
@@ -27,40 +53,164 @@ public class Track extends State {
     public void Init() throws FileNotFoundException {
 
         am.PlaySong(s.getFilePath());
-        if(sprM.getSprites().size() == 0) {
 
-            sprM.addPlayerSprite("RedHitter");
-            sprM.addPlayerSprite("OrangeHitter");
-            sprM.addPlayerSprite("YellowHitter");
-            sprM.addPlayerSprite("WhiteHitter");
+        if(hitterList.size() == 0) {
 
-            sprM.addPlayerSprite("BlueHitter");
-            sprM.addPlayerSprite("PurpleHitter");
-            sprM.addPlayerSprite("GreenHitter");
-            sprM.addPlayerSprite("LBlueHitter");
+            Sprite redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
+            this.redHitter = redHitter;
+            hitterList.add(redHitter);
+
+            Sprite orangeHitter = new NoteHitter(625, 900, 0, 0,  "ORANGE", "DIE", "OrangeHitter", sm.getKeyManager());
+            this.orangeHitter = redHitter;
+            hitterList.add(orangeHitter);
+
+            Sprite yellowHitter = new NoteHitter(675, 900, 0, 0,  "YELLOW", "DIE", "YellowHitter", sm.getKeyManager());
+            this.yellowHitter = redHitter;
+            hitterList.add(yellowHitter);
+
+            Sprite whiteHitter = new NoteHitter(725, 900, 0, 0,  "WHITE", "DIE", "WhiteHitter", sm.getKeyManager());
+            this.whiteHitter = redHitter;
+            hitterList.add(whiteHitter);
+
+            Sprite purpleHitter = new NoteHitter(425, 900, 0, 0,  "PURPLE", "DIE", "PurpleHitter", sm.getKeyManager());
+            this.purpleHitter = redHitter;
+            hitterList.add(purpleHitter);
+
+            Sprite blueHitter = new NoteHitter(375, 900, 0, 0,  "BLUE", "DIE", "BlueHitter", sm.getKeyManager());
+            this.blueHitter = redHitter;
+            hitterList.add(blueHitter);
+
+            Sprite lblueHitter = new NoteHitter(325, 900, 0, 0,  "LBLUE", "DIE", "LBlueHitter", sm.getKeyManager());
+            this.lblueHitter = redHitter;
+            hitterList.add(lblueHitter);
+
+            Sprite greenHitter = new NoteHitter(275, 900, 0, 0,  "GREEN", "DIE", "GreenHitter", sm.getKeyManager());
+            this.greenHitter = redHitter;
+            hitterList.add(greenHitter);
 
         }
 
-            sprM.addSprite("RedNote");
-            sprM.addSprite("OrangeNote");
-            sprM.addSprite("YellowNote");
-            sprM.addSprite("WhiteNote");
-
-            sprM.addSprite("BlueNote");
-            sprM.addSprite("LBlueNote");
-            sprM.addSprite("GreenNote");
-            sprM.addSprite("PurpleNote");
+            nf.CreateRedNote();
+            nf.CreateOrangeNote();
+            nf.CreateYellowNote();
+            nf.CreateWhiteNote();
+            nf.CreatePurpleNote();
+            nf.CreateBlueNote();
+            nf.CreateGreenNote();
+            nf.CreateLBlueNote();
 
     }
 
     @Override
     public void Update() {
 
-        for (int i = 0; i < sprM.getSprites().size(); i++) {
-            sprM.getSprites().get(i).Update();
+        for (int i = 0; i < hitterList.size(); i++) {
+            hitterList.get(i).Update();
         }
 
-        //Check Collisions (For Each Hitter Type -> Check for collision of Note Type)
+        //Red Notes
+        //System.out.println(redHitter.collidesWith(nf.getRedNotes().get(0)));
+        for (int i = 0; i < nf.getRedNotes().size(); i++) {
+            if(redHitter.collidesWith(nf.getRedNotes().get(i))){
+                System.out.println("r dub");
+                nf.getRedNotes().get(i).hit();
+                if(nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getRedNotes().get(i).used();
+                }
+            }
+            nf.getRedNotes().get(i).Update();
+        }
+        //Orange Notes
+        System.out.println(orangeHitter.collidesWith(nf.getOrangeNotes().get(0)));
+        for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
+            if(orangeHitter.collidesWith(nf.getOrangeNotes().get(i))){
+                System.out.println("o dub");
+                nf.getOrangeNotes().get(i).hit();
+                if(nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getOrangeNotes().get(i).used();
+                }
+            }
+            nf.getOrangeNotes().get(i).Update();
+        }
+        //Yellow Notes
+        for (int i = 0; i < nf.getYellowNotes().size(); i++) {
+            if(yellowHitter.collidesWith(nf.getYellowNotes().get(i))){
+                System.out.println("dub");
+                nf.getYellowNotes().get(i).hit();
+                if(nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getYellowNotes().get(i).used();
+                }
+            }
+            nf.getYellowNotes().get(i).Update();
+        }
+        //White Notes
+        for (int i = 0; i < nf.getWhiteNotes().size(); i++) {
+            if(whiteHitter.collidesWith(nf.getWhiteNotes().get(i))){
+                System.out.println("dub");
+                nf.getWhiteNotes().get(i).hit();
+                if(nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getWhiteNotes().get(i).used();
+                }
+            }
+            nf.getWhiteNotes().get(i).Update();
+        }
+        //Purple Notes
+        for (int i = 0; i < nf.getPurpleNotes().size(); i++) {
+            if(purpleHitter.collidesWith(nf.getPurpleNotes().get(i))){
+                System.out.println("dub");
+                nf.getPurpleNotes().get(i).hit();
+                if(nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getPurpleNotes().get(i).used();
+                }
+            }
+            nf.getPurpleNotes().get(i).Update();
+        }
+        //Blue Notes
+        for (int i = 0; i < nf.getBlueNotes().size(); i++) {
+            if(blueHitter.collidesWith(nf.getBlueNotes().get(i))){
+                System.out.println("dub");
+                nf.getBlueNotes().get(i).hit();
+                if(nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getBlueNotes().get(i).used();
+                }
+            }
+            nf.getBlueNotes().get(i).Update();
+        }
+        //Lblue Notes
+        for (int i = 0; i < nf.getLblueNotes().size(); i++) {
+            if(lblueHitter.collidesWith(nf.getLblueNotes().get(i))){
+                System.out.println("dub");
+                nf.getLblueNotes().get(i).hit();
+                if(nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getLblueNotes().get(i).used();
+                }
+            }
+            nf.getLblueNotes().get(i).Update();
+        }
+        //Green Notes
+        for (int i = 0; i < nf.getGreenNotes().size(); i++) {
+            if(greenHitter.collidesWith(nf.getGreenNotes().get(i))){
+                System.out.println("green dub");
+                nf.getGreenNotes().get(i).hit();
+                if(nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())){
+                    pc.addPoints(10);
+                    nf.getGreenNotes().get(i).used();
+                }
+            }
+            nf.getGreenNotes().get(i).Update();
+        }
+
+
+        if(km.l()) {
+            nf.CreateRedNote();
+        }
 
     }
 
@@ -68,8 +218,43 @@ public class Track extends State {
     public void DrawSprites(Graphics g) {
 
         DrawTrack(g);
-        for (int i = 0; i < sprM.getSprites().size(); i++) {
-            sprM.getSprites().get(i).DrawSprite(g);
+
+        //Draw the Hitters
+        for (int i = 0; i < hitterList.size(); i++) {
+            hitterList.get(i).DrawSprite(g);
+        }
+
+        //Red Notes
+        for (int i = 0; i < nf.getRedNotes().size(); i++) {
+            nf.getRedNotes().get(i).DrawSprite(g);
+        }
+        //Orange Notes
+        for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
+            nf.getOrangeNotes().get(i).DrawSprite(g);
+        }
+        //Yellow Notes
+        for (int i = 0; i < nf.getYellowNotes().size(); i++) {
+            nf.getYellowNotes().get(i).DrawSprite(g);
+        }
+        //White Notes
+        for (int i = 0; i < nf.getWhiteNotes().size(); i++) {
+            nf.getWhiteNotes().get(i).DrawSprite(g);
+        }
+        //Purple Notes
+        for (int i = 0; i < nf.getPurpleNotes().size(); i++) {
+            nf.getPurpleNotes().get(i).DrawSprite(g);
+        }
+        //Blue Notes
+        for (int i = 0; i < nf.getBlueNotes().size(); i++) {
+            nf.getBlueNotes().get(i).DrawSprite(g);
+        }
+        //Lblue Notes
+        for (int i = 0; i < nf.getLblueNotes().size(); i++) {
+            nf.getLblueNotes().get(i).DrawSprite(g);
+        }
+        //Green Notes
+        for (int i = 0; i < nf.getGreenNotes().size(); i++) {
+            nf.getGreenNotes().get(i).DrawSprite(g);
         }
         DrawText(g);
 
@@ -88,6 +273,10 @@ public class Track extends State {
         g.setFont(smallFont);
         g.drawString("Difficulty: Medium", 25, 150);
 
+        g.setFont(bigFont);
+        g.drawString("POINTS: " + (pc.getPoints()), 25, 200);
+
+        g.setFont(medFont);
         g.setColor(Color.BLACK);
         g.drawString("A",290,935);
         g.drawString("S",340,935);
