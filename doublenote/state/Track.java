@@ -25,6 +25,7 @@ public class Track extends State {
     KeyManager km;
     Song s;
 
+
     Sprite redHitter;
     Sprite orangeHitter;
     Sprite yellowHitter;
@@ -90,7 +91,7 @@ public class Track extends State {
 
         }
 
-        /*nf.CreateRedNote();
+        nf.CreateRedNote();
         nf.CreateOrangeNote();
         nf.CreateYellowNote();
         nf.CreateWhiteNote();
@@ -98,37 +99,34 @@ public class Track extends State {
         nf.CreateBlueNote();
         nf.CreateGreenNote();
         nf.CreateLBlueNote();
-        */
 
-        startNoteSpawns();
-
-    }
-
-    public void startNoteSpawns() {
-
-        NoteThread thread = new NoteThread();
-        thread.start();
+        StartNoteSpawns();
 
     }
 
     public void PumpNotes() {
 
-        System.out.println("Threadin");
         try {
-            nf.CreateRedNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreateOrangeNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreateYellowNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreateWhiteNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreatePurpleNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreateBlueNote();
-            TimeUnit.SECONDS.sleep(1);
-            nf.CreateGreenNote();
-            nf.CreateLBlueNote();
+            while(pc.getPoints() < 1000) {
+                nf.CreateRedNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreateOrangeNote();
+                nf.CreateRedNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreateYellowNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreateWhiteNote();
+                nf.CreateBlueNote();
+                nf.CreateRedNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreatePurpleNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreateBlueNote();
+                nf.CreateRedNote();
+                TimeUnit.MILLISECONDS.sleep(480);
+                nf.CreateGreenNote();
+                nf.CreateLBlueNote();
+            }
         }
         catch(InterruptedException ex)
         {
@@ -138,6 +136,8 @@ public class Track extends State {
     @Override
     public void Update() {
 
+        //CheckNoteSpawns();
+        System.out.println(System.currentTimeMillis());
         for (int i = 0; i < hitterList.size(); i++) {
             hitterList.get(i).Update();
         }
@@ -239,11 +239,6 @@ public class Track extends State {
                 }
             }
             nf.getGreenNotes().get(i).Update();
-        }
-
-
-        if(km.l()) {
-            nf.CreateRedNote();
         }
 
     }
@@ -377,6 +372,12 @@ public class Track extends State {
 
 
     }
+
+    public void StartNoteSpawns() {
+        NoteThread thread = new NoteThread();
+        thread.start();
+    }
+
 
     public class NoteThread extends Thread {
 
