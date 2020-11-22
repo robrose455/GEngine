@@ -28,7 +28,6 @@ public class NoteFactory {
     }
 
     public void CreateRedNote() {
-        System.out.println("Making Note:");
         Sprite redNote = new Note(0, 10,0, 4, "RED", "DIE", "RedNote", km);
         redNotes.add(redNote);
     }

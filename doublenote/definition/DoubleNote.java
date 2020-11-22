@@ -83,8 +83,6 @@ public class DoubleNote extends Game {
         Sprite greenHitter = new NoteHitter(275, 900, 0, 0,  "GREEN", "DIE", "GreenHitter", sm.getKeyManager());
         spriteTemplates.add(greenHitter);
 
-
-
     }
 
     public void LoadSongs() {
@@ -100,10 +98,17 @@ public class DoubleNote extends Game {
         Song beefoven = new Beefoven("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/Beefoven.wav", "Beefoven",nf);
         songM.AddSong(beefoven);
 
-        Song furelise = new FurElise("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/FurElise.wav", "FurElise",nf);
+        Song furelise = new FurElise("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/FurElise.wav", "Fur Elise",nf);
         songM.AddSong(furelise);
 
+        Song coconutmall = new CoconutMall("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/coconutmall.wav", "Coconut Mall",nf);
+        songM.AddSong(coconutmall);
 
+        Song toadfactory = new ToadFactory("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/toadfactory.wav", "Toad Factory",nf);
+        songM.AddSong(toadfactory);
+
+        Song hotmk = new Hotmk("C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/hotmk.wav", "Hall of the Mountain King",nf);
+        songM.AddSong(hotmk);
 
     }
 

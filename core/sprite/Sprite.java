@@ -51,7 +51,6 @@ public class Sprite extends JPanel implements Cloneable {
     public Sprite(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
 
         //Initialize All Variables to Default State or Given State
-        System.out.println("--Creating Sprite--");
         this.name = n;
         this.x = x;
         this.y = y;
@@ -349,5 +348,6 @@ public class Sprite extends JPanel implements Cloneable {
     }
     public void used() {
         used = true;
+        Hide();
     }
 }

@@ -1,6 +1,7 @@
-package ge.core;
+package ge.doublenote.definition;
 
-import ge.doublenote.definition.DoubleNote;
+import ge.core.Game;
+import ge.core.Scene;
 
 import java.io.FileNotFoundException;
 

@@ -56,7 +56,7 @@ public class GameStateManager {
         states.add(win);
 
         //Test before interface works
-        Song s = songM.getSongList().get(3);
+        Song s = songM.getSongList().get(4);
         track = new Track(sprM, s);
         states.add(track);
 

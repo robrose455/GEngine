@@ -221,8 +221,6 @@ public class Track extends State {
 
         //Red Notes
         for (int i = 0; i < nf.getRedNotes().size(); i++) {
-            System.out.println("Drawing Note");
-            System.out.println("Size of :" + nf.getRedNotes().size());
             nf.getRedNotes().get(i).DrawSprite(g);
         }
         //Orange Notes

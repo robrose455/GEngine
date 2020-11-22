@@ -10,7 +10,6 @@ public class ImageReader {
     public static BufferedImage image;
 
     public ImageReader() {
-        System.out.println("--Creating Image Reader--");
     }
 
     public BufferedImage readImage(String filePath) {

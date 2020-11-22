@@ -35,6 +35,9 @@ public class KeyManager implements ActionListener {
     Action scPressAction;
     Action scReleaseAction;
 
+    Action tPressAction;
+    Action tReleaseAction;
+
     Action spaceAction;
 
     boolean down = false;
@@ -51,6 +54,8 @@ public class KeyManager implements ActionListener {
     boolean k = false;
     boolean l = false;
     boolean sc = false;
+
+    boolean t = false;
 
     SceneManager sm;
     SpriteManager sprM;
@@ -89,6 +94,9 @@ public class KeyManager implements ActionListener {
 
         scPressAction = new KeyManager.scPressAction();
         scReleaseAction = new KeyManager.scReleaseAction();
+
+        tPressAction = new KeyManager.tPressAction();
+        tReleaseAction = new KeyManager.tReleaseAction();
 
         spaceAction = new KeyManager.spaceAction();
         
@@ -175,6 +183,15 @@ public class KeyManager implements ActionListener {
 
         sm.getInputMap().put(SC_KEY_RELEASED, "scRA");
         sm.getActionMap().put("scRA", scReleaseAction);
+
+        KeyStroke T_KEY_PRESSED = KeyStroke.getKeyStroke('T', 0, false);
+        KeyStroke T_KEY_RELEASED = KeyStroke.getKeyStroke('T', 0, true);
+
+        sm.getInputMap().put(T_KEY_PRESSED, "tPA");
+        sm.getActionMap().put("tPA", tPressAction);
+
+        sm.getInputMap().put(T_KEY_RELEASED, "tRA");
+        sm.getActionMap().put("tRA", tReleaseAction);
 
         sm.getInputMap().put(KeyStroke.getKeyStroke(' '), "spaceA");
         sm.getActionMap().put("spaceA", spaceAction);
@@ -342,6 +359,29 @@ public class KeyManager implements ActionListener {
         }
     }
 
+    public class tPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            t = true;
+        }
+    }
+
+
+    public class tReleaseAction extends AbstractAction {
+
+        long newtime;
+        long oldtime;
+        public void actionPerformed(ActionEvent e) {
+
+            newtime = System.currentTimeMillis();
+            System.out.println(newtime - oldtime);
+            oldtime = System.currentTimeMillis();
+
+            t = false;
+        }
+    }
+
     public class spaceAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
@@ -387,5 +427,8 @@ public class KeyManager implements ActionListener {
         return l;
     }
     public boolean sc() { return sc;}
+
+    public boolean t() { return t; }
+
     
 }

@@ -14,27 +14,25 @@ public class HotelRoomService extends Song {
     @Override
     public void SpawnNotes() {
 
-        System.out.println("Inside Beef Oven");
         try {
 
-            nf.CreateRedNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreateOrangeNote();
-            nf.CreateRedNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreateYellowNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreateWhiteNote();
-            nf.CreateBlueNote();
-            nf.CreateRedNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreatePurpleNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreateBlueNote();
-            nf.CreateRedNote();
-            TimeUnit.MILLISECONDS.sleep(480);
-            nf.CreateGreenNote();
+            TimeUnit.MILLISECONDS.sleep(21000);
+
             nf.CreateLBlueNote();
+            TimeUnit.MILLISECONDS.sleep(159);
+            nf.CreateLBlueNote();
+            TimeUnit.MILLISECONDS.sleep(159);
+            nf.CreateBlueNote();
+            TimeUnit.MILLISECONDS.sleep(159);
+            nf.CreatePurpleNote();
+            TimeUnit.MILLISECONDS.sleep(159);
+            nf.CreateRedNote();
+
+
+
+
+
+
 
         }
 
