@@ -1,21 +1,17 @@
-package ge.doublenote.state;
-
-import ge.core.SpriteManager;
-import ge.core.Game;
+package ge.core;
+import ge.core.managers.SceneManager;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 
 public abstract class State {
 
-    SpriteManager sprM;
-    Game g;
-    String name;
+    public SceneManager sm;
+    public String name;
 
-    public State(SpriteManager sprM) {
+    public State(SceneManager sm) {
 
-        this.sprM = sprM;
-        this.g = sprM.getGame();
+        this.sm = sm;
 
     }
 
@@ -23,7 +19,6 @@ public abstract class State {
     public abstract void Update() throws FileNotFoundException, InterruptedException;
     public abstract void DrawSprites(Graphics g);
     public abstract void DrawText(Graphics g);
-
     public String getName() { return name; };
 
 }

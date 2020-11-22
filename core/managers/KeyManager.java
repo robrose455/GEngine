@@ -1,4 +1,4 @@
-package ge.core;
+package ge.core.managers;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -58,13 +58,11 @@ public class KeyManager implements ActionListener {
     boolean t = false;
 
     SceneManager sm;
-    SpriteManager sprM;
     
-    public KeyManager(SceneManager sm, SpriteManager sprM) {
+    public KeyManager(SceneManager sm) {
 
         System.out.println("--Creating Key Manager--");
         this.sm = sm;
-        this.sprM = sprM;
 
         upAction = new KeyManager.UpAction();
         downAction = new KeyManager.DownAction();
@@ -391,8 +389,8 @@ public class KeyManager implements ActionListener {
 
 
 
-    public void actionPerformed(ActionEvent e) {
-        sm.actionPerformed(e);
+    public void actionPerformed(ActionEvent k) {
+        sm.actionPerformed(k);
     }
 
     public boolean movingDown() {

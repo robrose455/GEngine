@@ -1,6 +1,6 @@
 package ge.doublenote.songs;
 
-import ge.doublenote.notelogic.NoteFactory;
+import ge.doublenote.logic.NoteFactory;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package ge.core;
+package ge.core.managers;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

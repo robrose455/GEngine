@@ -1,4 +1,7 @@
-package ge.core;
+package ge.core.managers;
+
+import ge.core.Game;
+import ge.core.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +15,6 @@ public class SceneManager extends JPanel implements ActionListener {
 
     //Reference to the current loaded game
     Game game;
-
-    //Handles Sprite Drawing, Adding, and Removal
-    SpriteManager sprM;
 
     //Handles Key Inputs
     KeyManager km;
@@ -35,19 +35,16 @@ public class SceneManager extends JPanel implements ActionListener {
         this.setBackground(Color.BLACK);
 
         this.s = s;
-        this.mm = new MouseManager(this);
 
+        this.mm = new MouseManager(this);
         //Load Game Code
         game = s.getGame();
 
-        //Sprite Manager takes Game Code and Contains SpriteList
-        this.sprM = new SpriteManager(game);
-
         //Key Manager pulls SpriteList and Listens for Key Presses
-        this.km = new KeyManager(this, sprM);
+        this.km = new KeyManager(this);
 
         //Game State Manager Contains all game states for game
-        this.gsm = new GameStateManager(sprM, game.getSongManager());
+        this.gsm = new GameStateManager(this, game.getSongManager());
 
         game.Init(this);
 
@@ -56,31 +53,27 @@ public class SceneManager extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+
         try {
             Update();
         } catch (FileNotFoundException | InterruptedException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         }
+
     }
 
     public void paintComponent(Graphics g) {
+
         super.paintComponent(g);
         gsm.drawState(g);
+
     }
 
     public void Update() throws FileNotFoundException, InterruptedException {
-        game.Update();
+
+        gsm.getCurState().Update();
         this.repaint();
-    }
 
-    public Scene getScene() {
-        return s;
-    }
-
-    public Game getGame() { return game; }
-
-    public SpriteManager getSpriteManager() {
-        return sprM;
     }
 
     public GameStateManager getGameStateManager() {

@@ -1,13 +1,12 @@
 package ge.core.sprite;
 
-import ge.core.ImageReader;
-import ge.core.KeyManager;
+import ge.core.managers.KeyManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Sprite extends JPanel implements Cloneable {
+public class Sprite extends JPanel {
 
     boolean used = false;
     boolean hit = false;
@@ -77,33 +76,76 @@ public class Sprite extends JPanel implements Cloneable {
         }
     }
 
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public void DrawSprite(Graphics g) { }
+
+    public void setX(int x){
+        this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
+    }
+
+    public void setPos(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    public void setDx(int x) { this.dx = dx; }
+    public void setDy(int y) { this.dy = dy; }
+
+    public void setSpeed(int s) {
+        speed = s;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    //Changes Visibility
+    public void Hide() {
+        isVisible = false;
+        isDead = true;
+    }
+    public void Show() {
+        isVisible = true;
+        isDead = false;
+    }
+
+    public boolean getVisibility() {
+        return isVisible;
+    }
+
+    //Shows needed Parameters about given variable
+    public void Report() {
+
+        System.out.println("\nVariables for Sprite: " + name);
+        System.out.println("Image Height: " + height);
+        System.out.println("Image Width: " + width);
+        System.out.println("X: " + x);
+        System.out.println("Y: " + y);
+        System.out.println("DX: " + dx);
+        System.out.println("DY: " + dy);
+        System.out.println("Speed: " + speed);
+        System.out.println("Top Border: " + topBorder);
+        System.out.println("Bottom Border: " + bottomBorder);
+        System.out.println("Left Border: " + leftBorder);
+        System.out.println("Right Border: " + rightBorder);
 
     }
 
-    public void DrawSprite(Graphics g) {
-
-        if(isVisible) {
-
-            if(imagePath.equals("RED")){
-                g.setColor(Color.RED);
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("BLUE")){
-                g.setColor(Color.BLUE);
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("BlueT")){
-                g.setColor(Color.BLUE);
-                g.fillOval(x,y, 25,25);
-            }  else if (imagePath.equals("RedT")) {
-                g.setColor(Color.RED);
-                g.fillOval(x, y, 25, 25);
-            }
-        }
-            else {
-                g.drawImage(image, x, y, null);
-            }
+    //Checks for movement every frame the sprite is active
+    public void Update() {
+        CheckForMovement();
     }
+
+    public void CheckForMovement() { }
 
     public void CheckForBounds() {
 
@@ -181,30 +223,6 @@ public class Sprite extends JPanel implements Cloneable {
 
     }
 
-    public void setX(int x){
-        this.x = x;
-    }
-    public void setY(int y){
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
-
-    public void setDx(int x) { this.dx = dx; }
-    public void setDy(int y) { this.dy = dy; }
-
-    public void setSpeed(int s) {
-        speed = s;
-    }
-
-    public boolean getVisibility() {
-        return isVisible;
-    }
 
     public int getTopBorder() {
         return topBorder;
@@ -218,56 +236,6 @@ public class Sprite extends JPanel implements Cloneable {
     public int getLeftBorder() {
         return leftBorder;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setPos(int x, int y) {
-        setX(x);
-        setY(y);
-    }
-
-    //Called to declare this variable has died in-game
-    public boolean Death() {
-        return isDead;
-    }
-
-    //Changes Visibility
-    public void Hide() {
-        isVisible = false;
-        isDead = true;
-    }
-    public void Show() {
-        isVisible = true;
-        isDead = false;
-    }
-
-    //Shows needed Parameters about given variable
-    public void Report() {
-
-        System.out.println("\nVariables for Sprite: " + name);
-        System.out.println("Image Height: " + height);
-        System.out.println("Image Width: " + width);
-        System.out.println("X: " + x);
-        System.out.println("Y: " + y);
-        System.out.println("DX: " + dx);
-        System.out.println("DY: " + dy);
-        System.out.println("Speed: " + speed);
-        System.out.println("Top Border: " + topBorder);
-        System.out.println("Bottom Border: " + bottomBorder);
-        System.out.println("Left Border: " + leftBorder);
-        System.out.println("Right Border: " + rightBorder);
-
-    }
-
-    //Checks for movement every frame the sprite is active
-    public void Update() {
-        CheckForMovement();
-    }
-
-    public void CheckForMovement() { }
-
     //Collision Detection
     public boolean collidesWith(Sprite s) {
 
@@ -333,21 +301,4 @@ public class Sprite extends JPanel implements Cloneable {
 
     }
 
-    public KeyManager getKeyManager() {
-        return km;
-    }
-
-    public void hit(){
-        hit = true;
-    }
-    public boolean isHit() {
-        return hit;
-    }
-    public boolean hasBeenUsed() {
-        return used;
-    }
-    public void used() {
-        used = true;
-        Hide();
-    }
 }

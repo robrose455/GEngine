@@ -1,7 +1,8 @@
 package ge.core;
 
+import ge.core.managers.SceneManager;
 import ge.core.sprite.Sprite;
-import ge.doublenote.songs.SongManager;
+import ge.doublenote.managers.SongManager;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,12 +16,7 @@ public abstract class Game {
 
     public abstract ArrayList<Sprite> getSpriteTemplates();
 
-    public abstract void Update() throws FileNotFoundException, InterruptedException;
-
-    public abstract void setCurState(String n) throws FileNotFoundException, InterruptedException;
-
     public abstract SceneManager GetSceneManager();
-    public abstract GameStateManager getGameStateManager();
     public abstract SongManager getSongManager();
 
 }

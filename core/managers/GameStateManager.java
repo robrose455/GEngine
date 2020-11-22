@@ -1,10 +1,10 @@
-package ge.core;
+package ge.core.managers;
 
+import ge.core.State;
 import ge.doublenote.songs.Song;
-import ge.doublenote.songs.SongManager;
-import ge.doublenote.state.*;
-import ge.doublenote.state.Menu;
-
+import ge.doublenote.managers.SongManager;
+import ge.doublenote.states.*;
+import ge.doublenote.states.Menu;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,24 +14,23 @@ public class GameStateManager {
     boolean winner;
 
     State curState;
-
     State menu;
     State track;
     State gameOver;
-    State win;
 
     ArrayList<State> states = new ArrayList<>();
-    SpriteManager sprM;
     SongManager songM;
+    SceneManager sm;
+    Song s;
 
 
-    public GameStateManager(SpriteManager sprM, SongManager songM) {
+    public GameStateManager(SceneManager sm, SongManager songM) {
 
         System.out.println("--Creating Game State Manager--");
 
         winner = false;
         this.songM = songM;
-        this.sprM = sprM;
+        this.sm = sm;
 
     }
 
@@ -43,31 +42,36 @@ public class GameStateManager {
         winner = true;
     }
 
+    public void SetTrack(String songName) {
+
+        for(int i = 0; i < songM.getSongList().size(); i++) {
+
+            if(songM.getSongList().get(i).getName().equals(songName)) {
+                s = songM.getSongList().get(i);
+            }
+
+        }
+
+        track = new Track(sm,s);
+        states.add(track);
+    }
+
     public void LoadStates() throws FileNotFoundException, InterruptedException {
 
 
-        menu = new Menu(sprM);
+        menu = new Menu(sm);
         states.add(menu);
 
-        gameOver = new GameOver(sprM);
+        gameOver = new GameOver(sm);
         states.add(gameOver);
 
-        win = new Win(sprM);
-        states.add(win);
-
-        //Test before interface works
-        Song s = songM.getSongList().get(4);
-        track = new Track(sprM, s);
+        s = songM.getSongList().get(3);
+        track = new Track(sm, s);
         states.add(track);
 
         curState = states.get(0);
         curState.Init();
 
-    }
-
-    public void setTrack(String name) {
-
-        //How Track Will be set in future
     }
 
     public void drawState(Graphics g) {

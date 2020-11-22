@@ -1,14 +1,15 @@
-package ge.doublenote.state;
+package ge.doublenote.states;
 
-import ge.core.SpriteManager;
+import ge.core.managers.SceneManager;
+import ge.core.State;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 
 public class GameOver extends State {
 
-    public GameOver(SpriteManager sprM) {
-        super(sprM);
+    public GameOver(SceneManager sm) {
+        super(sm);
 
         this.name = "gameOver";
 
@@ -16,18 +17,15 @@ public class GameOver extends State {
     @Override
     public void Init() {
 
-        for (int i = 0; i < sprM.getSprites().size(); i++) {
-            sprM.getSprites().get(i).Hide();
-        }
 
     }
 
     @Override
     public void Update() throws FileNotFoundException, InterruptedException {
 
-        if(g.GetSceneManager().getMouseManager().WasMouseClicked()) {
-            g.setCurState("levelOne");
-            g.GetSceneManager().getMouseManager().Reset();
+        if(sm.getMouseManager().WasMouseClicked()) {
+            sm.getGameStateManager().setCurState("levelOne");
+            sm.getMouseManager().Reset();
         }
 
     }
@@ -48,7 +46,7 @@ public class GameOver extends State {
 
         g.setFont(bigFont);
         g.setColor(Color.WHITE);
-        g.drawString("ERIC SPEED RUN", 315, 100);
+        g.drawString("GAME OVER", 315, 100);
 
         g.setFont(medFont);
         g.drawString("GAME OVER", 400, 200);
@@ -58,7 +56,6 @@ public class GameOver extends State {
         g.drawString("Created by Rob Rose", 800, 900);
 
         g.setFont(medFont);
-        g.drawString("Controls: WASD or Arrow Keys", 50, 900);
 
     }
 }

@@ -1,4 +1,4 @@
-package ge.doublenote.notelogic;
+package ge.doublenote.logic;
 
 public class PointCounter {
 
@@ -10,9 +10,15 @@ public class PointCounter {
 
     }
 
-    public void addPoints(int addedPoints) {
+    public void AddPoints(int addedPoints) {
 
         points += addedPoints;
+
+    }
+
+    public void ResetPoints() {
+
+        points = 0;
 
     }
 

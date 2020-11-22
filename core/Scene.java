@@ -1,6 +1,9 @@
 package ge.core;
 
+import ge.core.managers.SceneManager;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import javax.swing.*;
 
@@ -11,6 +14,8 @@ public class Scene extends JFrame {
     Game game;
     int height;
     int width;
+
+    JButton btn1;
 
     public Scene() {
 
@@ -32,6 +37,8 @@ public class Scene extends JFrame {
     public void DrawScene() throws FileNotFoundException, InterruptedException {
 
         //Create Scene
+        this.setLayout(new BorderLayout());
+
         sm = new SceneManager(this);
         this.add(sm, BorderLayout.CENTER);
         this.setSize(width,height);

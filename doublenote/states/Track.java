@@ -1,14 +1,14 @@
-package ge.doublenote.state;
+package ge.doublenote.states;
 
-import ge.core.AudioManager;
-import ge.core.KeyManager;
-import ge.core.SceneManager;
-import ge.core.SpriteManager;
+import ge.core.managers.AudioManager;
+import ge.core.managers.KeyManager;
+import ge.core.managers.SceneManager;
+import ge.core.State;
 import ge.core.sprite.Sprite;
-import ge.doublenote.notelogic.NoteFactory;
-import ge.doublenote.notelogic.PointCounter;
+import ge.doublenote.logic.NoteFactory;
+import ge.doublenote.logic.PointCounter;
 import ge.doublenote.songs.Song;
-import ge.doublenote.sprite.NoteHitter;
+import ge.doublenote.sprites.NoteHitter;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -16,14 +16,12 @@ import java.util.ArrayList;
 
 public class Track extends State {
 
-    SpriteManager sprM;
     SceneManager sm;
     AudioManager am;
     PointCounter pc;
     NoteFactory nf;
     KeyManager km;
-    Song s;
-
+    Song song;
 
     Sprite redHitter;
     Sprite orangeHitter;
@@ -34,17 +32,17 @@ public class Track extends State {
     Sprite lblueHitter;
     Sprite greenHitter;
 
-    ArrayList<Sprite> hitterList = new ArrayList<>();
+    ArrayList<NoteHitter> hitterList = new ArrayList<>();
 
-    public Track(SpriteManager sprM, Song s) {
-        super(sprM);
+    public Track(SceneManager sm, Song song) {
+        super(sm);
+
+        this.name = "Track";
 
         this.pc = new PointCounter();
         this.am = new AudioManager();
-        this.sprM = sprM;
-        this.name = "Track";
-        this.s = s;
-        this.sm = sprM.getGame().GetSceneManager();
+        this.song = song;
+        this.sm = sm;
         this.km = sm.getKeyManager();
 
     }
@@ -52,44 +50,46 @@ public class Track extends State {
     @Override
     public void Init() throws FileNotFoundException, InterruptedException {
 
-        am.PlaySong(s.getFilePath());
+        am.PlaySong(song.getFilePath());
         if(hitterList.size() == 0) {
 
-            Sprite redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
+            System.out.println("Reached Here");
+
+            NoteHitter redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
             this.redHitter = redHitter;
             hitterList.add(redHitter);
 
-            Sprite orangeHitter = new NoteHitter(625, 900, 0, 0,  "ORANGE", "DIE", "OrangeHitter", sm.getKeyManager());
+            NoteHitter orangeHitter = new NoteHitter(625, 900, 0, 0,  "ORANGE", "DIE", "OrangeHitter", sm.getKeyManager());
             this.orangeHitter = orangeHitter;
             hitterList.add(orangeHitter);
 
-            Sprite yellowHitter = new NoteHitter(675, 900, 0, 0,  "YELLOW", "DIE", "YellowHitter", sm.getKeyManager());
+            NoteHitter yellowHitter = new NoteHitter(675, 900, 0, 0,  "YELLOW", "DIE", "YellowHitter", sm.getKeyManager());
             this.yellowHitter = yellowHitter;
             hitterList.add(yellowHitter);
 
-            Sprite whiteHitter = new NoteHitter(725, 900, 0, 0,  "WHITE", "DIE", "WhiteHitter", sm.getKeyManager());
+            NoteHitter whiteHitter = new NoteHitter(725, 900, 0, 0,  "WHITE", "DIE", "WhiteHitter", sm.getKeyManager());
             this.whiteHitter = whiteHitter;
             hitterList.add(whiteHitter);
 
-            Sprite purpleHitter = new NoteHitter(425, 900, 0, 0,  "PURPLE", "DIE", "PurpleHitter", sm.getKeyManager());
+            NoteHitter purpleHitter = new NoteHitter(425, 900, 0, 0,  "PURPLE", "DIE", "PurpleHitter", sm.getKeyManager());
             this.purpleHitter = purpleHitter;
             hitterList.add(purpleHitter);
 
-            Sprite blueHitter = new NoteHitter(375, 900, 0, 0,  "BLUE", "DIE", "BlueHitter", sm.getKeyManager());
+            NoteHitter blueHitter = new NoteHitter(375, 900, 0, 0,  "BLUE", "DIE", "BlueHitter", sm.getKeyManager());
             this.blueHitter = blueHitter;
             hitterList.add(blueHitter);
 
-            Sprite lblueHitter = new NoteHitter(325, 900, 0, 0,  "LBLUE", "DIE", "LBlueHitter", sm.getKeyManager());
+            NoteHitter lblueHitter = new NoteHitter(325, 900, 0, 0,  "LBLUE", "DIE", "LBlueHitter", sm.getKeyManager());
             this.lblueHitter = lblueHitter;
             hitterList.add(lblueHitter);
 
-            Sprite greenHitter = new NoteHitter(275, 900, 0, 0,  "GREEN", "DIE", "GreenHitter", sm.getKeyManager());
+            NoteHitter greenHitter = new NoteHitter(275, 900, 0, 0,  "GREEN", "DIE", "GreenHitter", sm.getKeyManager());
             this.greenHitter = greenHitter;
             hitterList.add(greenHitter);
 
         }
 
-        this.nf = s.getNoteFactory();
+        this.nf = song.getNoteFactory();
         nf.CreateRedNote();
         nf.CreateOrangeNote();
         nf.CreateYellowNote();
@@ -115,7 +115,7 @@ public class Track extends State {
                 System.out.println("r dub");
                 nf.getRedNotes().get(i).hit();
                 if(nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getRedNotes().get(i).used();
                 }
             }
@@ -128,7 +128,7 @@ public class Track extends State {
                 System.out.println("o dub");
                 nf.getOrangeNotes().get(i).hit();
                 if(nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getOrangeNotes().get(i).used();
                 }
             }
@@ -140,7 +140,7 @@ public class Track extends State {
                 System.out.println("dub");
                 nf.getYellowNotes().get(i).hit();
                 if(nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getYellowNotes().get(i).used();
                 }
             }
@@ -152,7 +152,7 @@ public class Track extends State {
                 System.out.println("dub");
                 nf.getWhiteNotes().get(i).hit();
                 if(nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getWhiteNotes().get(i).used();
                 }
             }
@@ -164,7 +164,7 @@ public class Track extends State {
                 System.out.println("dub");
                 nf.getPurpleNotes().get(i).hit();
                 if(nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getPurpleNotes().get(i).used();
                 }
             }
@@ -176,7 +176,7 @@ public class Track extends State {
                 System.out.println("dub");
                 nf.getBlueNotes().get(i).hit();
                 if(nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getBlueNotes().get(i).used();
                 }
             }
@@ -188,7 +188,7 @@ public class Track extends State {
                 System.out.println("dub");
                 nf.getLblueNotes().get(i).hit();
                 if(nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getLblueNotes().get(i).used();
                 }
             }
@@ -200,7 +200,7 @@ public class Track extends State {
                 System.out.println("green dub");
                 nf.getGreenNotes().get(i).hit();
                 if(nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())){
-                    pc.addPoints(10);
+                    pc.AddPoints(10);
                     nf.getGreenNotes().get(i).used();
                 }
             }
@@ -263,7 +263,7 @@ public class Track extends State {
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);
-        g.drawString(s.getName(), 25, 100);
+        g.drawString(song.getName(), 25, 100);
 
         g.setFont(smallFont);
         g.drawString("Difficulty: Medium", 25, 150);
@@ -345,7 +345,7 @@ public class Track extends State {
     public class NoteThread extends Thread {
 
         public void run() {
-            s.SpawnNotes();
+            song.SpawnNotes();
         }
     }
 }

@@ -1,4 +1,4 @@
-package ge.core;
+package ge.core.sprite;
 import javax.imageio.*;
 import java.awt.image.BufferedImage;
 import java.io.*;

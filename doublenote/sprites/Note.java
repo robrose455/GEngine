@@ -1,12 +1,13 @@
-package ge.doublenote.sprite;
+package ge.doublenote.sprites;
 
-import ge.core.KeyManager;
+import ge.core.managers.KeyManager;
 import ge.core.sprite.Sprite;
 
 import java.awt.*;
 
 public class Note extends Sprite {
 
+    boolean used = false;
     boolean hit = false;
 
     public Note(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
@@ -74,5 +75,12 @@ public class Note extends Sprite {
     }
     public boolean isHit() {
         return hit;
+    }
+    public boolean hasBeenUsed() {
+        return used;
+    }
+    public void used() {
+        used = true;
+        Hide();
     }
 }

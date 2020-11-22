@@ -1,13 +1,11 @@
-package ge.doublenote.sprite;
+package ge.doublenote.sprites;
 
-import ge.core.KeyManager;
+import ge.core.managers.KeyManager;
 import ge.core.sprite.Sprite;
 
 import java.awt.*;
 
 public class NoteHitter extends Sprite {
-
-    boolean l = true;
 
     public NoteHitter(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
         super(x, y, dx, dy, ip, ba, n, km);
@@ -27,6 +25,7 @@ public class NoteHitter extends Sprite {
     public void CheckHits() {
 
 
+        System.out.println(km.j());
         if (km.j() && name.equals("RedHitter")) {
             Show();
         } else if (km.k() && name.equals("OrangeHitter")) {
