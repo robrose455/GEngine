@@ -1,20 +1,25 @@
 package ge.doublenote.songs;
 
+import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class MerryGoRoundOfLife extends Song {
 
-    public MerryGoRoundOfLife(String filePath, String name, NoteFactory nf) {
-        super(filePath,name,nf);
+    public MerryGoRoundOfLife(SceneManager sm,String filePath, String name, NoteFactory nf) {
+        super(sm,filePath,name,nf);
+
+    }
+
+    @Override
+    public void LoadNotes() {
 
     }
 
     @Override
     public void SpawnNotes() {
 
-        System.out.println("Inside Beef Oven");
         try {
 
             nf.CreateRedNote();

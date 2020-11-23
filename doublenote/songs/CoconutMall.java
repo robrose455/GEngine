@@ -1,13 +1,19 @@
 package ge.doublenote.songs;
 
+import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class CoconutMall extends Song {
 
-    public CoconutMall(String filePath, String name, NoteFactory nf) {
-        super(filePath,name,nf);
+    public CoconutMall(SceneManager sm, String filePath, String name, NoteFactory nf) {
+        super(sm,filePath,name,nf);
+
+    }
+
+    @Override
+    public void LoadNotes() {
 
     }
 
@@ -714,7 +720,7 @@ public class CoconutMall extends Song {
             nf.CreateOrangeNote();
             TimeUnit.MILLISECONDS.sleep(250);
 
-            
+
 
         }
 

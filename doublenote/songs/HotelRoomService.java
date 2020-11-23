@@ -1,13 +1,19 @@
 package ge.doublenote.songs;
 
+import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class HotelRoomService extends Song {
 
-    public HotelRoomService(String filePath, String name, NoteFactory nf) {
-        super(filePath,name,nf);
+    public HotelRoomService(SceneManager sm, String filePath, String name, NoteFactory nf) {
+        super(sm, filePath,name,nf);
+
+    }
+
+    @Override
+    public void LoadNotes() {
 
     }
 

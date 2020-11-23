@@ -336,25 +336,14 @@ public class Track extends State {
         NoteThread thread = new NoteThread();
         thread.start();
 
-        if(sm.getKeyManager().t()) {
-            thread.kill();
-        }
-
     }
 
 
     public class NoteThread extends Thread {
 
-        private volatile boolean exit = false;
 
         public void run() {
-            while(!exit) {
-                song.SpawnNotes();
-            }
-        }
-
-        public void kill() {
-            exit = true;
+            song.SpawnNotes();
         }
 
     }
