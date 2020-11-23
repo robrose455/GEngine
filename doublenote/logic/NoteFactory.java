@@ -4,6 +4,7 @@ import ge.core.managers.KeyManager;
 import ge.core.managers.SceneManager;
 import ge.doublenote.sprites.Note;
 import java.util.ArrayList;
+
 public class NoteFactory {
 
     SceneManager sm;

@@ -8,7 +8,6 @@ public abstract class NoteCommand {
     NoteFactory nf;
 
     public NoteCommand(NoteFactory nf) {
-
         this.nf = nf;
     }
 

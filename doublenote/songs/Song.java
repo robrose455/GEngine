@@ -41,4 +41,8 @@ public abstract class Song {
 
     public abstract void SpawnNotes();
 
+    public void GARBAGE_setRun() {
+        running = true;
+    }
+
 }

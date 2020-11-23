@@ -45,15 +45,15 @@ public class Track extends State {
         this.sm = sm;
         this.km = sm.getKeyManager();
 
+
     }
 
     @Override
     public void Init() throws FileNotFoundException, InterruptedException {
 
+        song.GARBAGE_setRun();
         am.PlaySong(song.getFilePath());
         if(hitterList.size() == 0) {
-
-            System.out.println("Reached Here");
 
             NoteHitter redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
             this.redHitter = redHitter;
@@ -90,16 +90,7 @@ public class Track extends State {
         }
 
         this.nf = song.getNoteFactory();
-
-        nf.CreateRedNote();
-        nf.CreateOrangeNote();
-        nf.CreateYellowNote();
-        nf.CreateWhiteNote();
-        nf.CreatePurpleNote();
-        nf.CreateBlueNote();
-        nf.CreateGreenNote();
-        nf.CreateLBlueNote();
-
+        
         StartNoteSpawns();
 
     }
@@ -344,6 +335,7 @@ public class Track extends State {
 
         public void run() {
             song.SpawnNotes();
+            System.out.println("Thread Kill");
         }
 
     }

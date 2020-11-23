@@ -382,14 +382,7 @@ public class KeyManager implements ActionListener {
 
     public class tReleaseAction extends AbstractAction {
 
-        long newtime;
-        long oldtime;
         public void actionPerformed(ActionEvent e) {
-
-            newtime = System.currentTimeMillis();
-            System.out.println(newtime - oldtime);
-            System.out.println("Dub");
-            oldtime = System.currentTimeMillis();
 
             t = false;
         }

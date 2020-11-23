@@ -28,7 +28,6 @@ public class Menu extends State {
     @Override
     public void Init() {
 
-        System.out.println("His this");
         songCounter = 0;
         sm.getKeyManager().ResetMovement();
 
@@ -45,7 +44,6 @@ public class Menu extends State {
             songCounter++;
         }
 
-        System.out.println(sm.getKeyManager().enter());
         if(sm.getKeyManager().enter()) {
             sm.getGameStateManager().RemoveTrack();
             sm.getGameStateManager().SetTrack(sm.getGameStateManager().getSongManager().getSongList().get(songCounter).getName());
