@@ -90,6 +90,7 @@ public class Track extends State {
         }
 
         this.nf = song.getNoteFactory();
+
         nf.CreateRedNote();
         nf.CreateOrangeNote();
         nf.CreateYellowNote();
@@ -103,7 +104,7 @@ public class Track extends State {
 
     }
     @Override
-    public void Update() {
+    public void Update() throws FileNotFoundException, InterruptedException {
 
         for (int i = 0; i < hitterList.size(); i++) {
             hitterList.get(i).Update();
@@ -112,7 +113,6 @@ public class Track extends State {
         //Red Notes
         for (int i = 0; i < nf.getRedNotes().size(); i++) {
             if(redHitter.collidesWith(nf.getRedNotes().get(i))){
-                System.out.println("r dub");
                 nf.getRedNotes().get(i).hit();
                 if(nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -125,7 +125,6 @@ public class Track extends State {
         //Orange Notes
         for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
             if(orangeHitter.collidesWith(nf.getOrangeNotes().get(i))){
-                System.out.println("o dub");
                 nf.getOrangeNotes().get(i).hit();
                 if(nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -137,7 +136,6 @@ public class Track extends State {
         //Yellow Notes
         for (int i = 0; i < nf.getYellowNotes().size(); i++) {
             if(yellowHitter.collidesWith(nf.getYellowNotes().get(i))){
-                System.out.println("dub");
                 nf.getYellowNotes().get(i).hit();
                 if(nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -149,7 +147,6 @@ public class Track extends State {
         //White Notes
         for (int i = 0; i < nf.getWhiteNotes().size(); i++) {
             if(whiteHitter.collidesWith(nf.getWhiteNotes().get(i))){
-                System.out.println("dub");
                 nf.getWhiteNotes().get(i).hit();
                 if(nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -161,7 +158,6 @@ public class Track extends State {
         //Purple Notes
         for (int i = 0; i < nf.getPurpleNotes().size(); i++) {
             if(purpleHitter.collidesWith(nf.getPurpleNotes().get(i))){
-                System.out.println("dub");
                 nf.getPurpleNotes().get(i).hit();
                 if(nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -173,7 +169,6 @@ public class Track extends State {
         //Blue Notes
         for (int i = 0; i < nf.getBlueNotes().size(); i++) {
             if(blueHitter.collidesWith(nf.getBlueNotes().get(i))){
-                System.out.println("dub");
                 nf.getBlueNotes().get(i).hit();
                 if(nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -185,7 +180,6 @@ public class Track extends State {
         //Lblue Notes
         for (int i = 0; i < nf.getLblueNotes().size(); i++) {
             if(lblueHitter.collidesWith(nf.getLblueNotes().get(i))){
-                System.out.println("dub");
                 nf.getLblueNotes().get(i).hit();
                 if(nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -197,7 +191,6 @@ public class Track extends State {
         //Green Notes
         for (int i = 0; i < nf.getGreenNotes().size(); i++) {
             if(greenHitter.collidesWith(nf.getGreenNotes().get(i))){
-                System.out.println("green dub");
                 nf.getGreenNotes().get(i).hit();
                 if(nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())){
                     pc.AddPoints(10);
@@ -205,6 +198,11 @@ public class Track extends State {
                 }
             }
             nf.getGreenNotes().get(i).Update();
+        }
+
+        if(sm.getKeyManager().t()) {
+            am.StopSong();
+            sm.getGameStateManager().setCurState("Menu");
         }
 
     }
@@ -264,9 +262,6 @@ public class Track extends State {
         g.setFont(medFont);
         g.setColor(Color.WHITE);
         g.drawString(song.getName(), 25, 100);
-
-        g.setFont(smallFont);
-        g.drawString("Difficulty: Medium", 25, 150);
 
         g.setFont(bigFont);
         g.drawString("POINTS: " + (pc.getPoints()), 25, 200);
@@ -336,16 +331,31 @@ public class Track extends State {
 
     }
 
-    public void StartNoteSpawns() {
+    public void StartNoteSpawns() throws InterruptedException {
+
         NoteThread thread = new NoteThread();
         thread.start();
+
+        if(sm.getKeyManager().t()) {
+            thread.kill();
+        }
+
     }
 
 
     public class NoteThread extends Thread {
 
+        private volatile boolean exit = false;
+
         public void run() {
-            song.SpawnNotes();
+            while(!exit) {
+                song.SpawnNotes();
+            }
         }
+
+        public void kill() {
+            exit = true;
+        }
+
     }
 }

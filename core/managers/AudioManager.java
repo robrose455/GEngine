@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 public class AudioManager {
 
+    Clip clip;
     public AudioManager() {
 
     }
@@ -21,7 +22,7 @@ public class AudioManager {
 
         try{
 
-            Clip clip = AudioSystem.getClip();
+            clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(Song));
 
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -29,10 +30,12 @@ public class AudioManager {
 
             clip.start();
 
-
-
         }catch(Exception e) {
 
         }
+    }
+
+    public void StopSong() {
+        clip.stop();
     }
 }

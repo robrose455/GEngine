@@ -13,6 +13,8 @@ public class GameStateManager {
 
     boolean winner;
 
+    int test;
+
     State curState;
     State menu;
     State track;
@@ -51,9 +53,15 @@ public class GameStateManager {
             }
 
         }
-
+        System.out.println("Song being loaded: " + s.getName());
         track = new Track(sm,s);
         states.add(track);
+    }
+
+    public void RemoveTrack() {
+
+        states.remove(track);
+
     }
 
     public void LoadStates() throws FileNotFoundException, InterruptedException {
@@ -65,7 +73,7 @@ public class GameStateManager {
         gameOver = new GameOver(sm);
         states.add(gameOver);
 
-        s = songM.getSongList().get(3);
+        s = songM.getSongList().get(4);
         track = new Track(sm, s);
         states.add(track);
 
@@ -84,7 +92,9 @@ public class GameStateManager {
 
     public void setCurState(String n) throws FileNotFoundException, InterruptedException {
 
-        //System.out.println("Cur State Index to be: " + index);
+        test++;
+        System.out.println("Times this has been called: " + test);
+
         for (int i = 0; i < states.size(); i++) {
             if (n.equals(states.get(i).getName())) {
                 curState = states.get(i);
@@ -93,6 +103,10 @@ public class GameStateManager {
         curState.Init();
         //System.out.println(curState);
 
+    }
+
+    public SongManager getSongManager() {
+        return songM;
     }
 
 

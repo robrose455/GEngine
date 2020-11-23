@@ -23,10 +23,6 @@ public class GameOver extends State {
     @Override
     public void Update() throws FileNotFoundException, InterruptedException {
 
-        if(sm.getMouseManager().WasMouseClicked()) {
-            sm.getGameStateManager().setCurState("levelOne");
-            sm.getMouseManager().Reset();
-        }
 
     }
 

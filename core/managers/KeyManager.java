@@ -3,6 +3,7 @@ package ge.core.managers;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class KeyManager implements ActionListener {
 
@@ -38,6 +39,9 @@ public class KeyManager implements ActionListener {
     Action tPressAction;
     Action tReleaseAction;
 
+    Action enterPressAction;
+    Action enterReleaseAction;
+
     Action spaceAction;
 
     boolean down = false;
@@ -56,6 +60,8 @@ public class KeyManager implements ActionListener {
     boolean sc = false;
 
     boolean t = false;
+
+    boolean enter = false;
 
     SceneManager sm;
     
@@ -95,6 +101,9 @@ public class KeyManager implements ActionListener {
 
         tPressAction = new KeyManager.tPressAction();
         tReleaseAction = new KeyManager.tReleaseAction();
+
+        enterPressAction = new KeyManager.enterPressAction();
+        enterReleaseAction = new KeyManager.enterReleaseAction();
 
         spaceAction = new KeyManager.spaceAction();
         
@@ -191,15 +200,20 @@ public class KeyManager implements ActionListener {
         sm.getInputMap().put(T_KEY_RELEASED, "tRA");
         sm.getActionMap().put("tRA", tReleaseAction);
 
+        KeyStroke ENTER_KEY_PRESSED = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false);
+        KeyStroke ENTER_KEY_RELEASED = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true);
+
+        sm.getInputMap().put(ENTER_KEY_PRESSED, "enPA");
+        sm.getActionMap().put("enPA", enterPressAction);
+
+        sm.getInputMap().put(ENTER_KEY_RELEASED, "enRA");
+        sm.getActionMap().put("enRA", enterReleaseAction);
+
         sm.getInputMap().put(KeyStroke.getKeyStroke(' '), "spaceA");
         sm.getActionMap().put("spaceA", spaceAction);
 
         
         
-    }
-
-    public KeyManager() {
-
     }
 
     public class UpAction extends AbstractAction {
@@ -374,11 +388,29 @@ public class KeyManager implements ActionListener {
 
             newtime = System.currentTimeMillis();
             System.out.println(newtime - oldtime);
+            System.out.println("Dub");
             oldtime = System.currentTimeMillis();
 
             t = false;
         }
     }
+
+    public class enterPressAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            enter = true;
+        }
+    }
+
+    public class enterReleaseAction extends AbstractAction {
+
+        public void actionPerformed(ActionEvent e) {
+
+            enter = false;
+        }
+    }
+
 
     public class spaceAction extends AbstractAction {
 
@@ -387,11 +419,7 @@ public class KeyManager implements ActionListener {
         }
     }
 
-
-
-    public void actionPerformed(ActionEvent k) {
-        sm.actionPerformed(k);
-    }
+    public void actionPerformed(ActionEvent e) { }
 
     public boolean movingDown() {
         return down;
@@ -427,6 +455,14 @@ public class KeyManager implements ActionListener {
     public boolean sc() { return sc;}
 
     public boolean t() { return t; }
+    public boolean enter() { return enter;}
+
+    public void ResetMovement() {
+        down = false;
+        up = false;
+        left = false;
+        right = false;
+    }
 
     
 }

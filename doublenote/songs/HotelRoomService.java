@@ -18,22 +18,6 @@ public class HotelRoomService extends Song {
 
             TimeUnit.MILLISECONDS.sleep(21000);
 
-            nf.CreateLBlueNote();
-            TimeUnit.MILLISECONDS.sleep(159);
-            nf.CreateLBlueNote();
-            TimeUnit.MILLISECONDS.sleep(159);
-            nf.CreateBlueNote();
-            TimeUnit.MILLISECONDS.sleep(159);
-            nf.CreatePurpleNote();
-            TimeUnit.MILLISECONDS.sleep(159);
-            nf.CreateRedNote();
-
-
-
-
-
-
-
         }
 
         catch(InterruptedException ex)

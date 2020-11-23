@@ -367,12 +367,354 @@ public class CoconutMall extends Song {
             nf.CreateOrangeNote();
             TimeUnit.MILLISECONDS.sleep(250);
 
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(425);
+
+            ///////////////////
 
 
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            ///////////////////////
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            /////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(230);
+
+            //////////////////////////////////
+
+            nf.CreateRedNote();
+            TimeUnit.MILLISECONDS.sleep(20);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            ///////////////////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            //////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(375);
+
+            nf.CreateRedNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreateYellowNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            //////////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            //////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            //////////////////
+            //////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateRedNote();
+            TimeUnit.MILLISECONDS.sleep(62);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(62);
+            nf.CreateRedNote();
+            TimeUnit.MILLISECONDS.sleep(62);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(62);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
 
 
+            //////
 
+            nf.CreateLBlueNote();
+            TimeUnit.MILLISECONDS.sleep(80);
 
+            nf.CreateBlueNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreatePurpleNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreateRedNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            nf.CreateYellowNote();
+            TimeUnit.MILLISECONDS.sleep(80);
+
+            ///////////////////////
+
+            nf.CreateWhiteNote();
+            TimeUnit.MILLISECONDS.sleep(2000);
+
+            ///////////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(500);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(375);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(750);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(1750);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(375);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(750);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(1750);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(375);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            ////////////////////////
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(125);
+
+            nf.CreateOrangeNote();
+            TimeUnit.MILLISECONDS.sleep(250);
+
+            
 
         }
 

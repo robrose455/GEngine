@@ -49,15 +49,20 @@ public class SceneManager extends JPanel implements ActionListener {
         game.Init(this);
 
         t.start();
-
     }
 
     public void actionPerformed(ActionEvent e) {
 
+        //System.out.println("Using Scene");
+
         try {
+
             Update();
-        } catch (FileNotFoundException | InterruptedException fileNotFoundException) {
+
+        } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
+        } catch (InterruptedException interruptedException) {
+            interruptedException.printStackTrace();
         }
 
     }

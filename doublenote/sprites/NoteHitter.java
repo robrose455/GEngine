@@ -25,7 +25,6 @@ public class NoteHitter extends Sprite {
     public void CheckHits() {
 
 
-        System.out.println(km.j());
         if (km.j() && name.equals("RedHitter")) {
             Show();
         } else if (km.k() && name.equals("OrangeHitter")) {
