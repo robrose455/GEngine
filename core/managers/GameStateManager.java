@@ -3,6 +3,7 @@ package ge.core.managers;
 import ge.core.State;
 import ge.doublenote.songs.Song;
 import ge.doublenote.managers.SongManager;
+import ge.doublenote.songs.SongFactory;
 import ge.doublenote.states.*;
 import ge.doublenote.states.Menu;
 import java.awt.*;
@@ -24,6 +25,7 @@ public class GameStateManager {
     SongManager songM;
     SceneManager sm;
     Song s;
+    SongFactory sf;
 
 
     public GameStateManager(SceneManager sm, SongManager songM) {
@@ -31,6 +33,7 @@ public class GameStateManager {
         System.out.println("--Creating Game State Manager--");
 
         winner = false;
+
         this.songM = songM;
         this.sm = sm;
 

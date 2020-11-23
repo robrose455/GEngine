@@ -90,7 +90,7 @@ public class Track extends State {
         }
 
         this.nf = song.getNoteFactory();
-        
+
         StartNoteSpawns();
 
     }

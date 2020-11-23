@@ -4,7 +4,6 @@ import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 import ge.doublenote.logic.commands.BlueNoteCommand;
 import ge.doublenote.logic.commands.NoteCommand;
-import ge.doublenote.logic.commands.RedNoteCommand;
 
 import java.util.concurrent.TimeUnit;
 

@@ -64,10 +64,13 @@ public class Menu extends State {
     }
     public void DrawText(Graphics g) {
 
-        Font bigFont = new Font("Verdana", Font.BOLD, 45);
-        Font medFont = new Font("Verdana", Font.PLAIN, 30);
+        Font bigFont = new Font("Century Gothic", Font.BOLD, 80);
+        Font medFont = new Font("Courier", Font.PLAIN, 30);
         Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
+        g.setFont(bigFont);
+        g.drawString("Double Note", 250, 100);
+        //Song Menu
         g.setFont(medFont);
         g.setColor(Color.WHITE);
         ArrayList<Song> songList = sm.getGameStateManager().getSongManager().getSongList();

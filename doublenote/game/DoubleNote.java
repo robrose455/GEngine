@@ -1,4 +1,4 @@
-package ge.doublenote.definition;
+package ge.doublenote.game;
 
 import ge.core.Game;
 import ge.core.sprite.Sprite;

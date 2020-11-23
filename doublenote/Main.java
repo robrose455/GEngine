@@ -2,7 +2,7 @@ package ge.doublenote;
 
 import ge.core.Game;
 import ge.core.Scene;
-import ge.doublenote.definition.DoubleNote;
+import ge.doublenote.game.DoubleNote;
 
 import java.io.FileNotFoundException;
 
