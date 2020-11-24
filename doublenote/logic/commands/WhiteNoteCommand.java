@@ -14,4 +14,9 @@ public class WhiteNoteCommand extends NoteCommand {
         nf.CreateWhiteNote();
 
     }
+
+    @Override
+    public String getColor() {
+        return "White";
+    }
 }

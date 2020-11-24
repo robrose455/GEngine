@@ -12,5 +12,6 @@ public abstract class NoteCommand {
     }
 
     public abstract void execute();
+    public abstract String getColor();
 
 }

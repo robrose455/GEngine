@@ -5,6 +5,7 @@ import ge.core.managers.SceneManager;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.*;
 
 public class Scene extends JFrame {
@@ -26,7 +27,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void Start(Game game) throws FileNotFoundException, InterruptedException {
+    public void Start(Game game) throws IOException, InterruptedException {
 
         //Called in the main function to start the game
         this.game = game;
@@ -34,7 +35,7 @@ public class Scene extends JFrame {
 
     }
 
-    public void DrawScene() throws FileNotFoundException, InterruptedException {
+    public void DrawScene() throws IOException, InterruptedException {
 
         //Create Scene
         this.setLayout(new BorderLayout());

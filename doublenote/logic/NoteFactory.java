@@ -19,6 +19,8 @@ public class NoteFactory {
     ArrayList<Note> lblueNotes = new ArrayList<>();
     ArrayList<Note> greenNotes = new ArrayList<>();
 
+    int noteSpeed = 6;
+
 
     public NoteFactory(SceneManager sm) {
 
@@ -28,35 +30,35 @@ public class NoteFactory {
     }
 
     public void CreateRedNote() {
-        Note redNote = new Note(0, 10,0, 4, "RED", "DIE", "RedNote", km);
+        Note redNote = new Note(0, 10,0, noteSpeed, "RED", "DIE", "RedNote", km);
         redNotes.add(redNote);
     }
     public void CreateOrangeNote() {
-        Note orangeNote = new Note(0, 10,0, 4, "ORANGE", "DIE", "OrangeNote", km);
+        Note orangeNote = new Note(0, 10,0, noteSpeed, "ORANGE", "DIE", "OrangeNote", km);
         orangeNotes.add(orangeNote);
     }
     public void CreateYellowNote() {
-        Note yellowNote = new Note(0, 10,0, 4, "YELLOW", "DIE", "YellowNote", km);
+        Note yellowNote = new Note(0, 10,0, noteSpeed, "YELLOW", "DIE", "YellowNote", km);
         yellowNotes.add(yellowNote);
     }
     public void CreateWhiteNote() {
-        Note whiteNote = new Note(0, 10,0, 4, "WHITE", "DIE", "WhiteNote", km);
+        Note whiteNote = new Note(0, 10,0, noteSpeed, "WHITE", "DIE", "WhiteNote", km);
         whiteNotes.add(whiteNote);
     }
     public void CreateBlueNote() {
-        Note blueNote = new Note(0, 10,0, 4, "BLUE", "DIE", "BlueNote", km);
+        Note blueNote = new Note(0, 10,0, noteSpeed, "BLUE", "DIE", "BlueNote", km);
         blueNotes.add(blueNote);
     }
     public void CreatePurpleNote() {
-        Note purpleNote = new Note(0, 10,0, 4, "PURPLE", "DIE", "PurpleNote", km);
+        Note purpleNote = new Note(0, 10,0, noteSpeed, "PURPLE", "DIE", "PurpleNote", km);
         purpleNotes.add(purpleNote);
     }
     public void CreateLBlueNote() {
-        Note lblueNote = new Note(0, 10,0, 4, "LBLUE", "DIE", "LBlueNote", km);
+        Note lblueNote = new Note(0, 10,0, noteSpeed, "LBLUE", "DIE", "LBlueNote", km);
         lblueNotes.add(lblueNote);
     }
     public void CreateGreenNote() {
-        Note greenNote = new Note(0, 10,0, 4, "GREEN", "DIE", "GreenNote", km);
+        Note greenNote = new Note(0, 10,0, noteSpeed, "GREEN", "DIE", "GreenNote", km);
         greenNotes.add(greenNote);
     }
 

@@ -1,27 +1,125 @@
 package ge.doublenote.songs;
 
+import ge.core.managers.JSONReader;
 import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
-import ge.doublenote.logic.commands.BlueNoteCommand;
-import ge.doublenote.logic.commands.NoteCommand;
+import ge.doublenote.logic.commands.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class FurElise extends Song {
 
-    public FurElise(SceneManager sm, String filePath, String name, NoteFactory nf) {
+    ArrayList<String> colors = new ArrayList<>();
+    ArrayList<Integer> times = new ArrayList<>();
+    int noteCount;
+    int beat = 500;
+    int buffer = 1500;
+
+    public FurElise(SceneManager sm, String filePath, String name, NoteFactory nf) throws IOException {
         super(sm, filePath,name,nf);
         LoadNotes();
 
     }
 
     @Override
-    public void LoadNotes() {
+    public void LoadNotes() throws IOException {
 
-        NoteCommand nc = new BlueNoteCommand(nf);
-        noteQueue.add(nc);
+        try {
 
-        ///Read Json File
+            String text = Files.readString(Paths.get("C:/Users/Robert/Projects/Java/JavaGameEngine/src/ge/doublenote/songs/json/furelise.json"));
+            JSONObject obj = new JSONObject(text);
+            JSONArray notes = obj.getJSONArray("notes");
+
+            int time;
+
+            for (int i = notes.length() - 1; i > -1; i--) {
+                String color = notes.getJSONObject(i).getString("color");
+                String type = notes.getJSONObject(i).getString("type");
+
+                time = 0;
+
+                if(type.equals("Quarter")) {
+                    System.out.println("Hit this");
+                    time = beat;
+                } else if (type.equals("Half")) {
+                    time = beat * 2;
+                } else if (type.equals("Whole")) {
+                    time = beat * 4;
+                } else if (type.equals("Eighth")) {
+                    time = beat / 2;
+                } else if (type.equals("Sixteenth")) {
+                    time = beat / 4;
+                } else if (type.equals("Quarter + Eighth")) {
+                 time = beat + (beat / 2);
+                } else if (type.equals("Chord")) {
+                    time = 1;
+                } else if (type.equals("32")) {
+                    time = beat / 8;
+            }
+
+                colors.add(color);
+                times.add(time);
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+
+        String color;
+        int time;
+
+        for(int i = 0; i < colors.size(); i++) {
+            color = colors.get(i);
+            time = times.get(i);
+            System.out.println("Colors: [" + i + "] " + color + ": " + time);
+            //System.out.println("Hitting This");
+            switch (color) {
+                case "Red" -> {
+                    NoteCommand rc = new RedNoteCommand(nf);
+                    noteQueue.add(rc);
+                }
+                case "Orange" -> {
+                    NoteCommand oc = new OrangeNoteCommand(nf);
+                    noteQueue.add(oc);
+                }
+                case "Yellow" -> {
+                    NoteCommand yc = new YellowNoteCommand(nf);
+                    noteQueue.add(yc);
+                }
+                case "White" -> {
+                    NoteCommand wc = new WhiteNoteCommand(nf);
+                    noteQueue.add(wc);
+                }
+                case "Purple" -> {
+                    NoteCommand pc = new PurpleNoteCommand(nf);
+                    noteQueue.add(pc);
+                }
+                case "Blue" -> {
+                    NoteCommand bc = new BlueNoteCommand(nf);
+                    noteQueue.add(bc);
+                }
+                case "LBlue" -> {
+                    NoteCommand lc = new LBlueNoteCommand(nf);
+                    noteQueue.add(lc);
+                }
+                case "Green" -> {
+                    NoteCommand gc = new GreenNoteCommand(nf);
+                    noteQueue.add(gc);
+                }
+            }
+
+        }
+
+        noteCount = noteQueue.size() - 1;
+        System.out.println(noteCount);
+        System.out.println(times.get(noteCount));
 
     }
 
@@ -30,25 +128,27 @@ public class FurElise extends Song {
 
         try {
 
-        while(running) {
+                TimeUnit.MILLISECONDS.sleep(buffer);
 
-            TimeUnit.MILLISECONDS.sleep(100);
+        while(running) {
 
             if(noteQueue.size() != 0) {
                 NoteCommand n = noteQueue.pop();
                 n.execute();
-                System.out.println("Executing Note");
+                TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
+                System.out.println("Current Time Buffer: " + times.get(noteCount));
+                System.out.println(noteCount);
+                noteCount--;
             }
 
                 if(sm.getKeyManager().t()) {
-                    System.out.println("Hit This inside Fur Elise");
                     running = false;
                     LoadNotes();
                 }
             }
         }
 
-        catch(InterruptedException ex)
+        catch(InterruptedException | IOException ex)
 
         {
             Thread.currentThread().interrupt();

@@ -45,6 +45,12 @@ public class Track extends State {
         this.sm = sm;
         this.km = sm.getKeyManager();
 
+        try {
+            am.LoadSong(song.getFilePath());
+        } catch(FileNotFoundException e) {
+            System.out.println("Song File Not Found");
+        }
+
 
     }
 
@@ -52,7 +58,7 @@ public class Track extends State {
     public void Init() throws FileNotFoundException, InterruptedException {
 
         song.GARBAGE_setRun();
-        am.PlaySong(song.getFilePath());
+        am.PlaySong();
         if(hitterList.size() == 0) {
 
             NoteHitter redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());

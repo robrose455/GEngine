@@ -16,7 +16,11 @@ public class AudioManager {
 
     }
 
-    public void PlaySong(String filePath) throws FileNotFoundException {
+    public void PlaySong() {
+        clip.start();
+    }
+
+    public void LoadSong(String filePath) throws FileNotFoundException {
 
         File Song = new File(filePath);
 
@@ -26,9 +30,8 @@ public class AudioManager {
             clip.open(AudioSystem.getAudioInputStream(Song));
 
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-15.f);
+            gainControl.setValue(0f);
 
-            clip.start();
 
         }catch(Exception e) {
 

@@ -10,6 +10,7 @@ import ge.doublenote.songs.*;
 import ge.doublenote.sprites.NoteHitter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DoubleNote extends Game {
@@ -28,7 +29,7 @@ public class DoubleNote extends Game {
     }
 
     @Override
-    public void Init(SceneManager sm) throws FileNotFoundException, InterruptedException {
+    public void Init(SceneManager sm) throws IOException, InterruptedException {
 
 
         this.sm = sm;
@@ -71,7 +72,7 @@ public class DoubleNote extends Game {
 
     }
 
-    public void LoadSongs() {
+    public void LoadSongs() throws IOException {
 
         NoteFactory nf = new NoteFactory(sm);
 

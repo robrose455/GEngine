@@ -5,10 +5,11 @@ import ge.core.Scene;
 import ge.doublenote.game.DoubleNote;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         System.out.println("Game Engine Loading..");
 

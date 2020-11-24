@@ -255,7 +255,6 @@ public class KeyManager implements ActionListener {
     public class fReleaseAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Released");
             f = false;
         }
     }
@@ -271,7 +270,6 @@ public class KeyManager implements ActionListener {
     public class dReleaseAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Released");
             d = false;
         }
     }
@@ -287,7 +285,6 @@ public class KeyManager implements ActionListener {
     public class sReleaseAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Released");
             s = false;
         }
     }
@@ -303,7 +300,6 @@ public class KeyManager implements ActionListener {
     public class aReleaseAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Released");
             a = false;
         }
     }
@@ -320,7 +316,6 @@ public class KeyManager implements ActionListener {
     public class jReleaseAction extends AbstractAction {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Released");
             j = false;
         }
     }

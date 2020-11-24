@@ -4,6 +4,8 @@ import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 import ge.doublenote.managers.SongManager;
 
+import java.io.IOException;
+
 public class SongFactory {
 
     SceneManager sm;
@@ -19,15 +21,10 @@ public class SongFactory {
 
     }
 
-    public void FurElise() {
+    public void FurElise() throws IOException {
 
         Song furelise = new FurElise(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/FurElise.wav", "Fur Elise",nf);
         songM.AddSong(furelise);
-
-    }
-
-    public void CoconutMall() {
-
 
     }
 }

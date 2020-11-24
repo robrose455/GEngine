@@ -4,6 +4,7 @@ import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 import ge.doublenote.logic.commands.NoteCommand;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -37,7 +38,7 @@ public abstract class Song {
         return nf;
     }
 
-    public abstract void LoadNotes();
+    public abstract void LoadNotes() throws IOException;
 
     public abstract void SpawnNotes();
 

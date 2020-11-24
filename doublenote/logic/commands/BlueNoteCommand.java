@@ -14,4 +14,9 @@ public class BlueNoteCommand extends NoteCommand {
         nf.CreateBlueNote();
 
     }
+
+    @Override
+    public String getColor() {
+        return "Blue";
+    }
 }

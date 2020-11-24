@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class SceneManager extends JPanel implements ActionListener {
 
@@ -28,7 +29,7 @@ public class SceneManager extends JPanel implements ActionListener {
     //Create Timer
     Timer t = new Timer(10, this);
 
-    public SceneManager(Scene s) throws FileNotFoundException, InterruptedException {
+    public SceneManager(Scene s) throws IOException, InterruptedException {
 
         System.out.println("--Creating Scene Manager--");
 

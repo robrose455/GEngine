@@ -14,4 +14,10 @@ public class RedNoteCommand extends NoteCommand {
         nf.CreateRedNote();
 
     }
+
+    @Override
+    public String getColor() {
+        return "Red";
+    }
+
 }
