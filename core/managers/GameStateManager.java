@@ -8,6 +8,7 @@ import ge.doublenote.states.*;
 import ge.doublenote.states.Menu;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameStateManager {
@@ -36,6 +37,7 @@ public class GameStateManager {
 
         this.songM = songM;
         this.sm = sm;
+        this.sf = new SongFactory(sm);
 
     }
 
@@ -51,11 +53,16 @@ public class GameStateManager {
 
         for(int i = 0; i < songM.getSongList().size(); i++) {
 
-            if(songM.getSongList().get(i).getName().equals(songName)) {
-                s = songM.getSongList().get(i);
+            try {
+                if (songM.getSongList().get(i).getName().equals(songName)) {
+                    s = sf.FurElise();
+                }
+            } catch (IOException e) {
+                System.out.println("IO Exception");
             }
 
         }
+
         System.out.println("Song being loaded: " + s.getName());
         track = new Track(sm,s);
         states.add(track);
@@ -75,10 +82,6 @@ public class GameStateManager {
 
         gameOver = new GameOver(sm);
         states.add(gameOver);
-
-        s = songM.getSongList().get(4);
-        track = new Track(sm, s);
-        states.add(track);
 
         curState = states.get(0);
         curState.Init();

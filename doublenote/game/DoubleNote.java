@@ -76,6 +76,7 @@ public class DoubleNote extends Game {
 
         NoteFactory nf = new NoteFactory(sm);
 
+        /*
         Song merrygoroundoflife = new MerryGoRoundOfLife(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/howls.wav", "Merry Go Round of Life",nf);
         songM.AddSong(merrygoroundoflife);
 
@@ -85,9 +86,6 @@ public class DoubleNote extends Game {
         Song beefoven = new Beefoven(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/Beefoven.wav", "Beefoven",nf);
         songM.AddSong(beefoven);
 
-        Song furelise = new FurElise(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/FurElise.wav", "Fur Elise",nf);
-        songM.AddSong(furelise);
-
         Song coconutmall = new CoconutMall(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/coconutmall.wav", "Coconut Mall",nf);
         songM.AddSong(coconutmall);
 
@@ -95,7 +93,10 @@ public class DoubleNote extends Game {
         songM.AddSong(toadfactory);
 
         Song hotmk = new Hotmk(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/hotmk.wav", "Hall of the Mountain King",nf);
-        songM.AddSong(hotmk);
+        songM.AddSong(hotmk); */
+
+        Song furelise = new FurElise(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/FurElise.wav", "Fur Elise (Hard)",nf);
+        songM.AddSong(furelise);
 
     }
 

@@ -205,6 +205,7 @@ public class Track extends State {
 
             songEnded = song.HasSongEnded();
             if (songEnded) {
+                am.StopSong();
                 sm.getGameStateManager().setCurState("Menu");
             }
 
@@ -260,7 +261,6 @@ public class Track extends State {
 
         Font bigFont = new Font("Verdana", Font.BOLD, 25);
         Font medFont = new Font("Verdana", Font.PLAIN, 20);
-        Font smallFont = new Font("Verdana",Font.PLAIN, 12);
 
         g.setFont(medFont);
         g.setColor(Color.WHITE);

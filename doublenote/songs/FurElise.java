@@ -1,6 +1,5 @@
 package ge.doublenote.songs;
 
-import ge.core.managers.JSONReader;
 import ge.core.managers.SceneManager;
 import ge.doublenote.logic.NoteFactory;
 import ge.doublenote.logic.commands.*;
@@ -24,7 +23,6 @@ public class FurElise extends Song {
     public FurElise(SceneManager sm, String filePath, String name, NoteFactory nf) throws IOException {
         super(sm, filePath,name,nf);
         LoadNotes();
-
     }
 
     @Override

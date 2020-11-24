@@ -70,8 +70,9 @@ public class Menu extends State {
 
         g.setFont(bigFont);
         g.drawString("Double Note", 250, 100);
-        //Song Menu
         g.setFont(medFont);
+        g.drawString("Select a song with arrow keys", 250, 150);
+        //Song Menu
         g.setColor(Color.WHITE);
         ArrayList<Song> songList = sm.getGameStateManager().getSongManager().getSongList();
         int y = 300;
