@@ -2119,23 +2119,6 @@
       "color": "Yellow",
       "type" : "Whole",
       "comment" : "Funk"
-    },
-    {
-      "color": "White",
-      "type" : "Sixteenth",
-      "comment" : "Funk"
-    },{
-      "color": "Yellow",
-      "type" : "Sixteenth",
-      "comment" : "Funk"
-    },{
-      "color": "White",
-      "type" : "Sixteenth",
-      "comment" : "Funk"
-    },{
-      "color": "Yellow",
-      "type" : "Whole",
-      "comment" : "Funk"
     },{
       "color": "White",
       "type" : "Sixteenth"
@@ -2153,6 +2136,45 @@
       "type" : "Sixteenth"
     },
     {
+      "color": "White",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Yellow",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "White",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Yellow",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "White",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Yellow",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "White",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Yellow",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "White",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Yellow",
+      "type" : "Sixteenth"
+    },{
       "color": "White",
       "type" : "Sixteenth"
     },
@@ -2185,8 +2207,6 @@
       "type" : "Sixteenth",
       "comment" : "First Lick"
     },
-
-
     {
       "color": "Green",
       "type" : "Sixteenth"
@@ -2454,9 +2474,38 @@
       "type" : "Sixteenth"
     },
     {
+      "color": "Green",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "LBlue",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Blue",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Red",
+      "type": "Quarter + Eighth",
+      "comment": "Third Dip"
+    },
+    {
+      "color": "Green",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "LBlue",
+      "type" : "Sixteenth"
+    },
+    {
+      "color": "Blue",
+      "type" : "Sixteenth"
+    },
+    {
       "color": "Orange",
-      "type" : "Sixteenth",
-      "comment" : "Second Lick"
+      "type": "Quarter + Eighth",
+      "comment": "Third Dip"
     },
 
     {
@@ -2472,85 +2521,9 @@
       "type" : "Sixteenth"
     },
     {
-      "color": "Purple",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Red",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Orange",
-      "type" : "Sixteenth"
-    },
-    {
       "color": "Yellow",
-      "type" : "Sixteenth",
-      "comment" : "First Dip"
-    },
-
-    {
-      "color": "Green",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "LBlue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Blue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Purple",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Red",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Orange",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Yellow",
-      "type" : "Sixteenth",
-      "comment" : "Second Dip"
-    },
-
-    {
-      "color": "Green",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "LBlue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Blue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Purple",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Red",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Orange",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Yellow",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "White",
-      "type" : "Sixteenth",
-      "comment" : "Third Dip"
+      "type": "Quarter + Eighth",
+      "comment": "Third Dip"
     },
 
     {
@@ -2691,58 +2664,6 @@
     {
       "color": "White",
       "type": "Sixteenth",
-      "comment": "Third Dip"
-    },
-    {
-      "color": "Green",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "LBlue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Blue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Red",
-      "type": "Quarter + Eighth",
-      "comment": "Third Dip"
-    },
-    {
-      "color": "Green",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "LBlue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Blue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Orange",
-      "type": "Quarter + Eighth",
-      "comment": "Third Dip"
-    },
-
-    {
-      "color": "Green",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "LBlue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Blue",
-      "type" : "Sixteenth"
-    },
-    {
-      "color": "Yellow",
-      "type": "Quarter + Eighth",
       "comment": "Third Dip"
     }
   ]

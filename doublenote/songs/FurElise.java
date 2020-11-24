@@ -139,6 +139,8 @@ public class FurElise extends Song {
                 System.out.println("Current Time Buffer: " + times.get(noteCount));
                 System.out.println(noteCount);
                 noteCount--;
+            } else {
+                songEnded = true;
             }
 
                 if(sm.getKeyManager().t()) {

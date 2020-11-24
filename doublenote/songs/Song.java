@@ -16,6 +16,7 @@ public abstract class Song {
     public NoteFactory nf;
     public Stack<NoteCommand> noteQueue = new Stack<>();
     public boolean running = true;
+    public boolean songEnded = false;
     public Song(SceneManager sm, String filePath, String name, NoteFactory nf) {
 
         //Will Store Sprite Track at Later Point
@@ -44,6 +45,9 @@ public abstract class Song {
 
     public void GARBAGE_setRun() {
         running = true;
+    }
+    public boolean HasSongEnded() {
+        return songEnded;
     }
 
 }
