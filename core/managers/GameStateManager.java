@@ -41,22 +41,18 @@ public class GameStateManager {
 
     }
 
-    public boolean isWinner() {
-        return winner;
-    }
+    public void SetTrack(String songTitle) {
 
-    public void Win() {
-        winner = true;
-    }
-
-    public void SetTrack(String songName) {
-
-        for(int i = 0; i < songM.getSongList().size(); i++) {
+        for(int i = 0; i < songM.getSongTitles().size(); i++) {
 
             try {
-                if (songM.getSongList().get(i).getName().equals(songName)) {
+
+                if (songTitle.equals("Hall of the Mountain King (Medium)")) {
+                    s = sf.Hotmk();
+                } else if (songTitle.equals("Fur Elise (Hard)")) {
                     s = sf.FurElise();
                 }
+
             } catch (IOException e) {
                 System.out.println("IO Exception");
             }

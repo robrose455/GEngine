@@ -40,13 +40,13 @@ public class Menu extends State {
             songCounter--;
         }
 
-        if(sm.getKeyManager().movingDown() && (songCounter < (sm.getGameStateManager().getSongManager().getSongList().size()-1))) {
+        if(sm.getKeyManager().movingDown() && (songCounter < (sm.getGameStateManager().getSongManager().getSongTitles().size()-1))) {
             songCounter++;
         }
 
         if(sm.getKeyManager().enter()) {
             sm.getGameStateManager().RemoveTrack();
-            sm.getGameStateManager().SetTrack(sm.getGameStateManager().getSongManager().getSongList().get(songCounter).getName());
+            sm.getGameStateManager().SetTrack(sm.getGameStateManager().getSongManager().getSongTitles().get(songCounter));
             sm.getGameStateManager().setCurState("Track");
             mp.Reset();
         }
@@ -74,10 +74,10 @@ public class Menu extends State {
         g.drawString("Select a song with arrow keys", 250, 150);
         //Song Menu
         g.setColor(Color.WHITE);
-        ArrayList<Song> songList = sm.getGameStateManager().getSongManager().getSongList();
+        ArrayList<String> songTitles = sm.getGameStateManager().getSongManager().getSongTitles();
         int y = 300;
-        for(int i = 0; i < songList.size(); i++ ) {
-            g.drawString(songList.get(i).getName(), 300, y);
+        for(int i = 0; i < songTitles.size(); i++ ) {
+            g.drawString(songTitles.get(i), 300, y);
             y += 50;
         }
 

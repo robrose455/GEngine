@@ -74,8 +74,6 @@ public class DoubleNote extends Game {
 
     public void LoadSongs() throws IOException {
 
-        NoteFactory nf = new NoteFactory(sm);
-
         /*
         Song merrygoroundoflife = new MerryGoRoundOfLife(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/howls.wav", "Merry Go Round of Life",nf);
         songM.AddSong(merrygoroundoflife);
@@ -90,13 +88,13 @@ public class DoubleNote extends Game {
         songM.AddSong(coconutmall);
 
         Song toadfactory = new ToadFactory(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/toadfactory.wav", "Toads Factory",nf);
-        songM.AddSong(toadfactory);
+        songM.AddSong(toadfactory); */
 
-        Song hotmk = new Hotmk(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/hotmk.wav", "Hall of the Mountain King",nf);
-        songM.AddSong(hotmk); */
+        String hotmk = "Hall of the Mountain King (Medium)";
+        songM.AddTitle(hotmk);
 
-        Song furelise = new FurElise(sm,"C:/Users/Robert/Projects/Java/JavaGameEngine/src/assets/songs/FurElise.wav", "Fur Elise (Hard)",nf);
-        songM.AddSong(furelise);
+        String furelise = "Fur Elise (Hard)";
+        songM.AddTitle(furelise);
 
     }
 

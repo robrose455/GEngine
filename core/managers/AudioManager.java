@@ -1,13 +1,10 @@
 package ge.core.managers;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import ge.doublenote.songs.SongFactory;
+
+import javax.sound.sampled.*;
+import java.io.*;
+import java.net.URL;
 
 public class AudioManager {
 
@@ -22,23 +19,30 @@ public class AudioManager {
 
     public void LoadSong(String filePath) throws FileNotFoundException {
 
-        File Song = new File(filePath);
 
-        try{
+        try {
 
+            System.out.println("Reading Audio: " + filePath);
+            InputStream in = this.getClass().getResourceAsStream(filePath);
+            InputStream bufIn = new BufferedInputStream(in);
+            System.out.println("HIT HERE");
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(Song));
+            System.out.println("HIT HERE2");
+            clip.open(AudioSystem.getAudioInputStream(bufIn));
+            System.out.println("AUDIO READ");
 
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             gainControl.setValue(0f);
 
 
-        }catch(Exception e) {
+        }catch(UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 
+            System.out.println(e.getMessage());
         }
     }
 
     public void StopSong() {
         clip.stop();
     }
+
 }

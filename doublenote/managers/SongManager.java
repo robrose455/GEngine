@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 public class SongManager {
 
-    ArrayList<Song> songList = new ArrayList<>();
+    ArrayList<String> songTitles = new ArrayList<>();
 
     public SongManager() { }
 
-    public ArrayList<Song> getSongList() {
-        return songList;
+    public ArrayList<String> getSongTitles() {
+        return songTitles;
     }
 
-    public void AddSong(Song s) {
-        songList.add(s);
+    public void AddTitle(String s) {
+        songTitles.add(s);
     }
 
 }

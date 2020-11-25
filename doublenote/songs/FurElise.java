@@ -5,10 +5,10 @@ import ge.doublenote.logic.NoteFactory;
 import ge.doublenote.logic.commands.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +30,9 @@ public class FurElise extends Song {
 
         try {
 
-            String text = Files.readString(Paths.get("C:/Users/Robert/Projects/Java/JavaGameEngine/src/ge/doublenote/songs/json/furelise.json"));
-            JSONObject obj = new JSONObject(text);
+            InputStream in = this.getClass().getResourceAsStream("/resources/notes/furelise.json");
+            JSONTokener t = new JSONTokener(in);
+            JSONObject obj = new JSONObject(t);
             JSONArray notes = obj.getJSONArray("notes");
 
             int time;
