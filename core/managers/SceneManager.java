@@ -2,6 +2,7 @@ package ge.core.managers;
 
 import ge.core.Game;
 import ge.core.Scene;
+import ge.prismrhythm.managers.GameStateManager;
 
 import javax.swing.*;
 import java.awt.*;

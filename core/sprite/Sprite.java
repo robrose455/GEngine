@@ -1,5 +1,6 @@
 package ge.core.sprite;
 
+import ge.core.managers.ImageReader;
 import ge.core.managers.KeyManager;
 
 import javax.swing.*;
@@ -63,17 +64,10 @@ public class Sprite extends JPanel {
         this.km = km;
 
 
-        ImageReader ir = new ImageReader();
-        this.image = ir.readImage(imagePath);
-        this.imageFailed = ir.didImageFail();
 
-        if(!imageFailed) {
-            height = image.getHeight();
-            width = image.getWidth();
-        } else {
             height = 50;
             width = 50;
-        }
+
     }
 
     public void DrawSprite(Graphics g) { }

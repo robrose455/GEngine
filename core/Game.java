@@ -2,9 +2,8 @@ package ge.core;
 
 import ge.core.managers.SceneManager;
 import ge.core.sprite.Sprite;
-import ge.doublenote.managers.SongManager;
+import ge.prismrhythm.managers.SongManager;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 

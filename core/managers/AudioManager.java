@@ -1,10 +1,7 @@
 package ge.core.managers;
 
-import ge.doublenote.songs.SongFactory;
-
 import javax.sound.sampled.*;
 import java.io.*;
-import java.net.URL;
 
 public class AudioManager {
 
