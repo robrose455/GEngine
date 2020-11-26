@@ -1,5 +1,6 @@
 package ge.prismrhythm.states;
 
+import ge.core.managers.AudioManager;
 import ge.core.managers.SceneManager;
 import ge.core.State;
 import ge.core.managers.ImageReader;
@@ -13,16 +14,16 @@ public class Menu extends State {
 
     MenuPointer mp;
     int songCounter;
+    AudioManager am;
 
     public Menu(SceneManager sm) {
         super(sm);
 
         this.name = "Menu";
-
-        mp = new MenuPointer(0,0,0,0,"Pointer","DIE","Menu Pointer", sm.getKeyManager(), 2);
-
+        this.am = new AudioManager();
+        mp = new MenuPointer(0,0,0,0,"Pointer","DIE","Menu Pointer", sm.getKeyManager(), 3);
         System.out.println("--Creating State: Menu--");
-
+        am.LoadSong("/resources/songs/background.wav");
 
     }
 
@@ -31,6 +32,7 @@ public class Menu extends State {
 
         songCounter = 0;
         sm.getKeyManager().ResetMovement();
+        am.PlaySong();
 
     }
 
@@ -46,6 +48,7 @@ public class Menu extends State {
         }
 
         if(sm.getKeyManager().enter()) {
+            am.StopSong();
             sm.getGameStateManager().RemoveTrack();
             sm.getGameStateManager().SetTrack(sm.getGameStateManager().getSongManager().getSongTitles().get(songCounter));
             sm.getGameStateManager().setCurState("Track");

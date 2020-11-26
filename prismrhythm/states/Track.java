@@ -46,11 +46,7 @@ public class Track extends State {
         this.sm = sm;
         this.km = sm.getKeyManager();
 
-        try {
-            am.LoadSong(song.getFilePath());
-        } catch(FileNotFoundException e) {
-            System.out.println("Song File Not Found");
-        }
+        am.LoadSong(song.getFilePath());
 
 
     }
@@ -198,15 +194,10 @@ public class Track extends State {
                 nf.getGreenNotes().get(i).Update();
             }
 
-            if (sm.getKeyManager().t()) {
-                am.StopSong();
-                sm.getGameStateManager().setCurState("Menu");
-            }
-
             songEnded = song.HasSongEnded();
             if (songEnded) {
                 am.StopSong();
-                sm.getGameStateManager().setCurState("Menu");
+                sm.getGameStateManager().setCurState("end");
             }
 
     }

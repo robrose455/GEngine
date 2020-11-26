@@ -1,4 +1,4 @@
-package ge.prismrhythm.managers;
+package ge.prismrhythm.logic.managers;
 
 import java.util.ArrayList;
 

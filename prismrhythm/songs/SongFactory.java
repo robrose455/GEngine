@@ -30,4 +30,11 @@ public class SongFactory {
         return hotmk;
 
     }
+
+    public Song CoconutMall() {
+
+        Song coconutmall = new CoconutMall(sm,"/resources/songs/coconutmall.wav", "Coconut Mall",nf);
+        return coconutmall;
+
+    }
 }

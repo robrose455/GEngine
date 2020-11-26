@@ -1,7 +1,8 @@
-package ge.prismrhythm.managers;
+package ge.prismrhythm.logic.managers;
 
 import ge.core.State;
 import ge.core.managers.SceneManager;
+import ge.prismrhythm.logic.managers.SongManager;
 import ge.prismrhythm.songs.Song;
 import ge.prismrhythm.songs.SongFactory;
 import ge.prismrhythm.states.*;
@@ -12,10 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameStateManager {
-
-    boolean winner;
-
-    int test;
 
     State curState;
     State menu;
@@ -29,15 +26,23 @@ public class GameStateManager {
     SongFactory sf;
 
 
-    public GameStateManager(SceneManager sm, SongManager songM) {
+    public GameStateManager(SceneManager sm) {
 
         System.out.println("--Creating Game State Manager--");
 
-        winner = false;
-
-        this.songM = songM;
         this.sm = sm;
         this.sf = new SongFactory(sm);
+        this.songM = new SongManager();
+
+        songM.AddTitle("Fur Elise (Hard)");
+        songM.AddTitle("Hall of the Mountain King (Medium)");
+        songM.AddTitle("Coconut Mall");
+
+        try {
+            LoadStates();
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
 
     }
 
@@ -51,6 +56,8 @@ public class GameStateManager {
                     s = sf.Hotmk();
                 } else if (songTitle.equals("Fur Elise (Hard)")) {
                     s = sf.FurElise();
+                } else if (songTitle.equals("Coconut Mall")) {
+                    s = sf.CoconutMall();
                 }
 
             } catch (IOException e) {
@@ -71,7 +78,6 @@ public class GameStateManager {
     }
 
     public void LoadStates() throws FileNotFoundException, InterruptedException {
-
 
         menu = new Menu(sm);
         states.add(menu);
@@ -94,21 +100,29 @@ public class GameStateManager {
 
     public void setCurState(String n) throws FileNotFoundException, InterruptedException {
 
-        test++;
-        System.out.println("Times this has been called: " + test);
-
         for (int i = 0; i < states.size(); i++) {
             if (n.equals(states.get(i).getName())) {
                 curState = states.get(i);
             }
         }
         curState.Init();
-        //System.out.println(curState);
+    }
 
+    public void Update() {
+
+        try {
+            curState.Update();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SongManager getSongManager() {
         return songM;
+    }
+
+    public void isA() {
+        System.out.println("I am a Game State Manager");
     }
 
 

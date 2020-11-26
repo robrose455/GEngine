@@ -1,6 +1,7 @@
 package ge.core;
 
 import ge.core.managers.SceneManager;
+import ge.prismrhythm.logic.managers.PRSceneManager;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,11 +13,8 @@ public class Scene extends JFrame {
 
     //Initialize Height and Width along with the manager for the Scene
     SceneManager sm;
-    Game game;
     int height;
     int width;
-
-    JButton btn1;
 
     public Scene() {
 
@@ -27,10 +25,9 @@ public class Scene extends JFrame {
 
     }
 
-    public void Start(Game game) throws IOException, InterruptedException {
+    public void Start() throws IOException, InterruptedException {
 
         //Called in the main function to start the game
-        this.game = game;
         DrawScene();
 
     }
@@ -40,7 +37,7 @@ public class Scene extends JFrame {
         //Create Scene
         this.setLayout(new BorderLayout());
 
-        sm = new SceneManager(this);
+        sm = new PRSceneManager(this);
         this.add(sm, BorderLayout.CENTER);
         this.setSize(width,height);
         this.setVisible(true);
@@ -56,8 +53,5 @@ public class Scene extends JFrame {
     public int getHeight() {
         return height;
     }
-
-    public Game getGame() { return game; }
-    public void setGame(Game g) { this.game = g; }
 
 }
