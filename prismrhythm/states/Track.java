@@ -100,105 +100,105 @@ public class Track extends State {
     @Override
     public void Update() throws FileNotFoundException, InterruptedException {
 
-            for (int i = 0; i < hitterList.size(); i++) {
-                hitterList.get(i).Update();
-            }
+        for (int i = 0; i < hitterList.size(); i++) {
+            hitterList.get(i).Update();
+        }
 
-            //Red Notes
-            for (int i = 0; i < nf.getRedNotes().size(); i++) {
-                if (redHitter.collidesWith(nf.getRedNotes().get(i))) {
-                    nf.getRedNotes().get(i).hit();
-                    if (nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getRedNotes().get(i).used();
-                    }
+        //Red Notes
+        for (int i = 0; i < nf.getRedNotes().size(); i++) {
+            if (redHitter.collidesWith(nf.getRedNotes().get(i))) {
+                nf.getRedNotes().get(i).hit();
+                if (nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getRedNotes().get(i).used();
                 }
-                nf.getRedNotes().get(i).Update();
             }
+            nf.getRedNotes().get(i).Update();
+        }
 
-            //Orange Notes
-            for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
-                if (orangeHitter.collidesWith(nf.getOrangeNotes().get(i))) {
-                    nf.getOrangeNotes().get(i).hit();
-                    if (nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getOrangeNotes().get(i).used();
-                    }
+        //Orange Notes
+        for (int i = 0; i < nf.getOrangeNotes().size(); i++) {
+            if (orangeHitter.collidesWith(nf.getOrangeNotes().get(i))) {
+                nf.getOrangeNotes().get(i).hit();
+                if (nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getOrangeNotes().get(i).used();
                 }
-                nf.getOrangeNotes().get(i).Update();
             }
-            //Yellow Notes
-            for (int i = 0; i < nf.getYellowNotes().size(); i++) {
-                if (yellowHitter.collidesWith(nf.getYellowNotes().get(i))) {
-                    nf.getYellowNotes().get(i).hit();
-                    if (nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getYellowNotes().get(i).used();
-                    }
+            nf.getOrangeNotes().get(i).Update();
+        }
+        //Yellow Notes
+        for (int i = 0; i < nf.getYellowNotes().size(); i++) {
+            if (yellowHitter.collidesWith(nf.getYellowNotes().get(i))) {
+                nf.getYellowNotes().get(i).hit();
+                if (nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getYellowNotes().get(i).used();
                 }
-                nf.getYellowNotes().get(i).Update();
             }
-            //White Notes
-            for (int i = 0; i < nf.getWhiteNotes().size(); i++) {
-                if (whiteHitter.collidesWith(nf.getWhiteNotes().get(i))) {
-                    nf.getWhiteNotes().get(i).hit();
-                    if (nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getWhiteNotes().get(i).used();
-                    }
+            nf.getYellowNotes().get(i).Update();
+        }
+        //White Notes
+        for (int i = 0; i < nf.getWhiteNotes().size(); i++) {
+            if (whiteHitter.collidesWith(nf.getWhiteNotes().get(i))) {
+                nf.getWhiteNotes().get(i).hit();
+                if (nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getWhiteNotes().get(i).used();
                 }
-                nf.getWhiteNotes().get(i).Update();
             }
-            //Purple Notes
-            for (int i = 0; i < nf.getPurpleNotes().size(); i++) {
-                if (purpleHitter.collidesWith(nf.getPurpleNotes().get(i))) {
-                    nf.getPurpleNotes().get(i).hit();
-                    if (nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getPurpleNotes().get(i).used();
-                    }
+            nf.getWhiteNotes().get(i).Update();
+        }
+        //Purple Notes
+        for (int i = 0; i < nf.getPurpleNotes().size(); i++) {
+            if (purpleHitter.collidesWith(nf.getPurpleNotes().get(i))) {
+                nf.getPurpleNotes().get(i).hit();
+                if (nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getPurpleNotes().get(i).used();
                 }
-                nf.getPurpleNotes().get(i).Update();
             }
-            //Blue Notes
-            for (int i = 0; i < nf.getBlueNotes().size(); i++) {
-                if (blueHitter.collidesWith(nf.getBlueNotes().get(i))) {
-                    nf.getBlueNotes().get(i).hit();
-                    if (nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getBlueNotes().get(i).used();
-                    }
+            nf.getPurpleNotes().get(i).Update();
+        }
+        //Blue Notes
+        for (int i = 0; i < nf.getBlueNotes().size(); i++) {
+            if (blueHitter.collidesWith(nf.getBlueNotes().get(i))) {
+                nf.getBlueNotes().get(i).hit();
+                if (nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getBlueNotes().get(i).used();
                 }
-                nf.getBlueNotes().get(i).Update();
             }
-            //Lblue Notes
-            for (int i = 0; i < nf.getLblueNotes().size(); i++) {
-                if (lblueHitter.collidesWith(nf.getLblueNotes().get(i))) {
-                    nf.getLblueNotes().get(i).hit();
-                    if (nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getLblueNotes().get(i).used();
-                    }
+            nf.getBlueNotes().get(i).Update();
+        }
+        //Lblue Notes
+        for (int i = 0; i < nf.getLblueNotes().size(); i++) {
+            if (lblueHitter.collidesWith(nf.getLblueNotes().get(i))) {
+                nf.getLblueNotes().get(i).hit();
+                if (nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getLblueNotes().get(i).used();
                 }
-                nf.getLblueNotes().get(i).Update();
             }
-            //Green Notes
-            for (int i = 0; i < nf.getGreenNotes().size(); i++) {
-                if (greenHitter.collidesWith(nf.getGreenNotes().get(i))) {
-                    nf.getGreenNotes().get(i).hit();
-                    if (nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())) {
-                        pc.AddPoints(10);
-                        nf.getGreenNotes().get(i).used();
-                    }
+            nf.getLblueNotes().get(i).Update();
+        }
+        //Green Notes
+        for (int i = 0; i < nf.getGreenNotes().size(); i++) {
+            if (greenHitter.collidesWith(nf.getGreenNotes().get(i))) {
+                nf.getGreenNotes().get(i).hit();
+                if (nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())) {
+                    pc.AddPoints(10);
+                    nf.getGreenNotes().get(i).used();
                 }
-                nf.getGreenNotes().get(i).Update();
             }
+            nf.getGreenNotes().get(i).Update();
+        }
 
-            songEnded = song.HasSongEnded();
-            if (songEnded) {
-                am.StopSong();
-                sm.getGameStateManager().setCurState("end");
-            }
+        songEnded = song.HasSongEnded();
+        if (songEnded) {
+            am.StopSong();
+            sm.getGameStateManager().setCurState("end");
+        }
 
     }
 

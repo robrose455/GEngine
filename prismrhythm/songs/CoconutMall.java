@@ -138,11 +138,7 @@ public class CoconutMall extends Song {
                     noteCount--;
                 } else {
                     songEnded = true;
-                }
-
-                if(sm.getKeyManager().t()) {
                     running = false;
-                    LoadNotes();
                 }
             }
         }

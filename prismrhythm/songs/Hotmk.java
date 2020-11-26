@@ -20,13 +20,13 @@ public class Hotmk extends Song {
     int beat = 500;
     int buffer = 1500;
 
-    public Hotmk(SceneManager sm, String filePath, String name, NoteFactory nf) throws IOException {
+    public Hotmk(SceneManager sm, String filePath, String name, NoteFactory nf) {
         super(sm,filePath,name,nf);
         LoadNotes();
     }
 
     @Override
-    public void LoadNotes() throws IOException {
+    public void LoadNotes() {
         try {
 
             InputStream in = this.getClass().getResourceAsStream("/resources/notes/hotmk.json");
@@ -137,16 +137,13 @@ public class Hotmk extends Song {
                     noteCount--;
                 } else {
                     songEnded = true;
+                    running = false;
                 }
 
-                if(sm.getKeyManager().t()) {
-                    running = false;
-                    LoadNotes();
-                }
             }
         }
 
-        catch(InterruptedException | IOException ex)
+        catch(InterruptedException ex)
 
         {
             Thread.currentThread().interrupt();

@@ -139,17 +139,16 @@ public class FurElise extends Song {
                 System.out.println(noteCount);
                 noteCount--;
             } else {
+                TimeUnit.MILLISECONDS.sleep(7000);
                 songEnded = true;
+                running = false;
             }
 
-                if(sm.getKeyManager().t()) {
-                    running = false;
-                    LoadNotes();
-                }
+
             }
         }
 
-        catch(InterruptedException | IOException ex)
+        catch(InterruptedException ex)
 
         {
             Thread.currentThread().interrupt();
