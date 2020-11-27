@@ -12,25 +12,25 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class FurElise extends Song {
+public class FurEliseNightmare extends Song {
 
     ArrayList<String> colors = new ArrayList<>();
     ArrayList<Integer> times = new ArrayList<>();
     int noteCount;
-    int beat = 500;
-    int buffer = 1500;
+    int beat = 200;
+    int buffer = 1050;
 
-    public FurElise(SceneManager sm, String filePath, String name, NoteFactory nf) throws IOException {
+    public FurEliseNightmare(SceneManager sm, String filePath, String name, NoteFactory nf) {
         super(sm, filePath,name,nf);
         LoadNotes();
     }
 
     @Override
-    public void LoadNotes() throws IOException {
+    public void LoadNotes() {
 
         try {
 
-            InputStream in = this.getClass().getResourceAsStream("/resources/notes/furelise.json");
+            InputStream in = this.getClass().getResourceAsStream("/resources/notes/furelisenightmare.json");
             JSONTokener t = new JSONTokener(in);
             JSONObject obj = new JSONObject(t);
             JSONArray notes = obj.getJSONArray("notes");
@@ -43,24 +43,24 @@ public class FurElise extends Song {
 
                 time = 0;
 
-                if(type.equals("Quarter")) {
+                if(type.equals("Q")) {
                     System.out.println("Hit this");
                     time = beat;
-                } else if (type.equals("Half")) {
+                } else if (type.equals("H")) {
                     time = beat * 2;
-                } else if (type.equals("Whole")) {
+                } else if (type.equals("W")) {
                     time = beat * 4;
-                } else if (type.equals("Eighth")) {
+                } else if (type.equals("E")) {
                     time = beat / 2;
-                } else if (type.equals("Sixteenth")) {
+                } else if (type.equals("S")) {
                     time = beat / 4;
-                } else if (type.equals("Quarter + Eighth")) {
-                 time = beat + (beat / 2);
-                } else if (type.equals("Chord")) {
+                } else if (type.equals("QE")) {
+                    time = beat + (beat / 2);
+                } else if (type.equals("C")) {
                     time = 1;
-                } else if (type.equals("32")) {
+                } else if (type.equals("TT")) {
                     time = beat / 8;
-            }
+                }
 
                 colors.add(color);
                 times.add(time);
@@ -80,35 +80,35 @@ public class FurElise extends Song {
             System.out.println("Colors: [" + i + "] " + color + ": " + time);
             //System.out.println("Hitting This");
             switch (color) {
-                case "Red" -> {
+                case "R" -> {
                     NoteCommand rc = new RedNoteCommand(nf);
                     noteQueue.add(rc);
                 }
-                case "Orange" -> {
+                case "O" -> {
                     NoteCommand oc = new OrangeNoteCommand(nf);
                     noteQueue.add(oc);
                 }
-                case "Yellow" -> {
+                case "Y" -> {
                     NoteCommand yc = new YellowNoteCommand(nf);
                     noteQueue.add(yc);
                 }
-                case "White" -> {
+                case "W" -> {
                     NoteCommand wc = new WhiteNoteCommand(nf);
                     noteQueue.add(wc);
                 }
-                case "Purple" -> {
+                case "P" -> {
                     NoteCommand pc = new PurpleNoteCommand(nf);
                     noteQueue.add(pc);
                 }
-                case "Blue" -> {
+                case "B" -> {
                     NoteCommand bc = new BlueNoteCommand(nf);
                     noteQueue.add(bc);
                 }
-                case "LBlue" -> {
+                case "L" -> {
                     NoteCommand lc = new LBlueNoteCommand(nf);
                     noteQueue.add(lc);
                 }
-                case "Green" -> {
+                case "G" -> {
                     NoteCommand gc = new GreenNoteCommand(nf);
                     noteQueue.add(gc);
                 }
@@ -127,22 +127,22 @@ public class FurElise extends Song {
 
         try {
 
-                TimeUnit.MILLISECONDS.sleep(buffer);
+            TimeUnit.MILLISECONDS.sleep(buffer);
 
-        while(running) {
+            while(running) {
 
-            if(noteQueue.size() != 0) {
-                NoteCommand n = noteQueue.pop();
-                n.execute();
-                TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
-                System.out.println("Current Time Buffer: " + times.get(noteCount));
-                System.out.println(noteCount);
-                noteCount--;
-            } else {
-                TimeUnit.MILLISECONDS.sleep(7000);
-                songEnded = true;
-                running = false;
-            }
+                if(noteQueue.size() != 0) {
+                    NoteCommand n = noteQueue.pop();
+                    n.execute();
+                    TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
+                    System.out.println("Current Time Buffer: " + times.get(noteCount));
+                    System.out.println(noteCount);
+                    noteCount--;
+                } else {
+                    TimeUnit.MILLISECONDS.sleep(7000);
+                    songEnded = true;
+                    running = false;
+                }
 
 
             }

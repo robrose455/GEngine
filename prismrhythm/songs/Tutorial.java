@@ -11,16 +11,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class CoconutMall extends Song {
+public class Tutorial extends Song {
 
     ArrayList<String> colors = new ArrayList<>();
     ArrayList<Integer> times = new ArrayList<>();
     int noteCount;
-    int beat = 500;
-    int buffer = 1500;
+    int beat = 470;
+    int buffer = 3600;
 
-    public CoconutMall(SceneManager sm, String filePath, String name, NoteFactory nf) {
-        super(sm,filePath,name,nf);
+    public Tutorial(SceneManager sm, String filePath, String name, NoteFactory nf) {
+        super(sm, filePath,name,nf);
         LoadNotes();
     }
 
@@ -29,7 +29,7 @@ public class CoconutMall extends Song {
 
         try {
 
-            InputStream in = this.getClass().getResourceAsStream("/resources/notes/coconutmall.json");
+            InputStream in = this.getClass().getResourceAsStream("/resources/notes/tutorial.json");
             JSONTokener t = new JSONTokener(in);
             JSONObject obj = new JSONObject(t);
             JSONArray notes = obj.getJSONArray("notes");
@@ -42,22 +42,22 @@ public class CoconutMall extends Song {
 
                 time = 0;
 
-                if(type.equals("Quarter")) {
+                if(type.equals("Q")) {
                     System.out.println("Hit this");
                     time = beat;
-                } else if (type.equals("Half")) {
+                } else if (type.equals("H")) {
                     time = beat * 2;
-                } else if (type.equals("Whole")) {
-                    time = beat * 4;
-                } else if (type.equals("Eighth")) {
+                } else if (type.equals("W")) {
+                    time = beat * 3;
+                } else if (type.equals("E")) {
                     time = beat / 2;
-                } else if (type.equals("Sixteenth")) {
+                } else if (type.equals("S")) {
                     time = beat / 4;
-                } else if (type.equals("Quarter + Eighth")) {
+                } else if (type.equals("QE")) {
                     time = beat + (beat / 2);
-                } else if (type.equals("Chord")) {
+                } else if (type.equals("C")) {
                     time = 1;
-                } else if (type.equals("32")) {
+                } else if (type.equals("TT")) {
                     time = beat / 8;
                 }
 
@@ -79,35 +79,35 @@ public class CoconutMall extends Song {
             System.out.println("Colors: [" + i + "] " + color + ": " + time);
             //System.out.println("Hitting This");
             switch (color) {
-                case "Red" -> {
+                case "R" -> {
                     NoteCommand rc = new RedNoteCommand(nf);
                     noteQueue.add(rc);
                 }
-                case "Orange" -> {
+                case "O" -> {
                     NoteCommand oc = new OrangeNoteCommand(nf);
                     noteQueue.add(oc);
                 }
-                case "Yellow" -> {
+                case "Y" -> {
                     NoteCommand yc = new YellowNoteCommand(nf);
                     noteQueue.add(yc);
                 }
-                case "White" -> {
+                case "W" -> {
                     NoteCommand wc = new WhiteNoteCommand(nf);
                     noteQueue.add(wc);
                 }
-                case "Purple" -> {
+                case "P" -> {
                     NoteCommand pc = new PurpleNoteCommand(nf);
                     noteQueue.add(pc);
                 }
-                case "Blue" -> {
+                case "B" -> {
                     NoteCommand bc = new BlueNoteCommand(nf);
                     noteQueue.add(bc);
                 }
-                case "LBlue" -> {
+                case "L" -> {
                     NoteCommand lc = new LBlueNoteCommand(nf);
                     noteQueue.add(lc);
                 }
-                case "Green" -> {
+                case "G" -> {
                     NoteCommand gc = new GreenNoteCommand(nf);
                     noteQueue.add(gc);
                 }
@@ -121,6 +121,7 @@ public class CoconutMall extends Song {
 
     }
 
+    @Override
     public void SpawnNotes() {
 
         try {
@@ -137,9 +138,12 @@ public class CoconutMall extends Song {
                     System.out.println(noteCount);
                     noteCount--;
                 } else {
+                    TimeUnit.MILLISECONDS.sleep(7000);
                     songEnded = true;
                     running = false;
                 }
+
+
             }
         }
 

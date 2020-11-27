@@ -18,23 +18,13 @@ public class SongFactory {
 
     }
 
-    public Song FurElise() throws IOException {
-
-        Song furelise = new FurElise(sm,"/resources/songs/FurElise.wav", "Fur Elise",nf);
-        return furelise;
+    public Song FurEliseNightmare() throws IOException {
+        Song furelisenightmare = new FurEliseNightmare(sm, "/resources/songs/fen.wav", "Fur Elise",nf);
+        return furelisenightmare;
     }
 
-    public Song Hotmk() throws IOException {
-
-        Song hotmk = new Hotmk(sm,"/resources/songs/hotmk.wav", "Hall of the Mountain King (Medium)",nf);
-        return hotmk;
-
-    }
-
-    public Song CoconutMall() {
-
-        Song coconutmall = new CoconutMall(sm,"/resources/songs/coconutmall.wav", "Coconut Mall",nf);
-        return coconutmall;
-
+    public Song Tutorial() throws IOException {
+        Song tutorial = new Tutorial(sm, "/resources/songs/tutorial.wav", "Tutorial",nf);
+        return tutorial;
     }
 }

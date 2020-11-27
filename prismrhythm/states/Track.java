@@ -52,7 +52,7 @@ public class Track extends State {
     }
 
     @Override
-    public void Init() throws FileNotFoundException, InterruptedException {
+    public void Init() throws InterruptedException {
 
         song.GARBAGE_setRun();
         am.PlaySong();

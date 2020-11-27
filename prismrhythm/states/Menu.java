@@ -21,7 +21,7 @@ public class Menu extends State {
 
         this.name = "Menu";
         this.am = new AudioManager();
-        mp = new MenuPointer(0,0,0,0,"Pointer","DIE","Menu Pointer", sm.getKeyManager(), 3);
+        mp = new MenuPointer(0,0,0,0,"Pointer","DIE","Menu Pointer", sm.getKeyManager(), 2);
         System.out.println("--Creating State: Menu--");
         am.LoadSong("/resources/songs/background.wav");
 

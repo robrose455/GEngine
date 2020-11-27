@@ -2,7 +2,6 @@ package ge.prismrhythm.logic.managers;
 
 import ge.core.State;
 import ge.core.managers.SceneManager;
-import ge.prismrhythm.logic.managers.SongManager;
 import ge.prismrhythm.songs.Song;
 import ge.prismrhythm.songs.SongFactory;
 import ge.prismrhythm.states.*;
@@ -34,9 +33,8 @@ public class GameStateManager {
         this.sf = new SongFactory(sm);
         this.songM = new SongManager();
 
-        songM.AddTitle("Fur Elise (Hard)");
-        songM.AddTitle("Hall of the Mountain King (Medium)");
-        songM.AddTitle("Coconut Mall");
+        songM.AddTitle("Tutorial");
+        songM.AddTitle("Fur Elise");
 
         try {
             LoadStates();
@@ -52,12 +50,10 @@ public class GameStateManager {
 
             try {
 
-                if (songTitle.equals("Hall of the Mountain King (Medium)")) {
-                    s = sf.Hotmk();
-                } else if (songTitle.equals("Fur Elise (Hard)")) {
-                    s = sf.FurElise();
-                } else if (songTitle.equals("Coconut Mall")) {
-                    s = sf.CoconutMall();
+                if (songTitle.equals("Fur Elise")) {
+                    s = sf.FurEliseNightmare();
+                } else if (songTitle.equals("Tutorial")) {
+                    s = sf.Tutorial();
                 }
 
             } catch (IOException e) {

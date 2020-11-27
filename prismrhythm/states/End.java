@@ -48,10 +48,11 @@ public class End extends State {
         g.drawString("SONG COMPLETE", 315, 100);
 
         g.setFont(medFont);
-        g.drawString("Use 'T' to return to menu!", 270, 300);
+        g.drawString("Use 'T' to return to menu!", 325, 300);
 
         g.setFont(smallFont);
         g.drawString("Created by Rob Rose", 800, 900);
+        g.drawString("Music Credit: MusicalBasics", 100, 900);
 
         g.setFont(medFont);
 
