@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.IOException;
+import javax.sound.sampled.Clip;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -20,8 +20,8 @@ public class FurEliseNightmare extends Song {
     int beat = 200;
     int buffer = 1050;
 
-    public FurEliseNightmare(SceneManager sm, String filePath, String name, NoteFactory nf) {
-        super(sm, filePath,name,nf);
+    public FurEliseNightmare(SceneManager sm, Clip c, String name, NoteFactory nf) {
+        super(sm, c,name,nf);
         LoadNotes();
     }
 

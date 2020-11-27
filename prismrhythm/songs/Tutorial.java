@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javax.sound.sampled.Clip;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -19,8 +20,8 @@ public class Tutorial extends Song {
     int beat = 470;
     int buffer = 3600;
 
-    public Tutorial(SceneManager sm, String filePath, String name, NoteFactory nf) {
-        super(sm, filePath,name,nf);
+    public Tutorial(SceneManager sm, Clip c, String name, NoteFactory nf) {
+        super(sm, c,name,nf);
         LoadNotes();
     }
 
@@ -43,7 +44,6 @@ public class Tutorial extends Song {
                 time = 0;
 
                 if(type.equals("Q")) {
-                    System.out.println("Hit this");
                     time = beat;
                 } else if (type.equals("H")) {
                     time = beat * 2;
@@ -76,8 +76,7 @@ public class Tutorial extends Song {
         for(int i = 0; i < colors.size(); i++) {
             color = colors.get(i);
             time = times.get(i);
-            System.out.println("Colors: [" + i + "] " + color + ": " + time);
-            //System.out.println("Hitting This");
+            //System.out.println("Colors: [" + i + "] " + color + ": " + time);
             switch (color) {
                 case "R" -> {
                     NoteCommand rc = new RedNoteCommand(nf);
@@ -116,8 +115,6 @@ public class Tutorial extends Song {
         }
 
         noteCount = noteQueue.size() - 1;
-        System.out.println(noteCount);
-        System.out.println(times.get(noteCount));
 
     }
 
@@ -134,7 +131,7 @@ public class Tutorial extends Song {
                     NoteCommand n = noteQueue.pop();
                     n.execute();
                     TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
-                    System.out.println("Current Time Buffer: " + times.get(noteCount));
+                    //System.out.println("Current Time Buffer: " + times.get(noteCount));
                     System.out.println(noteCount);
                     noteCount--;
                 } else {

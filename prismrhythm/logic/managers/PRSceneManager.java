@@ -1,6 +1,7 @@
 package ge.prismrhythm.logic.managers;
 
 import ge.core.Scene;
+import ge.core.managers.AudioManager;
 import ge.core.managers.KeyManager;
 import ge.core.managers.MouseManager;
 import ge.core.managers.SceneManager;
@@ -23,6 +24,9 @@ public class PRSceneManager extends SceneManager {
     //Handles current state of game (win or loss)
     GameStateManager gsm;
 
+    //
+    AudioManager am;
+
     //Create Timer
     Timer t = new Timer(10, this);
 
@@ -42,6 +46,9 @@ public class PRSceneManager extends SceneManager {
 
         //Key Manager pulls SpriteList and Listens for Key Presses
         this.km = new KeyManager(this);
+
+        //
+        this.am = new AudioManager();
 
         //Game State Manager Contains all game states for game
         this.gsm = new GameStateManager(this);
@@ -84,5 +91,9 @@ public class PRSceneManager extends SceneManager {
 
     public KeyManager getKeyManager() {
         return km;
+    }
+
+    public AudioManager getAudioManager() {
+        return am;
     }
 }

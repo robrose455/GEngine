@@ -1,5 +1,4 @@
 package ge.prismrhythm.logic.managers;
-
 import ge.core.State;
 import ge.core.managers.SceneManager;
 import ge.prismrhythm.songs.Song;

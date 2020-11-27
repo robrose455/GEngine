@@ -3,6 +3,7 @@ package ge.prismrhythm.songs;
 import ge.core.managers.SceneManager;
 import ge.prismrhythm.logic.NoteFactory;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 
 public class SongFactory {
@@ -18,12 +19,14 @@ public class SongFactory {
     }
 
     public Song FurEliseNightmare() throws IOException {
-        Song furelisenightmare = new FurEliseNightmare(sm, "/resources/songs/furelise.wav", "Fur Elise",nf);
+        Clip c = sm.getAudioManager().LoadSong("/resources/songs/furelise.wav");
+        Song furelisenightmare = new FurEliseNightmare(sm, c, "Fur Elise",nf);
         return furelisenightmare;
     }
 
     public Song Tutorial() throws IOException {
-        Song tutorial = new Tutorial(sm, "/resources/songs/tutorial.wav", "Tutorial",nf);
+        Clip c = sm.getAudioManager().LoadSong("/resources/songs/furelise.wav");
+        Song tutorial = new Tutorial(sm, c, "Tutorial",nf);
         return tutorial;
     }
 }

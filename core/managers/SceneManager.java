@@ -14,5 +14,6 @@ public abstract class SceneManager extends JPanel implements ActionListener {
     public abstract void Update();
     public abstract GameStateManager getGameStateManager();
     public abstract KeyManager getKeyManager();
+    public abstract AudioManager getAudioManager();
 
 }

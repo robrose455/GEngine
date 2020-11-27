@@ -8,11 +8,7 @@ public class AudioManager {
     Clip clip;
     public AudioManager() { }
 
-    public void PlaySong() {
-        clip.start();
-    }
-
-    public void LoadSong(String filePath) {
+    public Clip LoadSong(String filePath) {
 
         try {
 
@@ -23,18 +19,24 @@ public class AudioManager {
             clip.open(AudioSystem.getAudioInputStream(bufIn));
 
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(0f);
+            gainControl.setValue(-10f);
 
-
-        }catch(UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 
             System.out.print("ERROR: ");
             System.out.println(e.getMessage());
         }
+
+        return clip;
+
     }
 
+    public void PlaySong() {
+        clip.start();
+    }
     public void StopSong() {
         clip.stop();
     }
+
 
 }

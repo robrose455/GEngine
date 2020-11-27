@@ -4,30 +4,32 @@ import ge.core.managers.SceneManager;
 import ge.prismrhythm.logic.NoteFactory;
 import ge.prismrhythm.logic.commands.NoteCommand;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.util.Stack;
 
 public abstract class Song {
 
     public SceneManager sm;
-    public String filePath;
+    public Clip clip;
+    LoadedClip lc;
     public String name;
     public NoteFactory nf;
     public Stack<NoteCommand> noteQueue = new Stack<>();
     public boolean running = true;
     public boolean songEnded = false;
-    public Song(SceneManager sm, String filePath, String name, NoteFactory nf) {
+    public Song(SceneManager sm, Clip clip, String name, NoteFactory nf) {
 
         //Will Store Sprite Track at Later Point
         this.sm = sm;
-        this.filePath = filePath;
+        this.lc = new LoadedClip(clip);
         this.name = name;
         this.nf = nf;
 
     }
 
-    public String getFilePath() {
-        return filePath;
+    public LoadedClip getClip() {
+        return lc;
     }
 
     public String getName() {

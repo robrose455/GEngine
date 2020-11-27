@@ -39,15 +39,11 @@ public class Track extends State {
         super(sm);
 
         this.name = "Track";
-
         this.pc = new PointCounter();
-        this.am = new AudioManager();
         this.song = song;
         this.sm = sm;
+        this.am = sm.getAudioManager();
         this.km = sm.getKeyManager();
-
-        am.LoadSong(song.getFilePath());
-
 
     }
 
@@ -55,7 +51,7 @@ public class Track extends State {
     public void Init() throws InterruptedException {
 
         song.GARBAGE_setRun();
-        am.PlaySong();
+        song.getClip().PlaySong();
         if(hitterList.size() == 0) {
 
             NoteHitter redHitter = new NoteHitter(575, 900, 0, 0,  "RED", "DIE", "RedHitter", sm.getKeyManager());
@@ -284,7 +280,7 @@ public class Track extends State {
 
         songEnded = song.HasSongEnded();
         if (songEnded) {
-            am.StopSong();
+            song.getClip().StopSong();
             sm.getGameStateManager().setCurState("end");
         }
 
