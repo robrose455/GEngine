@@ -7,9 +7,12 @@ import java.awt.*;
 
 public class NoteHitter extends Sprite {
 
+    boolean pressed;
+
     public NoteHitter(int x, int y, int dx, int dy, String ip, String ba, String n, KeyManager km) {
         super(x, y, dx, dy, ip, ba, n, km);
 
+        pressed = false;
         isVisible = false;
 
 
@@ -27,21 +30,30 @@ public class NoteHitter extends Sprite {
 
         if (km.j() && name.equals("RedHitter")) {
             Show();
+            pressed = true;
         } else if (km.k() && name.equals("OrangeHitter")) {
             Show();
+            pressed = true;
         } else if (km.l() && name.equals("YellowHitter")) {
             Show();
+            pressed = true;
         } else if (km.sc() && name.equals("WhiteHitter")) {
             Show();
+            pressed = true;
         } else if (km.f() && name.equals("PurpleHitter")) {
             Show();
+            pressed = true;
         } else if (km.d() && name.equals("BlueHitter")) {
             Show();
+            pressed = true;
         } else if (km.s() && name.equals("LBlueHitter")) {
             Show();
+            pressed = true;
         } else if (km.a() && name.equals("GreenHitter")) {
             Show();
+            pressed = true;
         } else {
+            pressed = false;
             Hide();
         }
 
@@ -77,6 +89,10 @@ public class NoteHitter extends Sprite {
                 g.fillRect(x,y,50,50);
             }
         }
+    }
+
+    public boolean isPressed() {
+        return pressed;
     }
 
     public KeyManager getKeyManager() {

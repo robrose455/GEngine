@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Sprite extends JPanel {
 
+    boolean pressed = false;
     boolean used = false;
     boolean hit = false;
     public String name;
@@ -295,4 +296,7 @@ public class Sprite extends JPanel {
 
     }
 
+    public boolean isPressed() {
+        return pressed;
+    }
 }

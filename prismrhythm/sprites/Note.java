@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class Note extends Sprite {
 
+    boolean missed = false;
     boolean used = false;
     boolean hit = false;
 
@@ -79,5 +80,13 @@ public class Note extends Sprite {
     public void used() {
         used = true;
         Hide();
+    }
+
+    public void missed() {
+        missed = true;
+    }
+
+    public boolean hasBeenMissed() {
+        return missed;
     }
 }

@@ -109,9 +109,20 @@ public class Track extends State {
             if (redHitter.collidesWith(nf.getRedNotes().get(i))) {
                 nf.getRedNotes().get(i).hit();
                 if (nf.getRedNotes().get(i).isHit() && !(nf.getRedNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getRedNotes().get(i).used();
                 }
+            }
+
+            if (nf.getRedNotes().get(i).getY() > 1200) {
+                if(!nf.getRedNotes().get(i).isHit()){
+                    nf.getRedNotes().get(i).missed();
+                }
+                if (nf.getRedNotes().get(i).hasBeenMissed() && !(nf.getRedNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getRedNotes().get(i).used();
+                }
+
             }
             nf.getRedNotes().get(i).Update();
         }
@@ -121,9 +132,20 @@ public class Track extends State {
             if (orangeHitter.collidesWith(nf.getOrangeNotes().get(i))) {
                 nf.getOrangeNotes().get(i).hit();
                 if (nf.getOrangeNotes().get(i).isHit() && !(nf.getOrangeNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getOrangeNotes().get(i).used();
                 }
+            }
+
+            if (nf.getOrangeNotes().get(i).getY() > 1200) {
+                if(!nf.getOrangeNotes().get(i).isHit()){
+                    nf.getOrangeNotes().get(i).missed();
+                }
+                if (nf.getOrangeNotes().get(i).hasBeenMissed() && !(nf.getOrangeNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getOrangeNotes().get(i).used();
+                }
+
             }
             nf.getOrangeNotes().get(i).Update();
         }
@@ -132,9 +154,20 @@ public class Track extends State {
             if (yellowHitter.collidesWith(nf.getYellowNotes().get(i))) {
                 nf.getYellowNotes().get(i).hit();
                 if (nf.getYellowNotes().get(i).isHit() && !(nf.getYellowNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getYellowNotes().get(i).used();
                 }
+            }
+
+            if (nf.getYellowNotes().get(i).getY() > 1200) {
+                if(!nf.getYellowNotes().get(i).isHit()){
+                    nf.getYellowNotes().get(i).missed();
+                }
+                if (nf.getYellowNotes().get(i).hasBeenMissed() && !(nf.getYellowNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getYellowNotes().get(i).used();
+                }
+
             }
             nf.getYellowNotes().get(i).Update();
         }
@@ -143,9 +176,20 @@ public class Track extends State {
             if (whiteHitter.collidesWith(nf.getWhiteNotes().get(i))) {
                 nf.getWhiteNotes().get(i).hit();
                 if (nf.getWhiteNotes().get(i).isHit() && !(nf.getWhiteNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getWhiteNotes().get(i).used();
                 }
+            }
+
+            if (nf.getWhiteNotes().get(i).getY() > 1200) {
+                if(!nf.getWhiteNotes().get(i).isHit()){
+                    nf.getWhiteNotes().get(i).missed();
+                }
+                if (nf.getWhiteNotes().get(i).hasBeenMissed() && !(nf.getWhiteNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getWhiteNotes().get(i).used();
+                }
+
             }
             nf.getWhiteNotes().get(i).Update();
         }
@@ -154,9 +198,20 @@ public class Track extends State {
             if (purpleHitter.collidesWith(nf.getPurpleNotes().get(i))) {
                 nf.getPurpleNotes().get(i).hit();
                 if (nf.getPurpleNotes().get(i).isHit() && !(nf.getPurpleNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getPurpleNotes().get(i).used();
                 }
+            }
+
+            if (nf.getPurpleNotes().get(i).getY() > 1200) {
+                if(!nf.getPurpleNotes().get(i).isHit()){
+                    nf.getPurpleNotes().get(i).missed();
+                }
+                if (nf.getPurpleNotes().get(i).hasBeenMissed() && !(nf.getPurpleNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getPurpleNotes().get(i).used();
+                }
+
             }
             nf.getPurpleNotes().get(i).Update();
         }
@@ -165,9 +220,20 @@ public class Track extends State {
             if (blueHitter.collidesWith(nf.getBlueNotes().get(i))) {
                 nf.getBlueNotes().get(i).hit();
                 if (nf.getBlueNotes().get(i).isHit() && !(nf.getBlueNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getBlueNotes().get(i).used();
                 }
+            }
+
+            if (nf.getBlueNotes().get(i).getY() > 1200) {
+                if(!nf.getBlueNotes().get(i).isHit()){
+                    nf.getBlueNotes().get(i).missed();
+                }
+                if (nf.getBlueNotes().get(i).hasBeenMissed() && !(nf.getBlueNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getBlueNotes().get(i).used();
+                }
+
             }
             nf.getBlueNotes().get(i).Update();
         }
@@ -176,9 +242,20 @@ public class Track extends State {
             if (lblueHitter.collidesWith(nf.getLblueNotes().get(i))) {
                 nf.getLblueNotes().get(i).hit();
                 if (nf.getLblueNotes().get(i).isHit() && !(nf.getLblueNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getLblueNotes().get(i).used();
                 }
+            }
+
+            if (nf.getLblueNotes().get(i).getY() > 1200) {
+                if(!nf.getLblueNotes().get(i).isHit()){
+                    nf.getLblueNotes().get(i).missed();
+                }
+                if (nf.getLblueNotes().get(i).hasBeenMissed() && !(nf.getLblueNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getLblueNotes().get(i).used();
+                }
+
             }
             nf.getLblueNotes().get(i).Update();
         }
@@ -187,9 +264,20 @@ public class Track extends State {
             if (greenHitter.collidesWith(nf.getGreenNotes().get(i))) {
                 nf.getGreenNotes().get(i).hit();
                 if (nf.getGreenNotes().get(i).isHit() && !(nf.getGreenNotes().get(i).hasBeenUsed())) {
-                    pc.AddPoints(10);
+                    pc.AddPoints();
                     nf.getGreenNotes().get(i).used();
                 }
+            }
+
+            if (nf.getGreenNotes().get(i).getY() > 1200) {
+                if(!nf.getGreenNotes().get(i).isHit()){
+                    nf.getGreenNotes().get(i).missed();
+                }
+                if (nf.getGreenNotes().get(i).hasBeenMissed() && !(nf.getGreenNotes().get(i).hasBeenUsed())) {
+                    pc.ResetStreak();
+                    nf.getGreenNotes().get(i).used();
+                }
+
             }
             nf.getGreenNotes().get(i).Update();
         }
@@ -199,10 +287,6 @@ public class Track extends State {
             am.StopSong();
             sm.getGameStateManager().setCurState("end");
         }
-
-    }
-
-    public void DrawBackground(Graphics g) {
 
     }
 
@@ -258,12 +342,13 @@ public class Track extends State {
         Font bigFont = new Font("Verdana", Font.BOLD, 25);
         Font medFont = new Font("Verdana", Font.PLAIN, 20);
 
-        g.setFont(medFont);
+        g.setFont(bigFont);
         g.setColor(Color.WHITE);
         g.drawString(song.getName(), 25, 100);
 
         g.setFont(bigFont);
         g.drawString("POINTS: " + (pc.getPoints()), 25, 200);
+        g.drawString("Multiplier: " + (pc.getMultiplier()) + "x",25, 230);
 
         g.setFont(medFont);
         g.setColor(Color.BLACK);

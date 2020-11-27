@@ -52,7 +52,7 @@ public class End extends State {
 
         g.setFont(smallFont);
         g.drawString("Created by Rob Rose", 800, 900);
-        g.drawString("Music Credit: MusicalBasics", 100, 900);
+        g.drawString("Music Credit: MusicalBasics", 50, 900);
 
         g.setFont(medFont);
 

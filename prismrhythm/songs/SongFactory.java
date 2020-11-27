@@ -8,7 +8,6 @@ import java.io.IOException;
 public class SongFactory {
 
     SceneManager sm;
-
     NoteFactory nf;
 
     public SongFactory(SceneManager sm) {
@@ -19,7 +18,7 @@ public class SongFactory {
     }
 
     public Song FurEliseNightmare() throws IOException {
-        Song furelisenightmare = new FurEliseNightmare(sm, "/resources/songs/fen.wav", "Fur Elise",nf);
+        Song furelisenightmare = new FurEliseNightmare(sm, "/resources/songs/furelise.wav", "Fur Elise",nf);
         return furelisenightmare;
     }
 
