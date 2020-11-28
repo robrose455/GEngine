@@ -12,7 +12,6 @@ public class AudioManager {
 
         try {
 
-            System.out.println("Reading Audio: " + filePath);
             InputStream in = this.getClass().getResourceAsStream(filePath);
             InputStream bufIn = new BufferedInputStream(in);
             clip = AudioSystem.getClip();

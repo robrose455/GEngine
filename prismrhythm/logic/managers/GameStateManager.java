@@ -1,6 +1,7 @@
 package ge.prismrhythm.logic.managers;
 import ge.core.State;
 import ge.core.managers.SceneManager;
+import ge.prismrhythm.songs.LoadedClip;
 import ge.prismrhythm.songs.Song;
 import ge.prismrhythm.songs.SongFactory;
 import ge.prismrhythm.states.*;
@@ -20,9 +21,12 @@ public class GameStateManager {
     ArrayList<State> states = new ArrayList<>();
     SongManager songM;
     SceneManager sm;
-    Song s;
-    SongFactory sf;
 
+    SongFactory sf;
+    Song s;
+
+    LoadedClip feClip;
+    LoadedClip tuClip;
 
     public GameStateManager(SceneManager sm) {
 
@@ -34,6 +38,8 @@ public class GameStateManager {
 
         songM.AddTitle("Tutorial");
         songM.AddTitle("Fur Elise");
+
+        LoadClips();
 
         try {
             LoadStates();
@@ -50,9 +56,9 @@ public class GameStateManager {
             try {
 
                 if (songTitle.equals("Fur Elise")) {
-                    s = sf.FurEliseNightmare();
+                    s = sf.FurEliseNightmare(feClip);
                 } else if (songTitle.equals("Tutorial")) {
-                    s = sf.Tutorial();
+                    s = sf.Tutorial(tuClip);
                 }
 
             } catch (IOException e) {
@@ -89,15 +95,11 @@ public class GameStateManager {
         curState.DrawSprites(g);
     }
 
-    public State getCurState() {
-        return curState;
-    }
-
     public void setCurState(String n) throws FileNotFoundException, InterruptedException {
 
-        for (int i = 0; i < states.size(); i++) {
-            if (n.equals(states.get(i).getName())) {
-                curState = states.get(i);
+        for (State state : states) {
+            if (n.equals(state.getName())) {
+                curState = state;
             }
         }
         curState.Init();
@@ -116,8 +118,9 @@ public class GameStateManager {
         return songM;
     }
 
-    public void isA() {
-        System.out.println("I am a Game State Manager");
+    public void LoadClips() {
+        feClip = new LoadedClip(sm.getAudioManager().LoadSong("/resources/songs/furelise.wav"));
+        tuClip = new LoadedClip(sm.getAudioManager().LoadSong("/resources/songs/tutorial.wav"));
     }
 
 

@@ -32,38 +32,47 @@ public class Note extends Sprite {
 
         if(isVisible) {
 
-            if(imagePath.equals("RED")){
-                x = 579;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("ORANGE")){
-                x = 629;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("YELLOW")){
-                x = 679;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            }  else if (imagePath.equals("WHITE")) {
-                x = 729;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("PURPLE")) {
-                x = 429;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("BLUE")) {
-                x = 379;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("LBLUE")) {
-                x = 329;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
-            } else if (imagePath.equals("GREEN")) {
-                x = 279;
-                g.setColor(Color.decode("#000000"));
-                g.fillRect(x,y,40,40);
+            switch (imagePath) {
+                case "RED" -> {
+                    x = 579;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "ORANGE" -> {
+                    x = 629;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "YELLOW" -> {
+                    x = 679;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "WHITE" -> {
+                    x = 729;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "PURPLE" -> {
+                    x = 429;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "BLUE" -> {
+                    x = 379;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "LBLUE" -> {
+                    x = 329;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
+                case "GREEN" -> {
+                    x = 279;
+                    g.setColor(Color.decode("#000000"));
+                    g.fillRect(x, y, 40, 40);
+                }
             }
         }
     }

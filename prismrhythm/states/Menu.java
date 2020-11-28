@@ -33,6 +33,7 @@ public class Menu extends State {
         songCounter = 0;
         sm.getKeyManager().ResetMovement();
         am.PlaySong();
+        sm.getGameStateManager().LoadClips();
 
     }
 
@@ -80,10 +81,8 @@ public class Menu extends State {
 
     public void DrawText(Graphics g) {
 
-        Font bigFont = new Font("Century Gothic", Font.BOLD, 80);
         Font medFont = new Font("Courier", Font.PLAIN, 30);
-        Font smallFont = new Font("Verdana",Font.PLAIN, 12);
-
+        Font sFont = new Font("Courier", Font.PLAIN, 20);
         g.setFont(medFont);
 
         DrawBackground(g);
@@ -92,41 +91,16 @@ public class Menu extends State {
         g.setColor(Color.BLACK);
         ArrayList<String> songTitles = sm.getGameStateManager().getSongManager().getSongTitles();
         int y = 450;
-        for(int i = 0; i < songTitles.size(); i++ ) {
-            g.drawString(songTitles.get(i), 300, y);
+
+
+        for (String songTitle : songTitles) {
+            g.drawString(songTitle, 300, y);
             y += 50;
         }
 
-    }
-
-    public void DrawLogo(Graphics g) {
-
-        Font bigFont = new Font("Century Gothic", Font.BOLD, 80);
-
-        g.setFont(bigFont);
-        g.setColor(Color.RED);
-        g.drawString("P",250,100);
-        g.setColor(Color.ORANGE);
-        g.drawString("R",280,100);
-        g.setColor(Color.YELLOW);
-        g.drawString("I",320,100);
-        g.setColor(Color.GREEN);
-        g.drawString("S",335,100);
-        g.setColor(Color.BLUE);
-        g.drawString("M",365,100);
-
-        g.setColor(Color.RED);
-        g.drawString("R",450,100);
-        g.setColor(Color.ORANGE);
-        g.drawString("H",480,100);
-        g.setColor(Color.YELLOW);
-        g.drawString("Y",520,100);
-        g.setColor(Color.GREEN);
-        g.drawString("T",560,100);
-        g.setColor(Color.BLUE);
-        g.drawString("H",585,100);
-        g.setColor(Color.PINK);
-        g.drawString("M",630,100);
+        g.setFont(sFont);
+        g.drawString("Use Arrow Keys to Navigate Songs",300,800);
+        g.drawString("Select song with 'Enter'",300,840);
 
     }
 }

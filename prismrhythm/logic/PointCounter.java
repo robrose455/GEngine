@@ -46,19 +46,6 @@ public class PointCounter {
 
     }
 
-    public void DecreasePoints(int value) {
-
-        if(points != 0) {
-            points -= value;
-        }
-    }
-
-    public void ResetPoints() {
-
-        points = 0;
-
-    }
-
     public int getPoints() {
         return points;
     }

@@ -11,12 +11,6 @@ public class LoadedClip {
         this.clip = c;
     }
 
-
-    public Clip getClip() {
-
-        return clip;
-    }
-
     public void PlaySong() {
         clip.start();
     }

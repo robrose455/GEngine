@@ -48,12 +48,4 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
         //System.out.println("Mouse is Moved");
     }
-    public boolean WasMouseClicked() {
-        return mouseClicked;
-    }
-    public void Reset() {
-        mouseClicked = false;
-    }
-
-
 }

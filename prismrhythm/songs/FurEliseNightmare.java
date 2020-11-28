@@ -20,7 +20,7 @@ public class FurEliseNightmare extends Song {
     int beat = 200;
     int buffer = 1050;
 
-    public FurEliseNightmare(SceneManager sm, Clip c, String name, NoteFactory nf) {
+    public FurEliseNightmare(SceneManager sm, LoadedClip c, String name, NoteFactory nf) {
         super(sm, c,name,nf);
         LoadNotes();
     }
@@ -44,7 +44,6 @@ public class FurEliseNightmare extends Song {
                 time = 0;
 
                 if(type.equals("Q")) {
-                    System.out.println("Hit this");
                     time = beat;
                 } else if (type.equals("H")) {
                     time = beat * 2;
@@ -72,13 +71,9 @@ public class FurEliseNightmare extends Song {
         }
 
         String color;
-        int time;
 
         for(int i = 0; i < colors.size(); i++) {
             color = colors.get(i);
-            time = times.get(i);
-            System.out.println("Colors: [" + i + "] " + color + ": " + time);
-            //System.out.println("Hitting This");
             switch (color) {
                 case "R" -> {
                     NoteCommand rc = new RedNoteCommand(nf);
@@ -117,8 +112,6 @@ public class FurEliseNightmare extends Song {
         }
 
         noteCount = noteQueue.size() - 1;
-        System.out.println(noteCount);
-        System.out.println(times.get(noteCount));
 
     }
 
@@ -135,11 +128,9 @@ public class FurEliseNightmare extends Song {
                     NoteCommand n = noteQueue.pop();
                     n.execute();
                     TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
-                    System.out.println("Current Time Buffer: " + times.get(noteCount));
-                    System.out.println(noteCount);
                     noteCount--;
                 } else {
-                    TimeUnit.MILLISECONDS.sleep(7000);
+                    TimeUnit.MILLISECONDS.sleep(5000);
                     songEnded = true;
                     running = false;
                 }

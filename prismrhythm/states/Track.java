@@ -48,7 +48,7 @@ public class Track extends State {
     }
 
     @Override
-    public void Init() throws InterruptedException {
+    public void Init() {
 
         song.GARBAGE_setRun();
         song.getClip().PlaySong();
@@ -96,8 +96,8 @@ public class Track extends State {
     @Override
     public void Update() throws FileNotFoundException, InterruptedException {
 
-        for (int i = 0; i < hitterList.size(); i++) {
-            hitterList.get(i).Update();
+        for (NoteHitter noteHitter : hitterList) {
+            noteHitter.Update();
         }
 
         //Red Notes
@@ -292,8 +292,8 @@ public class Track extends State {
         DrawTrack(g);
 
         //Draw the Hitters
-        for (int i = 0; i < hitterList.size(); i++) {
-            hitterList.get(i).DrawSprite(g);
+        for (NoteHitter noteHitter : hitterList) {
+            noteHitter.DrawSprite(g);
         }
 
         //Red Notes
@@ -347,6 +347,9 @@ public class Track extends State {
         g.drawString("Multiplier: " + (pc.getMultiplier()) + "x",25, 230);
 
         g.setFont(medFont);
+
+        g.drawString("Hit keys on beat", 25,300);
+        g.drawString("to score points!", 25,320);
         g.setColor(Color.BLACK);
         g.drawString("A",290,935);
         g.drawString("S",340,935);
@@ -408,7 +411,7 @@ public class Track extends State {
 
     }
 
-    public void StartNoteSpawns() throws InterruptedException {
+    public void StartNoteSpawns() {
 
         NoteThread thread = new NoteThread();
         thread.start();

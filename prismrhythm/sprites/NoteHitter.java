@@ -63,30 +63,39 @@ public class NoteHitter extends Sprite {
 
         if(isVisible) {
 
-            if(imagePath.equals("RED")){
-                g.setColor(Color.decode("#fc0303"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("ORANGE")){
-                g.setColor(Color.decode("#ff8000"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("YELLOW")){
-                g.setColor(Color.decode("#f6fa02"));
-                g.fillRect(x,y,50,50);
-            }  else if (imagePath.equals("WHITE")) {
-                g.setColor(Color.decode("#9a9da1"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("BLUE")) {
-                g.setColor(Color.decode("#0509fa"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("PURPLE")) {
-                g.setColor(Color.decode("#c203fc"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("GREEN")) {
-                g.setColor(Color.decode("#00ff11"));
-                g.fillRect(x,y,50,50);
-            } else if (imagePath.equals("LBLUE")) {
-                g.setColor(Color.decode("#00ab80"));
-                g.fillRect(x,y,50,50);
+            switch (imagePath) {
+                case "RED" -> {
+                    g.setColor(Color.decode("#fc0303"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "ORANGE" -> {
+                    g.setColor(Color.decode("#ff8000"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "YELLOW" -> {
+                    g.setColor(Color.decode("#f6fa02"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "WHITE" -> {
+                    g.setColor(Color.decode("#9a9da1"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "BLUE" -> {
+                    g.setColor(Color.decode("#0509fa"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "PURPLE" -> {
+                    g.setColor(Color.decode("#c203fc"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "GREEN" -> {
+                    g.setColor(Color.decode("#00ff11"));
+                    g.fillRect(x, y, 50, 50);
+                }
+                case "LBLUE" -> {
+                    g.setColor(Color.decode("#00ab80"));
+                    g.fillRect(x, y, 50, 50);
+                }
             }
         }
     }
@@ -94,10 +103,5 @@ public class NoteHitter extends Sprite {
     public boolean isPressed() {
         return pressed;
     }
-
-    public KeyManager getKeyManager() {
-        return km;
-    }
-
 
 }

@@ -6,8 +6,6 @@ import ge.prismrhythm.logic.commands.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
-import javax.sound.sampled.Clip;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +18,7 @@ public class Tutorial extends Song {
     int beat = 470;
     int buffer = 3600;
 
-    public Tutorial(SceneManager sm, Clip c, String name, NoteFactory nf) {
+    public Tutorial(SceneManager sm, LoadedClip c, String name, NoteFactory nf) {
         super(sm, c,name,nf);
         LoadNotes();
     }
@@ -43,23 +41,17 @@ public class Tutorial extends Song {
 
                 time = 0;
 
-                if(type.equals("Q")) {
-                    time = beat;
-                } else if (type.equals("H")) {
-                    time = beat * 2;
-                } else if (type.equals("W")) {
-                    time = beat * 3;
-                } else if (type.equals("E")) {
-                    time = beat / 2;
-                } else if (type.equals("S")) {
-                    time = beat / 4;
-                } else if (type.equals("QE")) {
-                    time = beat + (beat / 2);
-                } else if (type.equals("C")) {
-                    time = 1;
-                } else if (type.equals("TT")) {
-                    time = beat / 8;
-                }
+                time = switch (type) {
+                    case "Q" -> beat;
+                    case "H" -> beat * 2;
+                    case "W" -> beat * 3;
+                    case "E" -> beat / 2;
+                    case "S" -> beat / 4;
+                    case "QE" -> beat + (beat / 2);
+                    case "C" -> 1;
+                    case "TT" -> beat / 8;
+                    default -> time;
+                };
 
                 colors.add(color);
                 times.add(time);
@@ -71,12 +63,8 @@ public class Tutorial extends Song {
         }
 
         String color;
-        int time;
-
-        for(int i = 0; i < colors.size(); i++) {
-            color = colors.get(i);
-            time = times.get(i);
-            //System.out.println("Colors: [" + i + "] " + color + ": " + time);
+        for (String s : colors) {
+            color = s;
             switch (color) {
                 case "R" -> {
                     NoteCommand rc = new RedNoteCommand(nf);
@@ -131,8 +119,6 @@ public class Tutorial extends Song {
                     NoteCommand n = noteQueue.pop();
                     n.execute();
                     TimeUnit.MILLISECONDS.sleep(times.get(noteCount));
-                    //System.out.println("Current Time Buffer: " + times.get(noteCount));
-                    System.out.println(noteCount);
                     noteCount--;
                 } else {
                     TimeUnit.MILLISECONDS.sleep(7000);
