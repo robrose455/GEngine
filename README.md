@@ -1,5 +1,6 @@
 # PrismRhythm
 Game Engine in Java
 
+Keyboard Piano Rhythm Game in Java built on custom game engine. 
 
-Test
+To run the program, run the jar file "PrismRhythm.jar".
